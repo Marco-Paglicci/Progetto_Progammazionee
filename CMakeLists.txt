@@ -3,20 +3,13 @@ project(Progetto_Programmazione)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(Progetto_Programmazione main.cpp)
-include_directories(headers /usr/include c:/SFML/include)
+# Aggiungi SFML_DIR per indicare il percorso dove si trovano i file di configurazione di SFML
+set(SFML_DIR "C:/SFML/lib/cmake/SFML")  # Modifica questo percorso!
 
-set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake_modules")
-find_package(SFML REQUIRED  graphics window system )
-if(SFML_FOUND)
-        include_directories(${SFML_INCLUDE_DIR})
-        target_link_libraries(TEsting_2 ${SFML_LIBRARIES})
-endif()
+find_package(SFML 2.5 COMPONENTS system window graphics network audio REQUIRED)
 
-file(COPY assets DESTINATION ${CMAKE_BINARY_DIR})
+add_executable(Progetto_Programmazione main.cpp headers/Engine.h
+        src/Engine.cpp
+        src/Engine_input.cpp)
 
-#solo per windows , copia dlls per costruire la directory
-if(WIN32)
-    file(GLOB BINARY_DEP_DLLS "${SFML_INCLUDE_DIR}/../bin/*.dll")
-    file(COPY ${BINARY_DEP_DLLS} DESTINATION ${CMAKE_BINARY_DIR})
-ENDIF()
+target_link_libraries(Progetto_Programmazione  sfml-system sfml-window sfml-graphics)

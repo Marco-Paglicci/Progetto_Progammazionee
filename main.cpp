@@ -1,6 +1,11 @@
 #include <iostream>
+#include <ctime>
+#include "headers/Engine.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    srand(time(NULL));
+    Engine engine; //definiamo l'oggetto engine dalla classe (fa il run del costruttore)
+    engine.run(); // fa il run della funzione
+
     return 0;
 }
