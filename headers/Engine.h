@@ -25,9 +25,16 @@ private:
     bool startMenu = true;
     bool scelta_personaggio = false;
     bool fight = false;
+    bool visible = true;
 
     string classe = "";
 
+    Personaggio p;
+    Room r;
+
+    //Menu//
+    string Title = "Dungeon Adventure";
+    string Start = "Start";
 
 public:
 
@@ -36,6 +43,8 @@ public:
     void input();
 
     void run();
+
+    void menu();
 
     const RenderWindow &getWindow() const;
 
