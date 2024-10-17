@@ -10,22 +10,25 @@ Engine::Engine() {
     window.create(VideoMode(resolution.x, resolution.y), "Test",Style::Default);
     window.setFramerateLimit(FPS);
 
+    /*SnakeAnimation*/
+    head.setFillColor(Color::Green);
+    head.setSize(Vector2f(20, 20));
+    head.setOrigin(head.getSize() / 2.f);
+    head.setPosition(window.getSize().x / 2.f, window.getSize().y / 2.f);
 
+    // inizializzazione del corpo del serpente
+    for (int i = 0; i < numRectangles; i++) {
+        RectangleShape rect = head;
+        rect.setPosition(head.getPosition().x - i * head.getSize().x, head.getPosition().y);
+        body.push_back(rect);
+    }
 
-
-    //animazione Switch / stanze
-    Clock clock;
-    SnakeAnimation snake(window, 10, 0.2f);
-    float dt = clock.restart().asSeconds();
-    bool AnimatingSnake = false;
 
     //stanza e variabili di appoggio per il suo funzionamento
     Room room(800, 400);
 }
 
-const RenderWindow &Engine::getWindow() const {
-    return window;
-}
+
 
 void Engine::run() {
 
@@ -47,12 +50,22 @@ void Engine::run() {
                clock.restart(); // riavviamo l'orologio
            }
            if (visible)
-               menu.draw();
+               Engine_menu.draw();
            input();
 
        }
 
+
+    //todo aggiungere snake animation dentro un while, e ricorda di fare window.display alla fine
    }
 
 
+}
+
+bool Engine::isFinished() const {
+    return finished;
+}
+
+const RenderWindow &Engine::getWindow() const {
+    return window;
 }

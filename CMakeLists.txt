@@ -11,6 +11,7 @@ find_package(SFML 2.5 COMPONENTS system window graphics network audio REQUIRED)
 add_executable(Progetto_Programmazione main.cpp headers/Engine.h
         src/Engine.cpp
         src/Engine_input.cpp
-        src/Engine_menu.cpp)
+        src/Engine_menu.cpp
+        src/Engine_snakeanimation.cpp)
 
 target_link_libraries(Progetto_Programmazione  sfml-system sfml-window sfml-graphics)
