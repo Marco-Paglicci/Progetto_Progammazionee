@@ -1,0 +1,14 @@
+//
+// Created by Marco on 17/10/2024.
+//
+
+#ifndef PROGETTO_PROGRAMMAZIONE_PERSONAGGIO_H
+#define PROGETTO_PROGRAMMAZIONE_PERSONAGGIO_H
+
+
+class Personaggio {
+
+};
+
+
+#endif //PROGETTO_PROGRAMMAZIONE_PERSONAGGIO_H

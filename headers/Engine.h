@@ -48,10 +48,15 @@ private:
     float dt = clock.restart().asSeconds();
     bool AnimatingSnake = false;
 
-
     std::vector<RectangleShape> body;
     RectangleShape head;
 
+    /*scelta personaggio*/
+    string scelta_Title = "CHOOSE YOUR HERO";
+    string Knight = "The Mighty Knight";
+    string Mage = "The Powerfull Mage";
+    string Thief = "The Sneaky Thief";
+    string Archer = "The Brave Archer";
 
 
 
@@ -66,12 +71,15 @@ public:
 
     void menu();
 
+    void scelta();
+
+    /*snake animation fuctions*/
     void snakeAnimation();
     void reset();
     void drawSnake();
     void update(float dt);
-
     bool isFinished() const;
+
 
 
     const RenderWindow &getWindow() const;

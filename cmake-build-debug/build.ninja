@@ -84,6 +84,20 @@ build CMakeFiles/Progetto_Programmazione.dir/src/Engine_snakeanimation.cpp.obj: 
   OBJECT_DIR = CMakeFiles\Progetto_Programmazione.dir
   OBJECT_FILE_DIR = CMakeFiles\Progetto_Programmazione.dir\src
 
+build CMakeFiles/Progetto_Programmazione.dir/src/Engine_scelta_personaggio.cpp.obj: CXX_COMPILER__Progetto_Programmazione_unscanned_Debug C$:/Users/Marco/CLionProjects/Progetto_Programmazione/src/Engine_scelta_personaggio.cpp || cmake_object_order_depends_target_Progetto_Programmazione
+  DEP_FILE = CMakeFiles\Progetto_Programmazione.dir\src\Engine_scelta_personaggio.cpp.obj.d
+  FLAGS = -g -std=gnu++1z -fdiagnostics-color=always
+  INCLUDES = -isystem C:/SFML/include
+  OBJECT_DIR = CMakeFiles\Progetto_Programmazione.dir
+  OBJECT_FILE_DIR = CMakeFiles\Progetto_Programmazione.dir\src
+
+build CMakeFiles/Progetto_Programmazione.dir/headers/Personaggio.cpp.obj: CXX_COMPILER__Progetto_Programmazione_unscanned_Debug C$:/Users/Marco/CLionProjects/Progetto_Programmazione/headers/Personaggio.cpp || cmake_object_order_depends_target_Progetto_Programmazione
+  DEP_FILE = CMakeFiles\Progetto_Programmazione.dir\headers\Personaggio.cpp.obj.d
+  FLAGS = -g -std=gnu++1z -fdiagnostics-color=always
+  INCLUDES = -isystem C:/SFML/include
+  OBJECT_DIR = CMakeFiles\Progetto_Programmazione.dir
+  OBJECT_FILE_DIR = CMakeFiles\Progetto_Programmazione.dir\headers
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Progetto_Programmazione
@@ -92,7 +106,7 @@ build CMakeFiles/Progetto_Programmazione.dir/src/Engine_snakeanimation.cpp.obj: 
 #############################################
 # Link the executable Progetto_Programmazione.exe
 
-build Progetto_Programmazione.exe: CXX_EXECUTABLE_LINKER__Progetto_Programmazione_Debug CMakeFiles/Progetto_Programmazione.dir/main.cpp.obj CMakeFiles/Progetto_Programmazione.dir/src/Engine.cpp.obj CMakeFiles/Progetto_Programmazione.dir/src/Engine_input.cpp.obj CMakeFiles/Progetto_Programmazione.dir/src/Engine_menu.cpp.obj CMakeFiles/Progetto_Programmazione.dir/src/Engine_snakeanimation.cpp.obj | C$:/SFML/lib/libsfml-graphics-d.a C$:/SFML/lib/libsfml-window-d.a C$:/SFML/lib/libsfml-system-d.a
+build Progetto_Programmazione.exe: CXX_EXECUTABLE_LINKER__Progetto_Programmazione_Debug CMakeFiles/Progetto_Programmazione.dir/main.cpp.obj CMakeFiles/Progetto_Programmazione.dir/src/Engine.cpp.obj CMakeFiles/Progetto_Programmazione.dir/src/Engine_input.cpp.obj CMakeFiles/Progetto_Programmazione.dir/src/Engine_menu.cpp.obj CMakeFiles/Progetto_Programmazione.dir/src/Engine_snakeanimation.cpp.obj CMakeFiles/Progetto_Programmazione.dir/src/Engine_scelta_personaggio.cpp.obj CMakeFiles/Progetto_Programmazione.dir/headers/Personaggio.cpp.obj | C$:/SFML/lib/libsfml-graphics-d.a C$:/SFML/lib/libsfml-window-d.a C$:/SFML/lib/libsfml-system-d.a
   FLAGS = -g
   LINK_LIBRARIES = C:/SFML/lib/libsfml-graphics-d.a  C:/SFML/lib/libsfml-window-d.a  C:/SFML/lib/libsfml-system-d.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Progetto_Programmazione.dir

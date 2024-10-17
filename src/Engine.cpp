@@ -2,6 +2,7 @@
 // Created by Marco on 17/10/2024.
 //
 
+#include <iostream>
 #include "../headers/Engine.h"
 
 Engine::Engine() {
@@ -25,7 +26,9 @@ Engine::Engine() {
 
 
     //stanza e variabili di appoggio per il suo funzionamento
-    Room room(800, 400);
+    r = new Room
+    room(800, 400);
+
 }
 
 
@@ -50,13 +53,57 @@ void Engine::run() {
                clock.restart(); // riavviamo l'orologio
            }
            if (visible)
-               Engine_menu.draw();
+               menu();
            input();
 
        }
 
 
-    //todo aggiungere snake animation dentro un while, e ricorda di fare window.display alla fine
+       if (scelta_personaggio) {
+           if (clock.getElapsedTime().asSeconds() > 0.5f) // impostiamo un intervallo di 0,5 secondi
+           {
+               visible = !visible; // invertiamo la visibilità del testo
+               clock.restart(); // riavviamo l'orologio
+           }
+           if (visible)
+               scelta();
+           input();
+           if (choise_done) {
+               if (classe =="knight") {
+                   p = new Knight(100, 200, 30, window, W);
+                   //todo implementare arma come attributo classe personaggio, si crea nel costruttore
+                   p->setHp(40);
+
+
+               } else if (classe == "Mage") {
+
+
+                   p = new Mage(100, 200, 30, window, W);
+                   p->setHp(25);
+
+
+               } else if (classe == "thief") {
+
+
+                   p = new Thief(100, 200, 30, window, W);
+                   p->setHp(32);
+
+               } else {
+
+
+                   p = new Personaggio(100, 200, 30, window, W);
+               }
+
+               p->setClasse(classe);
+               p->setTexture(classe);
+           }
+
+           cout << classe << endl;
+       }
+
+
+
+       //todo aggiungere snake animation dentro un while, e ricorda di fare window.display alla fine
    }
 
 
