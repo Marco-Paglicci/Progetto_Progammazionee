@@ -15,6 +15,13 @@ add_executable(Progetto_Programmazione main.cpp headers/Engine.h
         src/Engine_snakeanimation.cpp
         src/Engine_scelta_personaggio.cpp
         src/Personaggio.cpp
-        headers/Personaggio.h)
+        headers/Personaggio.h
+        src/Treasure.cpp
+        headers/Treasure.h
+        src/Weapon.cpp
+        headers/Weapon.h
+        src/Potion.cpp
+        headers/Potion.h
+)
 
 target_link_libraries(Progetto_Programmazione  sfml-system sfml-window sfml-graphics)

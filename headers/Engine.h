@@ -8,6 +8,8 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 
+#include "Personaggio.h"
+
 
 using namespace sf; //abbreviazione di sfml class per richimare la libreria piu veloemente (non bisogna scriverla)
 using namespace std;
