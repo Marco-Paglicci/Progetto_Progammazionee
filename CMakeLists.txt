@@ -22,6 +22,8 @@ add_executable(Progetto_Programmazione main.cpp headers/Engine.h
         headers/Weapon.h
         src/Potion.cpp
         headers/Potion.h
+        src/TreasureFactory.cpp
+        headers/TreasureFactory.h
 )
 
 target_link_libraries(Progetto_Programmazione  sfml-system sfml-window sfml-graphics)
