@@ -1,5 +1,6 @@
 /cmake-build-debug/.ninja_deps
 /cmake-build-debug/.ninja_log
+/cmake-build-debug/build.ninja
 /cmake-build-debug/.cmake/api/v1/reply/cache-v2-a39a76e993f1105c61ce.json
 /cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-4eb1389b0979ae6f4ddb.json
 /cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-80c2f1d58c28b4364767.json
@@ -11,3 +12,5 @@
 /cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-5de82fbbd95f37aef0d3.json
 /cmake-build-debug/.cmake/api/v1/reply/index-2024-10-17T11-14-29-0220.json
 /cmake-build-debug/.cmake/api/v1/reply/target-Progetto_Programmazione-Debug-9cf3d8a9d210563c0170.json
+/cmake-build-debug/CMakeFiles/clion-Debug-log.txt
+/cmake-build-debug/Testing/Temporary/LastTest.log
