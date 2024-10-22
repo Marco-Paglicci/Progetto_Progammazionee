@@ -3,10 +3,11 @@
 //
 
 #include <chrono>
+#include <iostream>
 #include "../headers/Personaggio.h"
 
-Personaggio::Personaggio(float x, float y, float size, RenderWindow &window) : x_(x), y_(y), size_(size),
-                                                                               window_(window){
+Personaggio::Personaggio(float x, float y, float size, RenderWindow &window) : x_(x), y_(y), size_(size),window_(window),W("Default Weapon",1){
+
     //colore rappresentativo personaggio
     sf::Color color_personaggio(sf::Color::Black);
     // Imposta i colori dei componenti dello stickman
@@ -26,6 +27,18 @@ Personaggio::Personaggio(float x, float y, float size, RenderWindow &window) : x
 
     // Imposta le dimensioni e il colore della testa
     testa_.setRadius(size_ / 4.5);
+
+    //uso il factory per creare un arma e copiarla su W
+    unique_ptr<Treasure> treasure = TreasureFactory::createWeapon("placeholder",10);
+    auto* weaponPtr = dynamic_cast<Weapon*>(treasure.get());
+    if(weaponPtr)
+    {
+        W = *weaponPtr;
+    }else
+    {
+        cout << " Error in created Treasure in Personaggio " << endl;
+    }
+
 
     setPosition(x_, y_);
 

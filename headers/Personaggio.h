@@ -6,6 +6,8 @@
 #define PROGETTO_PROGRAMMAZIONE_PERSONAGGIO_H
 #include <SFML/Graphics.hpp>
 
+#include "TreasureFactory.h"
+
 using namespace sf;
 using namespace std;
 
