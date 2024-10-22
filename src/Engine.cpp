@@ -11,6 +11,13 @@ Engine::Engine() {
     window.create(VideoMode(resolution.x, resolution.y), "Test",Style::Default);
     window.setFramerateLimit(FPS);
 
+    /*texture and background*/
+    sf::Texture background;
+    background.loadFromFile("../assets/background/background.png");
+    Sprite sprite;
+    sprite.setTexture(background);
+    sprite.setScale(4, 4);
+
     /*SnakeAnimation*/
     head.setFillColor(Color::Green);
     head.setSize(Vector2f(20, 20));
@@ -24,10 +31,16 @@ Engine::Engine() {
         body.push_back(rect);
     }
 
+    P = make_unique<Personaggio>(100, 200, 30, window);
+
 
     //stanza e variabili di appoggio per il suo funzionamento
-    r = new Room
-    room(800, 400);
+    Room *R = RM.getRandomRoom();
+    if (R == nullptr) {
+        cout << "errore! Engine : getRandomRoom " << endl;
+    }
+
+
 
 }
 
@@ -35,26 +48,34 @@ Engine::Engine() {
 
 void Engine::run() {
 
-    sf::Texture background;
-    background.loadFromFile("../assets/background/background.png");
-    Sprite sprite;
-    sprite.setTexture(background);
-    sprite.setScale(4, 4);
-
     /*----------------------GAMELOOP-----------------*/
    while(window.isOpen())
    {
 
-       if (startMenu) {
+       if (currentState) {
 
-           if (clock.getElapsedTime().asSeconds() > 0.5f) // impostiamo un intervallo di 0,5 secondi
+           if (choise_done)
            {
-               visible = !visible; // invertiamo la visibilità del testo
-               clock.restart(); // riavviamo l'orologio
+               if (choise_done) {
+                   if (classe == "Knight") {
+                       cout << "Class Chosen ! : " + classe << endl;
+                       P = make_unique<Knight>(100, 200, 30, window);
+                   } else if (classe == "Mage") {
+                       cout << "Class Chosen ! : " + classe << endl;
+                       P = make_unique<Mage>(100, 200, 30, window);
+                   } else if (classe == "Thief") {
+                       cout << "Class Chosen ! : " + classe << endl;
+                       P = make_unique<Thief>(100, 200, 30, window);
+                   } else {
+                       cout<< "Errore selezione personaggio" << endl;
+                   }
+                   P->setClasse(classe);
+                   P->setTexture(classe);
+               }
            }
-           if (visible)
-               menu();
-           input();
+           currentState->draw(*this);
+
+
 
        }
 
@@ -109,10 +130,88 @@ void Engine::run() {
 
 }
 
+/*----------GETTER AND SETTER----------*/
+
 bool Engine::isFinished() const {
     return finished;
 }
 
-const RenderWindow &Engine::getWindow() const {
+RenderWindow &Engine::getWindow() {
     return window;
 }
+
+const Clock &Engine::getClock() const {
+    return clock;
+}
+
+
+const string &Engine::getClasse() const {
+    return classe;
+}
+
+void Engine::setClasse(const string &classe) {
+    Engine::classe = classe;
+}
+
+
+void Engine::changeState(State *newState) {
+
+    delete currentState; // Pulisce lo stato precedente
+    currentState = newState;
+
+}
+
+State *Engine::getCurrentState() const {
+    return currentState;
+}
+
+void Engine::setCurrentState(State *currentState) {
+    Engine::currentState = currentState;
+}
+
+bool Engine::isStartMenu() const {
+    return start_menu;
+}
+
+void Engine::setStartMenu(bool startMenu) {
+    start_menu = startMenu;
+}
+
+bool Engine::isSceltaPersonaggio() const {
+    return scelta_personaggio;
+}
+
+void Engine::setSceltaPersonaggio(bool sceltaPersonaggio) {
+    scelta_personaggio = sceltaPersonaggio;
+}
+
+bool Engine::isFight() const {
+    return fight;
+}
+
+void Engine::setFight(bool fight) {
+    Engine::fight = fight;
+}
+
+bool Engine::isSceltaEffettuata() const {
+    return scelta_effettuata;
+}
+
+void Engine::setSceltaEffettuata(bool sceltaEffettuata) {
+    scelta_effettuata = sceltaEffettuata;
+}
+
+bool Engine::isVisible() const {
+    return visible;
+}
+
+void Engine::setVisible(bool visible) {
+    Engine::visible = visible;
+}
+
+void Engine::ResetClock(Clock clock) {
+    clock.restart();
+}
+
+
+

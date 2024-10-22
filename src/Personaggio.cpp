@@ -72,8 +72,11 @@ const Texture &Personaggio::getTexture() const {
     return texture;
 }
 
-void Personaggio::setTexture(const Texture &texture) {
-    Personaggio::texture = texture;
+void Personaggio::setTexture(string classe_) {
+    //imposta sprite immaggine
+    texture.loadFromFile("../assets/" + classe_ + ".png");
+    sprite.setTexture(texture);
+    sprite.setScale(2.7, 3);
 }
 
 const Sprite &Personaggio::getSprite() const {

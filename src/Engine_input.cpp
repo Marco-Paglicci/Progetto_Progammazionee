@@ -19,15 +19,14 @@ void Engine::input() {
                 window.close();
             }
         }
-        if (startMenu) {
-            if (event.type == Event::KeyPressed) {
-                if (Keyboard::isKeyPressed((Keyboard::Enter))) {
-                    startMenu = false;
-                    scelta_personaggio = true;
 
-                }
-            }
+
+        /*----START MENU----*/
+
+        if (currentState) {
+            currentState->handleInput(*this);
         }
+
 
         /*----------------SCELTA PERSONAGGIO---------------*/
 
@@ -69,6 +68,11 @@ void Engine::input() {
 
     }
 }
+
+
+
+
+
 
 
 

@@ -24,21 +24,21 @@ void Engine::scelta() {
     knight.setCharacterSize(20);
     knight.setFillColor(sf::Color::White);
     knight.setStyle(sf::Text::Bold);
-    knight.setString(Knight);
+    knight.setString(chose_Knight);
     //ladro
     sf::Text thief;
     thief.setFont(name);
     thief.setCharacterSize(20);
     thief.setFillColor(sf::Color::White);
     thief.setStyle(sf::Text::Bold);
-    thief.setString(Thief);
+    thief.setString(chose_Thief);
     //mago
     sf::Text mage;
     mage.setFont(name);
     mage.setCharacterSize(20);
     mage.setFillColor(sf::Color::White);
     mage.setStyle(sf::Text::Bold);
-    mage.setString(Mage);
+    mage.setString(chose_Mage);
 
     //archer
     sf::Text archer;
@@ -46,7 +46,7 @@ void Engine::scelta() {
     archer.setCharacterSize(20);
     archer.setFillColor(sf::Color::White);
     archer.setStyle(sf::Text::Bold);
-    archer.setString(Archer);
+    archer.setString(chose_Archer);
 
 
     float y = 100.f;
@@ -114,3 +114,4 @@ void Engine::scelta() {
 
     window.display();
 }
+

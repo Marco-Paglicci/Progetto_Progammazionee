@@ -44,6 +44,12 @@ add_executable(Progetto_Programmazione main.cpp headers/Engine.h
         headers/Room_Manager.h
         src/RoomFactory.cpp
         headers/RoomFactory.h
+        src/Engine_StatePattern/src/State.cpp
+        src/Engine_StatePattern/headers/State.h
+        src/Engine_StatePattern/src/State_StartMenu.cpp
+        src/Engine_StatePattern/headers/State_StartMenu.h
+        src/Engine_StatePattern/src/State_CharacterSelection.cpp
+        src/Engine_StatePattern/headers/State_CharacterSelection.h
 )
 
 target_link_libraries(Progetto_Programmazione  sfml-system sfml-window sfml-graphics)

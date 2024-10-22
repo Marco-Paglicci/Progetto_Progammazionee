@@ -79,7 +79,7 @@ public:
 
     const Texture &getTexture() const;
 
-    void setTexture(const Texture &texture);
+    void setTexture(string classe_);
 
     const Sprite &getSprite() const;
 
