@@ -21,6 +21,7 @@ void Fangs_Room::genera_Fangs() {
     background_texture.loadFromFile("../assets/background/background_FANGS.png");
     background_image.setTexture(background_texture);
     background_image.setScale(4, 4);
+
     //GENERA I WALLS
     //1
     RectangleShape wall(sf::Vector2f(wallWidth, wallHight));
@@ -42,6 +43,23 @@ void Fangs_Room::genera_Fangs() {
     RectangleShape CenterCube(sf::Vector2f(wallHight, wallHight));
     CenterCube.setPosition(width_ / 2 - wallWidth * 2, (height_ / 3));
     innerWalls.push_back(CenterCube);
+
+    //rende tutti i muri  su Innerwalls bianchi
+    for (auto &wall: innerWalls) {
+        wall.setFillColor(sf::Color::White);
+        wall.setTexture(&texture);
+    }
+
+    // Crea l'uscita
+    Room::entrance.setSize(sf::Vector2f(20.f, 20.f));
+    Room::entrance.setFillColor(sf::Color::Green);
+    Room::entrance.setPosition(width_ - (width_ / 10), height_ / 2);
+
+    //TODO remove test enemy
+    //crea il trigger per avviare il combattimento
+    Room::enemy.setSize(sf::Vector2f(20.f, 20.f));
+    Room::enemy.setFillColor(sf::Color::Red);
+    Room::enemy.setPosition((width_ / 10) * 5, height_ / 2 + (height_ / 4));
 
     cout << "Generating FANGS Room" << endl;
 }

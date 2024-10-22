@@ -36,6 +36,8 @@ add_executable(Progetto_Programmazione main.cpp headers/Engine.h
         headers/Room.h
         src/Fangs_Room.cpp
         headers/Fangs_Room.h
+        src/ZigZag_Room.cpp
+        headers/ZigZag_Room.h
 )
 
 target_link_libraries(Progetto_Programmazione  sfml-system sfml-window sfml-graphics)
