@@ -52,6 +52,8 @@ add_executable(Progetto_Programmazione main.cpp headers/Engine.h
         src/Engine_StatePattern/headers/State_CharacterSelection.h
         src/Engine_StatePattern/src/State_Playing.cpp
         src/Engine_StatePattern/headers/State_Playing.h
+        src/Engine_StatePattern/src/State_AnimatingSnake.cpp
+        src/Engine_StatePattern/headers/State_AnimatingSnake.h
 )
 
 target_link_libraries(Progetto_Programmazione  sfml-system sfml-window sfml-graphics)

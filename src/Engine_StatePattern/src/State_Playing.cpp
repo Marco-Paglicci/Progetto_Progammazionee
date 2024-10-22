@@ -51,7 +51,7 @@ void State_Playing::draw(Engine &engine) {
     if (engine.getP()->getCollisionRect().intersects((engine.getR()->getEntrance().getGlobalBounds()))) {
         engine.getWindow().clear();
         engine.setAnimatingSnake(true);
-
+        engine.setCurrentState(new State_AnimatingSnake);
     }
     if (engine.getP()->getCollisionRect().intersects((engine.getR()->getEnemy().getGlobalBounds()))) {
         engine.getWindow().clear();
