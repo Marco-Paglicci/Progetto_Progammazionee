@@ -25,6 +25,13 @@ add_executable(Progetto_Programmazione main.cpp headers/Engine.h
         src/TreasureFactory.cpp
         headers/TreasureFactory.h
         headers/Version.h
+        src/Knight.cpp
+        headers/Knight.h
+        src/Thief.cpp
+        headers/Thief.h
+        headers/Thief.h
+        src/Mage.cpp
+        headers/Mage.h
 )
 
 target_link_libraries(Progetto_Programmazione  sfml-system sfml-window sfml-graphics)

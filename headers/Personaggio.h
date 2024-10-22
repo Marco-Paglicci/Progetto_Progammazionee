@@ -19,12 +19,6 @@ private:
     int hp;
     int armor;
     Weapon W ;
-    string classe_;
-
-
-    /*variabili grafiche*/
-    Texture texture;
-    Sprite sprite;
 
     sf::RenderWindow &window_;
     float x_, y_;
@@ -43,10 +37,22 @@ private:
     bool key_pressed;
     bool steady = true;
 
+
+protected:
+
+    //sono quelle variabili private che devono essere visibili alle
+    //classi derivate, per l'override di alcuni metodi
+
+    string classe_;
+
     //variabile per animazione
     int swap_frame = 0;
     int swap_frame_camminata = 0;
     string moving;
+
+    /*variabili grafiche*/
+    Texture texture;
+    Sprite sprite;
 
 public:
 
@@ -84,13 +90,13 @@ public:
 
     void Steady_Animate();
 
-    void virtual Camminata_DX();
+    virtual void  Camminata_DX();
 
-    void virtual Camminata_SX();
+    virtual void  Camminata_SX();
 
-    void virtual Camminata_UP();
+    virtual void  Camminata_UP();
 
-    void virtual Camminata_DOWN();
+    virtual void  Camminata_DOWN();
 
     void aggiornaPosizione();
 
