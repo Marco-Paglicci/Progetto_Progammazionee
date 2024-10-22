@@ -41,6 +41,24 @@ public:
 
     virtual ~Room() = default;
 
+    const RectangleShape &getTop() const;
+
+    const RectangleShape &getBottom() const;
+
+    const RectangleShape &getLeft() const;
+
+    const RectangleShape &getRight() const;
+
+    const vector<sf::RectangleShape> &getInnerWalls() const;
+
+    const vector<sf::RectangleShape> &getOuterWalls() const;
+
+    const RectangleShape &getEntrance() const;
+
+    const RectangleShape &getExit() const;
+
+    const RectangleShape &getEnemy() const;
+
 };
 
 

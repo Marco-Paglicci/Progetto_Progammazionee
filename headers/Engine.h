@@ -34,13 +34,18 @@ private:
     const unsigned int FPS = 60;
     static const Time TimeperFrame;
 
+    Sprite sprite;
+    Texture background;
+
     /*States*/
     State* currentState = new State_StartMenu();
     bool start_menu = true;
     bool scelta_personaggio = false;
-    bool fight = false;
     bool scelta_effettuata = false;
+    bool playing = false;
+    bool fight = false;
     bool visible = true;
+    bool AnimatingSnake = false;
 
     string classe = "";
 
@@ -55,6 +60,8 @@ private:
 
     Room_Manager RM =  Room_Manager(800, 400);
 
+    unique_ptr<Room> R;
+
 
     /*Menu*/
     string Title = "Dungeon Adventure";
@@ -67,7 +74,7 @@ private:
     int numRectangles = 10;
     Clock clock;
     float dt = clock.restart().asSeconds();
-    bool AnimatingSnake = false;
+
 
     std::vector<RectangleShape> body;
     RectangleShape head;
@@ -105,8 +112,16 @@ public:
     bool isFinished() const;
 
     /*getter and setter*/
+
     void setClasse(const string &classe);
     const string &getClasse() const;
+
+    const unique_ptr<Personaggio> &getP() const;
+    const Room_Manager &getRm() const;
+
+    const unique_ptr<Room> &getR() const;
+
+    void setR(unique_ptr<Room> &r);
 
     State *getCurrentState() const;
     void setCurrentState(State *currentState);
@@ -126,16 +141,19 @@ public:
     bool isVisible() const;
     void setVisible(bool visible);
 
-    const Clock &getClock() const;
 
-    void ResetClock(Clock clock) const;
+    const Sprite &getSprite() const;
+    void setSprite(const Sprite &sprite);
+
+    const Clock &getClock() const;
 
     RenderWindow & getWindow() ;
 
+    void ResetClock(Clock clock);
 
+    bool isAnimatingSnake() const;
 
-
-
+    void setAnimatingSnake(bool animatingSnake);
 };
 
 

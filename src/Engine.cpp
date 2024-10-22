@@ -12,9 +12,7 @@ Engine::Engine() {
     window.setFramerateLimit(FPS);
 
     /*texture and background*/
-    sf::Texture background;
     background.loadFromFile("../assets/background/background.png");
-    Sprite sprite;
     sprite.setTexture(background);
     sprite.setScale(4, 4);
 
@@ -51,7 +49,10 @@ void Engine::run() {
     /*----------------------GAMELOOP-----------------*/
    while(window.isOpen())
    {
+        /*---------------STATE CHECKING----------------*/
 
+        //Lo state pattern viene utilizzato per verificare condizioni specifiche
+        //e modificare il  funzionamento dell'Engine
        if (currentState) {
 
            if (choise_done)
@@ -73,54 +74,17 @@ void Engine::run() {
                    P->setTexture(classe);
                }
            }
+           window.clear();
+
            currentState->draw(*this);
 
 
 
+
        }
 
 
-       if (scelta_personaggio) {
-           if (clock.getElapsedTime().asSeconds() > 0.5f) // impostiamo un intervallo di 0,5 secondi
-           {
-               visible = !visible; // invertiamo la visibilità del testo
-               clock.restart(); // riavviamo l'orologio
-           }
-           if (visible)
-               scelta();
-           input();
-           if (choise_done) {
-               if (classe =="knight") {
-                   p = new Knight(100, 200, 30, window, W);
-                   //todo implementare arma come attributo classe personaggio, si crea nel costruttore
-                   p->setHp(40);
 
-
-               } else if (classe == "Mage") {
-
-
-                   p = new Mage(100, 200, 30, window, W);
-                   p->setHp(25);
-
-
-               } else if (classe == "thief") {
-
-
-                   p = new Thief(100, 200, 30, window, W);
-                   p->setHp(32);
-
-               } else {
-
-
-                   p = new Personaggio(100, 200, 30, window, W);
-               }
-
-               p->setClasse(classe);
-               p->setTexture(classe);
-           }
-
-           cout << classe << endl;
-       }
 
 
 
@@ -209,9 +173,49 @@ void Engine::setVisible(bool visible) {
     Engine::visible = visible;
 }
 
+const Sprite &Engine::getSprite() const {
+    return sprite;
+}
+
+void Engine::setSprite(const Sprite &sprite) {
+    Engine::sprite = sprite;
+}
+
+
 void Engine::ResetClock(Clock clock) {
     clock.restart();
 }
+
+const unique_ptr<Personaggio> &Engine::getP() const {
+    return P;
+}
+
+
+const Room_Manager &Engine::getRm() const {
+    return RM;
+}
+
+const unique_ptr<Room> &Engine::getR() const {
+    return R;
+}
+
+void Engine::setR(unique_ptr<Room> &r) {
+    R = std::move(r);
+}
+
+bool Engine::isAnimatingSnake() const {
+    return AnimatingSnake;
+}
+
+void Engine::setAnimatingSnake(bool animatingSnake) {
+    AnimatingSnake = animatingSnake;
+}
+
+
+
+
+
+
 
 
 
