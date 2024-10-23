@@ -17,7 +17,8 @@
 
 /*state pattern*/
 #include "../src/Engine_StatePattern/headers/State.h"
-#include "../src/Engine_StatePattern/headers/State_StartMenu.h"
+
+class State_StartMenu;
 
 
 using namespace sf; //abbreviazione di sfml class per richimare la libreria piu veloemente (non bisogna scriverla)
@@ -38,7 +39,7 @@ private:
     Texture background;
 
     /*States*/
-    State* currentState = new State_StartMenu();
+    State* currentState ;
     bool start_menu = true;
     bool scelta_personaggio = false;
     bool scelta_effettuata = false;

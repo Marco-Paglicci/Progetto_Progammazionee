@@ -12,7 +12,6 @@ class State_AnimatingSnake :public State {
 
 public:
     void handleInput(Engine& engine) override;
-    void update(Engine& engine) override;
     void draw(Engine& engine) override;
 };
 

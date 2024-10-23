@@ -15,7 +15,6 @@ class State_StartMenu : public State {
 
 public:
     void handleInput(Engine& engine) override;
-    void update(Engine& engine) override;
     void draw(Engine& engine) override;
 };
 

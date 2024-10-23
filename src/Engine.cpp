@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include "../headers/Engine.h"
+#include "Engine_StatePattern/headers/State_StartMenu.h"
 
 Engine::Engine() {
 
@@ -38,7 +39,7 @@ Engine::Engine() {
         cout << "errore! Engine : getRandomRoom " << endl;
     }
 
-
+    currentState = new State_StartMenu();
 
 }
 
