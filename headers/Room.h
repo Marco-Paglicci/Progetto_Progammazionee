@@ -41,6 +41,8 @@ public:
 
     virtual ~Room() = default;
 
+    virtual unique_ptr<Room> clone() const = 0;
+
     const RectangleShape &getTop() const;
 
     const RectangleShape &getBottom() const;

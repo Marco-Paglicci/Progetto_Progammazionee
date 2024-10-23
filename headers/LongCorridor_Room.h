@@ -16,6 +16,9 @@ public:
     void genera_LongCorridor();
 
     void drawRoom(RenderWindow &window);
+
+    unique_ptr<Room> clone() const  override;
+
 };
 
 

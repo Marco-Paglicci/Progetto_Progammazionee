@@ -8,6 +8,11 @@ void State_AnimatingSnake::handleInput(Engine &engine) {
 
 }
 
-void State_AnimatingSnake::draw(Engine &engine) {
+void State_AnimatingSnake::draw(Engine &engine)
+{
+    if(engine.isAnimatingSnake() && !engine.isStartMenu() && !engine.isFight())
+    {
+        engine.snakeAnimation();
+    }
 
 }

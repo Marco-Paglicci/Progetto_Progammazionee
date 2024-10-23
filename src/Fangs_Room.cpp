@@ -85,3 +85,8 @@ void Fangs_Room::drawRoom(RenderWindow &window) {
 
 
 }
+
+unique_ptr<Room> Fangs_Room::clone() const {
+    return make_unique<Fangs_Room>(*this);
+
+}

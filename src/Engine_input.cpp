@@ -21,7 +21,10 @@ void Engine::input() {
         }
 
 
-        /*----START MENU----*/
+        /*----STATE HANDLER----*/
+
+        //per gli input che avvengono in stati specifici ,la funzione richiama
+        //l'handle input specifico per lo state in cui ci troviamo
 
         if (currentState) {
             currentState->handleInput(*this);
@@ -29,7 +32,6 @@ void Engine::input() {
 
 
         /*----------------SCELTA PERSONAGGIO---------------*/
-
 
 
         if (scelta_personaggio) {

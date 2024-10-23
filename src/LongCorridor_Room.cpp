@@ -65,3 +65,11 @@ void LongCorridor_Room::drawRoom(sf::RenderWindow &window) {
     }
     */
 }
+
+unique_ptr<Room> LongCorridor_Room::clone() const {
+    return make_unique<LongCorridor_Room>(*this);
+
+}
+
+
+

@@ -20,7 +20,7 @@ public:
 
     Room_Manager(int width, int height);
 
-    Room* getRandomRoom();
+    unique_ptr<Room> getRandomRoom();
 
 };
 

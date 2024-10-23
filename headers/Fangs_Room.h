@@ -15,6 +15,9 @@ public:
     void genera_Fangs();
 
     void drawRoom(RenderWindow &window);
+
+     unique_ptr<Room> clone() const  override;
+
 };
 
 

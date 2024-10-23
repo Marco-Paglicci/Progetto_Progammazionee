@@ -67,3 +67,7 @@ void ZigZag_Room::drawRoom(sf::RenderWindow &window) {
     }
     */
 }
+
+unique_ptr<Room> ZigZag_Room::clone() const {
+    return make_unique<ZigZag_Room>(*this);
+}

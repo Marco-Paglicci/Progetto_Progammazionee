@@ -9,11 +9,11 @@ void Engine::snakeAnimation() {
     update(dt);
     window.clear();
     drawSnake();
-    if (isFinished() && !fight) {
+    if (isFinished() && !isFight()) {
         AnimatingSnake = false;
-        room.Pick_Room();
+        R = RM.getRandomRoom();
         reset();
-        p->setPosition(100, 200);
+        P->setPosition(100, 200);
     }
 
 }

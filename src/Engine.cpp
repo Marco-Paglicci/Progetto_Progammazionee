@@ -33,7 +33,7 @@ Engine::Engine() {
 
 
     //stanza e variabili di appoggio per il suo funzionamento
-    Room *R = RM.getRandomRoom();
+    R = RM.getRandomRoom();
     if (R == nullptr) {
         cout << "errore! Engine : getRandomRoom " << endl;
     }
@@ -79,16 +79,8 @@ void Engine::run() {
            currentState->draw(*this);
 
 
-
-
        }
 
-
-
-
-
-
-       //todo aggiungere snake animation dentro un while, e ricorda di fare window.display alla fine
    }
 
 
