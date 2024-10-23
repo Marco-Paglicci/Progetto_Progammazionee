@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.29)
+
+# Nome del progetto
 project(Progetto_Programmazione)
 
+# Specifica la versione di C++
 set(CMAKE_CXX_STANDARD 20)
 
 # Aggiungi SFML_DIR per indicare il percorso dove si trovano i file di configurazione di SFML
@@ -58,4 +61,11 @@ add_executable(Progetto_Programmazione main.cpp headers/Engine.h
 
 
 
-target_link_libraries(Progetto_Programmazione  sfml-system sfml-window sfml-graphics)
+target_link_libraries(${PROJECT_NAME}  sfml-system sfml-window sfml-graphics)
+
+# Copia i file .dll nella directory di output
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+        "C:/SFML/bin"
+        $<TARGET_FILE_DIR:${PROJECT_NAME}>
+)
