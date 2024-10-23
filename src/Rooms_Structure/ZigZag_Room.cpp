@@ -2,7 +2,7 @@
 // Created by Marco on 22/10/2024.
 //
 
-#include "../headers/ZigZag_Room.h"
+#include "../../headers/ZigZag_Room.h"
 
 ZigZag_Room::ZigZag_Room(int width, int height): Room(width,height) {
 
@@ -30,11 +30,11 @@ void ZigZag_Room::drawRoom(sf::RenderWindow &window) {
 
     // da rimuovere o no dipendentemente se si vogliono visualzzare i muri ( senza Texture )
 
-    /*
+
     for (const auto &wall: innerWalls) {
         window.draw(wall);
     }
-    */
+
 }
 
 unique_ptr<Room> ZigZag_Room::clone() const {
@@ -66,7 +66,7 @@ void ZigZag_Room::generate_InnerWalls() {
     innerWalls.push_back(wall2);
     //3
     sf::RectangleShape wall3(sf::Vector2f(wallWidth, wallHight));
-    wall3.setPosition((width_ / 5) * 4, 0);
+    wall3.setPosition((width_ / 5) * 4, -100);
     innerWalls.push_back(wall3);
 
     //rende tutti i muri  su Innerwalls rossi

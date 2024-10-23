@@ -35,17 +35,17 @@ add_executable(Progetto_Programmazione main.cpp headers/Engine.h
         headers/Thief.h
         src/Mage.cpp
         headers/Mage.h
-        src/Room.cpp
+        src/Rooms_Structure/Room.cpp
         headers/Room.h
-        src/Fangs_Room.cpp
+        src/Rooms_Structure/Fangs_Room.cpp
         headers/Fangs_Room.h
-        src/ZigZag_Room.cpp
+        src/Rooms_Structure/ZigZag_Room.cpp
         headers/ZigZag_Room.h
-        src/LongCorridor_Room.cpp
+        src/Rooms_Structure/LongCorridor_Room.cpp
         headers/LongCorridor_Room.h
-        src/Room_Manager.cpp
+        src/Rooms_Structure/Room_Manager.cpp
         headers/Room_Manager.h
-        src/RoomFactory.cpp
+        src/Rooms_Structure/RoomFactory.cpp
         headers/RoomFactory.h
         src/Engine_StatePattern/src/State.cpp
         src/Engine_StatePattern/headers/State.h

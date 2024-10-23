@@ -2,7 +2,7 @@
 // Created by Marco on 22/10/2024.
 //
 
-#include "../headers/LongCorridor_Room.h"
+#include "../../headers/LongCorridor_Room.h"
 
 LongCorridor_Room::LongCorridor_Room(int width, int height) : Room(width,height) {
 

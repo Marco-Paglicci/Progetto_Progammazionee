@@ -4,13 +4,15 @@
 
 #include <random>
 #include <iostream>
-#include "../headers/Room_Manager.h"
+#include "../../headers/Room_Manager.h"
 
 Room_Manager::Room_Manager(int width, int height) {
 
-    roomPool.push_back(RoomFactory::createRoom(1,width,height));
+
     roomPool.push_back(RoomFactory::createRoom(2, width, height));  // Crea ZIGZAG
     roomPool.push_back(RoomFactory::createRoom(3, width, height));  // Crea LONG CORRIDOR
+    roomPool.push_back(RoomFactory::createRoom(1,width,height));    //Crea Fangs
+
 
     //todo fix : a causa delle dimensioni ridotte dle RoomPool sceglie sempre la prima stanza , aggiungi altre staze
 }

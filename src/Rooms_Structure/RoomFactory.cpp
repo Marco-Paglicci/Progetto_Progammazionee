@@ -3,7 +3,7 @@
 //
 
 #include <iostream>
-#include "../headers/RoomFactory.h"
+#include "../../headers/RoomFactory.h"
 
 
 unique_ptr<Room> RoomFactory::createRoom(int roomType, int width, int height) {

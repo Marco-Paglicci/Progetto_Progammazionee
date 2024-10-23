@@ -10,8 +10,5 @@ void State_AnimatingSnake::handleInput(Engine &engine) {
 
 void State_AnimatingSnake::draw(Engine &engine)
 {
-
         engine.snakeAnimation();
-
-
 }
