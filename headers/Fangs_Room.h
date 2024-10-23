@@ -18,6 +18,9 @@ public:
 
      unique_ptr<Room> clone() const  override;
 
+
+    void generate_InnerWalls();
+
 };
 
 

@@ -61,6 +61,9 @@ public:
 
     const RectangleShape &getEnemy() const;
 
+    void Generate_OuterWalls(); //I muri esterni sono condivisi ad ogni stanza , quindi fanno aprte della classe padre
+
+
 };
 
 

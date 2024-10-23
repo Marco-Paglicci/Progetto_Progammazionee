@@ -102,6 +102,8 @@ public:
 
     void scelta();
 
+    void class_setup();
+
     /*state function*/
     void changeState(State* newState);
 

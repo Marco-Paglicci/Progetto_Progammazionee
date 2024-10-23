@@ -2,6 +2,7 @@
 // Created by Marco on 22/10/2024.
 //
 
+#include <iostream>
 #include "../headers/State_Playing.h"
 
 void State_Playing::handleInput(Engine &engine) {
@@ -10,7 +11,6 @@ void State_Playing::handleInput(Engine &engine) {
 
 void State_Playing::draw(Engine &engine) {
 
-    if(!engine.isAnimatingSnake() && !engine.isStartMenu() && !engine.isSceltaPersonaggio()) {
         engine.getWindow().draw(engine.getSprite());
         engine.getR()->drawRoom(engine.getWindow());
         engine.getP()->draw();
@@ -37,12 +37,14 @@ void State_Playing::draw(Engine &engine) {
             engine.getP()->getCollisionRect().intersects(engine.getR()->getBottom().getGlobalBounds()) ||
             engine.getP()->getCollisionRect().intersects(engine.getR()->getLeft().getGlobalBounds()) ||
             engine.getP()->getCollisionRect().intersects(engine.getR()->getRight().getGlobalBounds())) {
+            cout << "entrato nell'if infinito " << endl;
             for (const auto &wall: engine.getR()->getOuterWalls()) {
                 if (engine.getP()->getCollisionRect().intersects(wall.getGlobalBounds())) {
                     engine.getP()->Collision(engine.getP()->getCollisionDirection(wall.getGlobalBounds()));
                 }
             }
         }
+
         //codice per collisione con muri interni
         for (const auto &wall: engine.getR()->getInnerWalls()) {
             if (engine.getP()->getCollisionRect().intersects(wall.getGlobalBounds())) {
@@ -52,7 +54,7 @@ void State_Playing::draw(Engine &engine) {
         if (engine.getP()->getCollisionRect().intersects((engine.getR()->getEntrance().getGlobalBounds()))) {
             engine.getWindow().clear();
             engine.setAnimatingSnake(true);
-            engine.setCurrentState(new State_AnimatingSnake);
+            engine.setCurrentState(new State_AnimatingSnake());
         }
         if (engine.getP()->getCollisionRect().intersects((engine.getR()->getEnemy().getGlobalBounds()))) {
             engine.getWindow().clear();
@@ -60,6 +62,5 @@ void State_Playing::draw(Engine &engine) {
             engine.setFight(true);
         }
         engine.getWindow().display();
-    }
 
 }

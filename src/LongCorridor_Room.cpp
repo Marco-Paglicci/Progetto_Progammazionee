@@ -11,6 +11,39 @@ LongCorridor_Room::LongCorridor_Room(int width, int height) : Room(width,height)
 
 void LongCorridor_Room::genera_LongCorridor() {
 
+    Room::Generate_OuterWalls();
+    generate_InnerWalls();
+}
+
+void LongCorridor_Room::drawRoom(sf::RenderWindow &window) {
+
+    window.draw(background_image);
+    window.draw(top);
+    window.draw(bottom);
+    window.draw(left);
+    window.draw(right);
+    window.draw(entrance);
+    window.draw(exit);
+    window.draw(enemy);
+
+    // da rimuovere o no dipendentemente se si vogliono visualzzare i muri ( senza Texture )
+
+    /*
+    for (const auto &wall: innerWalls) {
+        window.draw(wall);
+    }
+    */
+}
+
+unique_ptr<Room> LongCorridor_Room::clone() const {
+    return make_unique<LongCorridor_Room>(*this);
+
+}
+
+
+
+void LongCorridor_Room::generate_InnerWalls() {
+
     float wallWidth = width_;
     float wallHight = height_ / 3;
 
@@ -43,31 +76,6 @@ void LongCorridor_Room::genera_LongCorridor() {
     Room::entrance.setSize(sf::Vector2f(20.f, 20.f));
     Room::entrance.setFillColor(sf::Color::Green);
     Room::entrance.setPosition(width_ - (width_ / 10), height_ / 2);
-
-}
-
-void LongCorridor_Room::drawRoom(sf::RenderWindow &window) {
-
-    window.draw(background_image);
-    window.draw(top);
-    window.draw(bottom);
-    window.draw(left);
-    window.draw(right);
-    window.draw(entrance);
-    window.draw(exit);
-    window.draw(enemy);
-
-    // da rimuovere o no dipendentemente se si vogliono visualzzare i muri ( senza Texture )
-
-    /*
-    for (const auto &wall: innerWalls) {
-        window.draw(wall);
-    }
-    */
-}
-
-unique_ptr<Room> LongCorridor_Room::clone() const {
-    return make_unique<LongCorridor_Room>(*this);
 
 }
 

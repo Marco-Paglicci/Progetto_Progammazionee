@@ -17,6 +17,8 @@ public:
     void drawRoom(RenderWindow &window);
 
     unique_ptr<Room> clone() const  override;
+
+    void generate_InnerWalls();
 };
 
 

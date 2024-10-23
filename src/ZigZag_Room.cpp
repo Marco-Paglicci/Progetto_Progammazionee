@@ -12,8 +12,42 @@ ZigZag_Room::ZigZag_Room(int width, int height): Room(width,height) {
 
 void ZigZag_Room::genera_ZigZag() {
 
+    Room::Generate_OuterWalls();
+    generate_InnerWalls();
+
+}
+
+void ZigZag_Room::drawRoom(sf::RenderWindow &window) {
+
+    window.draw(background_image);
+    window.draw(top);
+    window.draw(bottom);
+    window.draw(left);
+    window.draw(right);
+    window.draw(entrance);
+    window.draw(exit);
+    window.draw(enemy);
+
+    // da rimuovere o no dipendentemente se si vogliono visualzzare i muri ( senza Texture )
+
+
+    for (const auto &wall: innerWalls) {
+        window.draw(wall);
+    }
+
+}
+
+unique_ptr<Room> ZigZag_Room::clone() const {
+    return make_unique<ZigZag_Room>(*this);
+}
+
+
+void ZigZag_Room::generate_InnerWalls() {
+
     float wallWidth = 30.f;
     float wallHight = height_ - 150.f;
+
+
 
     //svuota innerWalls dai muri precedenti e ne crea nuovi
     innerWalls.clear();
@@ -45,29 +79,4 @@ void ZigZag_Room::genera_ZigZag() {
     Room::entrance.setSize(sf::Vector2f(20.f, 20.f));
     Room::entrance.setFillColor(sf::Color::Green);
     Room::entrance.setPosition(width_ - (width_ / 10), height_ / 2);
-
-}
-
-void ZigZag_Room::drawRoom(sf::RenderWindow &window) {
-
-    window.draw(background_image);
-    window.draw(top);
-    window.draw(bottom);
-    window.draw(left);
-    window.draw(right);
-    window.draw(entrance);
-    window.draw(exit);
-    window.draw(enemy);
-
-    // da rimuovere o no dipendentemente se si vogliono visualzzare i muri ( senza Texture )
-
-    /*
-    for (const auto &wall: innerWalls) {
-        window.draw(wall);
-    }
-    */
-}
-
-unique_ptr<Room> ZigZag_Room::clone() const {
-    return make_unique<ZigZag_Room>(*this);
 }

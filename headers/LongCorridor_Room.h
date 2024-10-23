@@ -19,6 +19,9 @@ public:
 
     unique_ptr<Room> clone() const  override;
 
+    void Generate_OuterWalls();
+
+    void generate_InnerWalls();
 };
 
 

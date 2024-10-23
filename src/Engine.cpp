@@ -54,32 +54,10 @@ void Engine::run() {
 
         //Lo state pattern viene utilizzato per verificare condizioni specifiche
         //e modificare il  funzionamento dell'Engine
+
        if (currentState) {
-
-           if (choise_done)
-           {
-               if (choise_done) {
-                   if (classe == "Knight") {
-                       cout << "Class Chosen ! : " + classe << endl;
-                       P = make_unique<Knight>(100, 200, 30, window);
-                   } else if (classe == "Mage") {
-                       cout << "Class Chosen ! : " + classe << endl;
-                       P = make_unique<Mage>(100, 200, 30, window);
-                   } else if (classe == "Thief") {
-                       cout << "Class Chosen ! : " + classe << endl;
-                       P = make_unique<Thief>(100, 200, 30, window);
-                   } else {
-                       cout<< "Errore selezione personaggio" << endl;
-                   }
-                   P->setClasse(classe);
-                   P->setTexture(classe);
-               }
-           }
            window.clear();
-
            currentState->draw(*this);
-
-
        }
 
    }
@@ -112,6 +90,7 @@ void Engine::setClasse(const string &classe) {
 
 
 void Engine::changeState(State *newState) {
+
 
     delete currentState; // Pulisce lo stato precedente
     currentState = newState;
@@ -203,6 +182,29 @@ bool Engine::isAnimatingSnake() const {
 void Engine::setAnimatingSnake(bool animatingSnake) {
     AnimatingSnake = animatingSnake;
 }
+
+void Engine::class_setup() {
+
+        if (classe == "Knight") {
+            cout << "Class Chosen ! : " + classe << endl;
+            P = make_unique<Knight>(100, 200, 30, window);
+
+        } else if (classe == "Mage") {
+            cout << "Class Chosen ! : " + classe << endl;
+            P = make_unique<Mage>(100, 200, 30, window);
+        } else if (classe == "Thief") {
+            cout << "Class Chosen ! : " + classe << endl;
+            P = make_unique<Thief>(100, 200, 30, window);
+        } else {
+            cout<< "Errore selezione personaggio" << endl;
+        }
+
+        P->setClasse(classe);
+        P->setTexture(classe);
+
+}
+
+
 
 
 

@@ -33,6 +33,6 @@ void State_StartMenu::draw(Engine &engine) {
     }
     if (engine.isVisible())
         engine.menu();
-    engine.input();
+    handleInput(engine);
 
 }

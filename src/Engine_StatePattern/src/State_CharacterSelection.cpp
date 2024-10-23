@@ -2,7 +2,9 @@
 // Created by Marco on 22/10/2024.
 //
 
+#include <iostream>
 #include "../headers/State_CharacterSelection.h"
+#include "../headers/State_Playing.h"
 
 void State_CharacterSelection::handleInput(Engine &engine) {
 
@@ -13,20 +15,25 @@ void State_CharacterSelection::handleInput(Engine &engine) {
                 engine.setClasse("Knight");
                 engine.setSceltaPersonaggio(false);
                 engine.setSceltaEffettuata(true);
+                engine.class_setup();
+                engine.changeState(new State_Playing());
             }
             if (Keyboard::isKeyPressed((Keyboard::Num2))) {
                 engine.setClasse("Thief");
                 engine.setSceltaPersonaggio(false);
                 engine.setSceltaEffettuata(true);
+                engine.class_setup();
+                engine.changeState(new State_Playing());
 
             }
             if (Keyboard::isKeyPressed((Keyboard::Num3))) {
                 engine.setClasse("Mage");
                 engine.setSceltaPersonaggio(false);
                 engine.setSceltaEffettuata(true);
+                engine.class_setup();
+                engine.changeState(new State_Playing());
 
             }
-
             if (Keyboard::isKeyPressed((Keyboard::Escape))) {
                 engine.getWindow().close();
 
@@ -44,6 +51,6 @@ void State_CharacterSelection::draw(Engine &engine) {
     }
     if (engine.isVisible())
         engine.scelta();
-    engine.input();
+    handleInput(engine);
 
 }

@@ -13,6 +13,40 @@ Fangs_Room::Fangs_Room(int width, int height) : Room(width, height) {
 
 void Fangs_Room::genera_Fangs() {
 
+    Room::getOuterWalls();
+    generate_InnerWalls();
+}
+
+void Fangs_Room::drawRoom(RenderWindow &window) {
+
+    window.draw(background_image);
+    window.draw(top);
+    window.draw(bottom);
+    window.draw(left);
+    window.draw(right);
+    window.draw(entrance);
+    window.draw(exit);
+    window.draw(enemy);
+
+    // da rimuovere o no dipendentemente se si vogliono visualzzare i muri ( senza Texture )
+
+    /*
+    for (const auto &wall: innerWalls) {
+        window.draw(wall);
+    }
+    */
+
+
+}
+
+unique_ptr<Room> Fangs_Room::clone() const {
+    return make_unique<Fangs_Room>(*this);
+
+}
+
+void Fangs_Room::generate_InnerWalls() {
+
+
     float wallWidth = 30.f;
     float wallHight = height_ / 3;
 
@@ -64,29 +98,4 @@ void Fangs_Room::genera_Fangs() {
     cout << "Generating FANGS Room" << endl;
 }
 
-void Fangs_Room::drawRoom(RenderWindow &window) {
 
-    window.draw(background_image);
-    window.draw(top);
-    window.draw(bottom);
-    window.draw(left);
-    window.draw(right);
-    window.draw(entrance);
-    window.draw(exit);
-    window.draw(enemy);
-
-    // da rimuovere o no dipendentemente se si vogliono visualzzare i muri ( senza Texture )
-
-    /*
-    for (const auto &wall: innerWalls) {
-        window.draw(wall);
-    }
-    */
-
-
-}
-
-unique_ptr<Room> Fangs_Room::clone() const {
-    return make_unique<Fangs_Room>(*this);
-
-}
