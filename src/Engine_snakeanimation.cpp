@@ -3,6 +3,7 @@
 //
 #include <SFML/Graphics.hpp>
 #include "../headers/Engine.h"
+#include "Engine_StatePattern/headers/State_Playing.h"
 
 void Engine::snakeAnimation() {
 
@@ -14,6 +15,7 @@ void Engine::snakeAnimation() {
         R = RM.getRandomRoom();
         reset();
         P->setPosition(100, 200);
+        changeState(new State_Playing());
     }
 
 }

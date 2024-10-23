@@ -30,11 +30,11 @@ void ZigZag_Room::drawRoom(sf::RenderWindow &window) {
 
     // da rimuovere o no dipendentemente se si vogliono visualzzare i muri ( senza Texture )
 
-
+    /*
     for (const auto &wall: innerWalls) {
         window.draw(wall);
     }
-
+    */
 }
 
 unique_ptr<Room> ZigZag_Room::clone() const {
@@ -69,11 +69,14 @@ void ZigZag_Room::generate_InnerWalls() {
     wall3.setPosition((width_ / 5) * 4, 0);
     innerWalls.push_back(wall3);
 
-    //rende tutti i muri  su Innerwalls bianchi
+    //rende tutti i muri  su Innerwalls rossi
+    //FOR DEBUG
+
     for (auto &wall: innerWalls) {
         wall.setFillColor(sf::Color::Red);
 
     }
+
 
     // Crea l'ingresso
     Room::entrance.setSize(sf::Vector2f(20.f, 20.f));
