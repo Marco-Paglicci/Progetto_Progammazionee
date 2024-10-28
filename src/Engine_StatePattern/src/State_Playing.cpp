@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include "../headers/State_Playing.h"
+#include "../headers/State_Fighting.h"
 
 void State_Playing::handleInput(Engine &engine) {
 
@@ -58,7 +59,7 @@ void State_Playing::draw(Engine &engine) {
         }
         if (engine.getP()->getCollisionRect().intersects((engine.getR()->getEnemy().getGlobalBounds()))) {
             engine.getWindow().clear();
-
+            engine.setCurrentState(new State_Fighting());
         }
         engine.getWindow().display();
 

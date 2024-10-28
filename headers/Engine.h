@@ -48,6 +48,7 @@ private:
     bool visible = true;
     bool AnimatingSnake = false;
 
+
     string classe = "";
 
     /*Objects*/
@@ -87,8 +88,23 @@ private:
     string chose_Thief = "The Sneaky Thief";
     string chose_Archer = "The Brave Archer";
 
+    /*fighting window*/
+    RectangleShape backgroundRect;
+    RectangleShape Fight_Rect1;
+    RectangleShape Fight_Rect2;
+    Text fightText;
+    Text runText;
+    Text talkText;
+    Text itemsText;
 
+    vector<sf::RectangleShape> Health_Bar;
+    Font fight_fontText;
 
+    /*cursore*/
+
+    CircleShape cursor;
+    bool cursor_position = "";
+    int selectedOptionIndex = 0;
 
 public:
 
@@ -113,6 +129,9 @@ public:
     void drawSnake();
     void update(float dt);
     bool isFinished() const;
+
+    bool isAnimatingSnake() const;
+    void setAnimatingSnake(bool animatingSnake);
 
     /*getter and setter*/
 
@@ -154,9 +173,19 @@ public:
 
     void ResetClock(Clock clock);
 
-    bool isAnimatingSnake() const;
+    bool isCursorPosition() const;
 
-    void setAnimatingSnake(bool animatingSnake);
+    void setCursorPosition(bool cursorPosition);
+
+    int getSelectedOptionIndex() const;
+
+    void setSelectedOptionIndex(int selectedOptionIndex);
+
+
+    /*fighitng window */
+    void fight_window_setup();
+
+    void fight_window_draw();
 };
 
 

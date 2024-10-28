@@ -17,6 +17,9 @@ Engine::Engine() {
     sprite.setTexture(background);
     sprite.setScale(4, 4);
 
+    /*fightwindow graphic*/
+    fight_window_setup();
+
     /*SnakeAnimation*/
     head.setFillColor(Color::Green);
     head.setSize(Vector2f(20, 20));
@@ -30,8 +33,8 @@ Engine::Engine() {
         body.push_back(rect);
     }
 
+    /*object setup*/
     P = make_unique<Personaggio>(100, 200, 30, window);
-
 
     //stanza e variabili di appoggio per il suo funzionamento
     R = RM.getRandomRoom();
@@ -39,6 +42,8 @@ Engine::Engine() {
         cout << "errore! Engine : getRandomRoom " << endl;
     }
 
+
+    /*state*/
     currentState = new State_StartMenu();
 
 }
@@ -182,6 +187,24 @@ bool Engine::isAnimatingSnake() const {
 void Engine::setAnimatingSnake(bool animatingSnake) {
     AnimatingSnake = animatingSnake;
 }
+
+bool Engine::isCursorPosition() const {
+    return cursor_position;
+}
+
+void Engine::setCursorPosition(bool cursorPosition) {
+    cursor_position = cursorPosition;
+}
+
+int Engine::getSelectedOptionIndex() const {
+    return selectedOptionIndex;
+}
+
+void Engine::setSelectedOptionIndex(int selectedOptionIndex) {
+    Engine::selectedOptionIndex = selectedOptionIndex;
+}
+
+
 
 void Engine::class_setup() {
 

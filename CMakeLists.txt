@@ -57,6 +57,9 @@ add_executable(Progetto_Programmazione main.cpp headers/Engine.h
         src/Engine_StatePattern/headers/State_Playing.h
         src/Engine_StatePattern/src/State_AnimatingSnake.cpp
         src/Engine_StatePattern/headers/State_AnimatingSnake.h
+        src/Engine_StatePattern/src/State_Fighting.cpp
+        src/Engine_StatePattern/headers/State_Fighting.h
+        src/Engine_Fighting.cpp
 )
 
 
