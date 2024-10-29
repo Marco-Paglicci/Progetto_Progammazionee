@@ -4,4 +4,11 @@
 
 #include "../../headers/Enemy_Monster.h"
 
-Enemy_Monster::Enemy_Monster(int strenght) : Enemy(strenght) {}
+
+
+unique_ptr<Enemy> Enemy_Monster::clone() const {
+    return make_unique<Enemy_Monster>(*this);
+}
+
+Enemy_Monster::Enemy_Monster(int strenght, const string name, const Texture &texture) : Enemy(strenght, name,
+                                                                                               texture) {}

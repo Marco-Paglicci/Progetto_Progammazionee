@@ -11,7 +11,9 @@
 class Enemy_Monster : public Enemy {
 
 public:
-    explicit Enemy_Monster(int strenght);
+    Enemy_Monster(int strenght, const string name, const Texture &texture);
+
+    unique_ptr<Enemy> clone() const override;
 
 };
 

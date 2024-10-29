@@ -16,7 +16,7 @@ class Enemy {
 private:
 
     /*attributi nemico */
-
+    string name;
     int Hp;
     int armour;
     int attack;
@@ -31,7 +31,7 @@ protected:
 
 public:
 
-    explicit Enemy(int strenght);
+    explicit Enemy(int strenght, string name,Texture texture);
 
     virtual unique_ptr<Enemy> clone() const = 0;
 

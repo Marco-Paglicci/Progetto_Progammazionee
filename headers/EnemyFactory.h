@@ -11,9 +11,25 @@
 
 class EnemyFactory {
 
-public:
-    static unique_ptr<Enemy> createEnemy(int enemyType,int strenght);
+private:
 
+    static string enemy_name;
+    static Texture enemy_Texture;
+
+    static vector<string> monster_names ;
+    static vector<string> minions_names ;
+    static vector<string> boss_names;
+
+
+public:
+
+    EnemyFactory();
+
+    static unique_ptr<Enemy> createEnemy(int enemyType, int strenght);
+
+    static string selectName(int enemyType);
+
+    static int randomIndex();
 };
 
 

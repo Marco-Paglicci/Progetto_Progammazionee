@@ -4,16 +4,9 @@
 
 #include "../../headers/Enemy.h"
 
-Enemy::Enemy(int strenght) : strenght(strenght)
-{
+Enemy::Enemy(int strenght, string name, Texture texture) {
 
 }
-
-
-
-
-
-
 
 
 /*getter and setter*/
@@ -57,4 +50,7 @@ float Enemy::getY() const {
 void Enemy::setY(float y) {
     y_ = y;
 }
+
+
+
 
