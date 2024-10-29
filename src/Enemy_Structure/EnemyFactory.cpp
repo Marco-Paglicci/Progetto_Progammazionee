@@ -7,8 +7,37 @@
 #include "../../headers/EnemyFactory.h"
 
 EnemyFactory::EnemyFactory() {
+
+    //riempo i vettori contenenti i nomi dei mostri
+
     monster_names    = {"Ombra Strisciante", "Golem di Pietra Antica", "Strega delle Caverne" , "Ragno della Cripta" , "Demone della Forgia Oscura"};
     minions_names = {"Sgherro dell’Oscurità","Predone delle Cripte","Cultista della Luna Nera","Sentinella di Ferro","Bruto delle Profondità"};
+
+    //file names delle Texture
+    vector<string> fileNames =
+            {
+                "../../assets/enemy_texture/enemy_monster/ombra_strisciante.png",
+                "../../assets/enemy_texture/enemy_monster/golem_pietra.png",
+                "../../assets/enemy_texture/enemy_monster/strega.png",
+                "../../assets/enemy_texture/enemy_monster/ragno.png",
+                "../../assets/enemy_texture/enemy_monster/demone.png"
+            };
+
+    //todo : draw this monsters
+
+    //carica le texture su monster_texture
+    for(const auto& fileName : fileNames)
+    {
+        Texture texture;
+        if(texture.loadFromFile(fileName))
+        {
+            monster_texture.push_back(texture);
+        }else
+        {
+            cout<<"Errore caricamento texture" + fileName << endl;
+        }
+    }
+
 }
 
 
@@ -33,6 +62,7 @@ string EnemyFactory::selectName(int enemyType) {
     switch (enemyType) {
         case 1:
             enemy_name = monster_names[randomIndex()];
+            enemy_Texture = monster_texture[randomIndex()];
         case 2:
             enemy_name = minions_names[randomIndex()];
         case 3:
