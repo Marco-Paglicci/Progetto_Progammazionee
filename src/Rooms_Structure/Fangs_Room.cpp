@@ -31,8 +31,8 @@ void Fangs_Room::drawRoom(RenderWindow &window) {
     window.draw(enemy);
 
 
-    Enemy->setX(enemy.getPosition().x-20);
-    Enemy->setY(enemy.getPosition().y-20);
+    Enemy->setX(enemy.getPosition().x-10);
+    Enemy->setY(enemy.getPosition().y-10);
 
     Enemy->drawEnemy(window);
 
@@ -83,9 +83,11 @@ void Fangs_Room::generate_InnerWalls() {
     innerWalls.push_back(wall4);
 
     //todo remove or set an enemy here
+    /*
     RectangleShape CenterCube(sf::Vector2f(wallHight, wallHight));
     CenterCube.setPosition(width_ / 2 - wallWidth * 2, (height_ / 3));
     innerWalls.push_back(CenterCube);
+    */
 
     //rende tutti i muri  su Innerwalls bianchi
     for (auto &wall: innerWalls) {
@@ -102,7 +104,7 @@ void Fangs_Room::generate_InnerWalls() {
     //crea il trigger per avviare il combattimento
     Room::enemy.setSize(sf::Vector2f(60.f, 60.f));
     Room::enemy.setFillColor(sf::Color::Red);
-    Room::enemy.setPosition((width_ / 10) * 5, height_ / 2 + (height_ / 4));
+    Room::enemy.setPosition(width_ / 2 -20, (height_ / 2)-20);
 
     cout << "Generating FANGS Room" << endl;
 }
