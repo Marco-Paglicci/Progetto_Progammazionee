@@ -78,7 +78,6 @@ void Personaggio::setTexture(string classe_) {
     sprite.setTexture(texture);
     sprite.setScale(2.7, 3);
 }
-
 const Sprite &Personaggio::getSprite() const {
     return sprite;
 }

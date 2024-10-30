@@ -5,7 +5,6 @@
 #ifndef PROGETTO_PROGRAMMAZIONE_ENEMY_MANAGER_H
 #define PROGETTO_PROGRAMMAZIONE_ENEMY_MANAGER_H
 
-#include "EnemyFactory.h"
 
 using namespace std;
 
@@ -13,7 +12,6 @@ using namespace std;
 class Enemy_Manager {
 
 private:
-    vector<unique_ptr<Enemy>> enemyPool;
 
 public:
 
@@ -21,7 +19,6 @@ public:
 
 
 
-    unique_ptr<Enemy> getRandomEnemy();
 
 };
 

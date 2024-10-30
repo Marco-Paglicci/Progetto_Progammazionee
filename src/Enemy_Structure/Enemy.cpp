@@ -51,6 +51,22 @@ void Enemy::setY(float y) {
     y_ = y;
 }
 
+const Texture &Enemy::getTexture() const {
+    return texture;
+}
+
+void Enemy::setTexture(const Texture &texture) {
+    Enemy::texture = texture;
+}
+
+const Sprite &Enemy::getSprite() const {
+    return sprite;
+}
+
+void Enemy::setSprite(const Sprite &sprite) {
+    Enemy::sprite = sprite;
+}
+
 
 
 

@@ -13,6 +13,8 @@ void LongCorridor_Room::genera_LongCorridor() {
 
     Room::Generate_OuterWalls();
     generate_InnerWalls();
+
+
 }
 
 void LongCorridor_Room::drawRoom(sf::RenderWindow &window) {
@@ -36,7 +38,7 @@ void LongCorridor_Room::drawRoom(sf::RenderWindow &window) {
 }
 
 unique_ptr<Room> LongCorridor_Room::clone() const {
-    return make_unique<LongCorridor_Room>(*this);
+    return make_unique<LongCorridor_Room>(width_,height_);
 
 }
 

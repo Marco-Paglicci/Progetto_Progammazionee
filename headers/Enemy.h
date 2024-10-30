@@ -13,7 +13,7 @@ using namespace std;
 class Enemy {
 
 
-private:
+protected:
 
     /*attributi nemico */
     string name;
@@ -22,8 +22,6 @@ private:
     int attack;
     int strenght;
     float x_, y_;
-
-protected:
 
     /*variabili grafiche*/
     Texture texture;
@@ -35,7 +33,7 @@ public:
 
     virtual unique_ptr<Enemy> clone() const = 0;
 
-
+    virtual void drawEnemy(RenderWindow &window) = 0;
 
     /*getter and setter*/
 
@@ -58,6 +56,14 @@ public:
     float getY() const;
 
     void setY(float y);
+
+    const Texture &getTexture() const;
+
+    void setTexture(const Texture &texture);
+
+    const Sprite &getSprite() const;
+
+    void setSprite(const Sprite &sprite);
 
 
 };

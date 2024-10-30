@@ -6,24 +6,33 @@
 #include <random>
 #include "../../headers/EnemyFactory.h"
 
+string EnemyFactory::enemy_name;
+vector<string> EnemyFactory::monster_names;
+vector<string> EnemyFactory::minions_names;
+vector<Texture> EnemyFactory::monster_texture;
+Texture EnemyFactory::enemy_Texture;
+
+
 EnemyFactory::EnemyFactory() {
 
-    //riempo i vettori contenenti i nomi dei mostri
+    enemy_name = "default name";
 
+
+    //riempo i vettori contenenti i nomi dei mostri
     monster_names    = {"Ombra Strisciante", "Golem di Pietra Antica", "Strega delle Caverne" , "Ragno della Cripta" , "Demone della Forgia Oscura"};
     minions_names = {"Sgherro dell’Oscurità","Predone delle Cripte","Cultista della Luna Nera","Sentinella di Ferro","Bruto delle Profondità"};
 
     //file names delle Texture
     vector<string> fileNames =
             {
-                "../../assets/enemy_texture/enemy_monster/ombra_strisciante.png",
-                "../../assets/enemy_texture/enemy_monster/golem_pietra.png",
-                "../../assets/enemy_texture/enemy_monster/strega.png",
-                "../../assets/enemy_texture/enemy_monster/ragno.png",
-                "../../assets/enemy_texture/enemy_monster/demone.png"
+                "../assets/enemy_texture/enemy_monster/ombra_strisciante.png",
+                "../assets/enemy_texture/enemy_monster/golem_pietra.png",
+                "../assets/enemy_texture/enemy_monster/strega.png",
+                "../assets/enemy_texture/enemy_monster/ragno.png",
+                "../assets/enemy_texture/enemy_monster/demone.png"
             };
 
-    //todo : draw this monsters
+
 
     //carica le texture su monster_texture
     for(const auto& fileName : fileNames)
@@ -65,7 +74,7 @@ string EnemyFactory::selectName(int enemyType) {
             enemy_Texture = monster_texture[randomIndex()];
         case 2:
             enemy_name = minions_names[randomIndex()];
-        case 3:
+
 
     }
 

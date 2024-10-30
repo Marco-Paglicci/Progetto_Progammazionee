@@ -8,7 +8,9 @@
 Fangs_Room::Fangs_Room(int width, int height) : Room(width, height) {
 
     genera_Fangs();
+    Enemy = EF.createEnemy(1,2);
 
+    cout << "Enemy generato" << endl;
 }
 
 void Fangs_Room::genera_Fangs() {
@@ -28,8 +30,13 @@ void Fangs_Room::drawRoom(RenderWindow &window) {
     window.draw(exit);
     window.draw(enemy);
 
+    cout << "drawing Enenmy" << endl;
     // da rimuovere o no dipendentemente se si vogliono visualzzare i muri ( senza Texture )
+    Enemy->setX(enemy.getPosition().x-55);
+    Enemy->setY(enemy.getPosition().y-55);
 
+    Enemy->drawEnemy(window);
+    cout << " Enemy drawed " << endl;
     /*
     for (const auto &wall: innerWalls) {
         window.draw(wall);
@@ -40,7 +47,7 @@ void Fangs_Room::drawRoom(RenderWindow &window) {
 }
 
 unique_ptr<Room> Fangs_Room::clone() const {
-    return make_unique<Fangs_Room>(*this);
+    return make_unique<Fangs_Room>(width_,height_);
 
 }
 

@@ -6,6 +6,7 @@
 #define PROGETTO_PROGRAMMAZIONE_ROOM_H
 
 #include <SFML/Graphics.hpp>
+#include "EnemyFactory.h"
 
 using namespace sf;
 using namespace std;
@@ -28,10 +29,16 @@ protected:
     RectangleShape exit;
     RectangleShape enemy;
 
+    //objects
+    EnemyFactory EF =  EnemyFactory();
+    unique_ptr<Enemy> Enemy;
+
     //Graphics
     Sprite background_image;
     Texture texture;
     Texture background_texture;
+
+
 
 public:
 

@@ -2,11 +2,16 @@
 // Created by Marco on 22/10/2024.
 //
 
+#include <iostream>
 #include "../../headers/ZigZag_Room.h"
 
 ZigZag_Room::ZigZag_Room(int width, int height): Room(width,height) {
 
+
     genera_ZigZag();
+    Enemy = EnemyFactory::createEnemy(1,2);
+
+
 }
 
 
@@ -29,16 +34,20 @@ void ZigZag_Room::drawRoom(sf::RenderWindow &window) {
     window.draw(enemy);
 
     // da rimuovere o no dipendentemente se si vogliono visualzzare i muri ( senza Texture )
+    //todo : far visualizzzare ENEMY
+    Enemy->setX(enemy.getPosition().x-55);
+    Enemy->setY(enemy.getPosition().y-55);
 
+    Enemy->drawEnemy(window);
 
     for (const auto &wall: innerWalls) {
         window.draw(wall);
     }
-
+    //todo:comment this
 }
 
 unique_ptr<Room> ZigZag_Room::clone() const {
-    return make_unique<ZigZag_Room>(*this);
+    return make_unique<ZigZag_Room>(width_,height_);
 }
 
 
