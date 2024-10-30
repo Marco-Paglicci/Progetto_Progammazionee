@@ -67,6 +67,14 @@ void Enemy::setSprite(const Sprite &sprite) {
     Enemy::sprite = sprite;
 }
 
+const string &Enemy::getName() const {
+    return name;
+}
+
+void Enemy::setName(const string &name) {
+    Enemy::name = name;
+}
+
 
 
 

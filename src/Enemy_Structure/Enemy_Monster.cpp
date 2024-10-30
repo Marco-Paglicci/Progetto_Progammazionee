@@ -30,6 +30,7 @@ Enemy_Monster::Enemy_Monster(int strenght,  string name, const Texture &texture)
     }
 
     sprite.setTexture(texture);
+    sprite.setScale(2.7, 3);
 }
 
 void Enemy_Monster::drawEnemy(RenderWindow &window) {

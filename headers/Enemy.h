@@ -65,7 +65,9 @@ public:
 
     void setSprite(const Sprite &sprite);
 
+    const string &getName() const;
 
+    void setName(const string &name);
 };
 
 

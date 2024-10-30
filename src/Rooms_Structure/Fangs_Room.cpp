@@ -10,7 +10,7 @@ Fangs_Room::Fangs_Room(int width, int height) : Room(width, height) {
     genera_Fangs();
     Enemy = EF.createEnemy(1,2);
 
-    cout << "Enemy generato" << endl;
+    cout << "Enemy generato : " + Enemy->getName() << endl;
 }
 
 void Fangs_Room::genera_Fangs() {
@@ -30,13 +30,14 @@ void Fangs_Room::drawRoom(RenderWindow &window) {
     window.draw(exit);
     window.draw(enemy);
 
-    cout << "drawing Enenmy" << endl;
-    // da rimuovere o no dipendentemente se si vogliono visualzzare i muri ( senza Texture )
-    Enemy->setX(enemy.getPosition().x-55);
-    Enemy->setY(enemy.getPosition().y-55);
+
+    Enemy->setX(enemy.getPosition().x-20);
+    Enemy->setY(enemy.getPosition().y-20);
 
     Enemy->drawEnemy(window);
-    cout << " Enemy drawed " << endl;
+
+
+    // da rimuovere o no dipendentemente se si vogliono visualzzare i muri ( senza Texture )
     /*
     for (const auto &wall: innerWalls) {
         window.draw(wall);
@@ -99,7 +100,7 @@ void Fangs_Room::generate_InnerWalls() {
 
     //TODO remove test enemy
     //crea il trigger per avviare il combattimento
-    Room::enemy.setSize(sf::Vector2f(20.f, 20.f));
+    Room::enemy.setSize(sf::Vector2f(60.f, 60.f));
     Room::enemy.setFillColor(sf::Color::Red);
     Room::enemy.setPosition((width_ / 10) * 5, height_ / 2 + (height_ / 4));
 
