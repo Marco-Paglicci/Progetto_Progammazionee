@@ -6,12 +6,19 @@
 #include <random>
 #include "../../headers/EnemyFactory.h"
 
+//La definizione precedente al costruttore è necessaria per evitare problemi
+//dato che gli elementi sono definiti come statici , questo codice aggiuntivo permetto al file.cpp
+//di "ritrovare" le variabili necessarie al funzionamento del programma
+
+
 string EnemyFactory::enemy_name;
 vector<string> EnemyFactory::monster_names;
 vector<string> EnemyFactory::minions_names;
 vector<Texture> EnemyFactory::monster_texture;
 Texture EnemyFactory::enemy_Texture;
 
+//Definisco prematuramente la variabile dedicata all'operatore logico causale
+std::mt19937 gen(std::random_device{}()); // Definisci una volta per tutte
 
 EnemyFactory::EnemyFactory() {
 
@@ -68,10 +75,16 @@ unique_ptr<Enemy> EnemyFactory::createEnemy(int enemyType, int strenght) {
 
 string EnemyFactory::selectName(int enemyType) {
 
+    int i;
+
     switch (enemyType) {
         case 1:
-            enemy_name = monster_names[randomIndex()];
-            enemy_Texture = monster_texture[randomIndex()];
+             i = randomIndex();
+            enemy_name = monster_names[i];
+            enemy_Texture = monster_texture[i];
+            cout << "Creating monster , index : " + to_string(i) + " name : " + enemy_name <<endl;
+
+
         case 2:
             enemy_name = minions_names[randomIndex()];
 
@@ -84,8 +97,6 @@ string EnemyFactory::selectName(int enemyType) {
 
 int EnemyFactory::randomIndex() {
     //sceglie un indice casuale all'interno del vettore
-    random_device rd;
-    mt19937 gen(rd());
     uniform_int_distribution<> distr(0, monster_names.size() - 1);
     int randomIndex = distr(gen);
 
