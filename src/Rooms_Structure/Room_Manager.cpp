@@ -6,6 +6,10 @@
 #include <iostream>
 #include "../../headers/Room_Manager.h"
 
+
+
+
+
 Room_Manager::Room_Manager(int width, int height) {
 
 
@@ -26,11 +30,9 @@ unique_ptr<Room> Room_Manager::getRandomRoom() {
     cout << "Dimensione roomPool: " << roomPool.size() << endl;
 
 
+    mt19937 gen(std::random_device{}());
     //sceglie un indice casuale all'interno del vettore
-    random_device rd;
-    mt19937 gen(rd());
     uniform_int_distribution<> distr(0, roomPool.size() - 1);
-
     int randomIndex = distr(gen);  // Genera l'indice casuale
     cout << "Indice casuale scelto: " << randomIndex << endl;
 

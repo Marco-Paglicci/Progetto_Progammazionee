@@ -10,7 +10,6 @@ Fangs_Room::Fangs_Room(int width, int height) : Room(width, height) {
     genera_Fangs();
     Enemy = EF.createEnemy(1,2);
 
-    cout << "Enemy generato : " + Enemy->getName() << endl;
 }
 
 void Fangs_Room::genera_Fangs() {
