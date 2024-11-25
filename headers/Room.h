@@ -8,6 +8,7 @@
 #include <SFML/Graphics.hpp>
 #include "EnemyFactory.h"
 
+
 using namespace sf;
 using namespace std;
 
@@ -31,7 +32,9 @@ protected:
 
     //objects
     EnemyFactory EF =  EnemyFactory();
-    unique_ptr<Enemy> Enemy;
+    unique_ptr<Enemy> E = EnemyFactory::createEnemy(1,1);
+    //inizializzo E con un mostro casuale per non creare problemi durante la compilazione
+    //per problemi di non definizione della variabile
 
     //Graphics
     Sprite background_image;
@@ -69,6 +72,8 @@ public:
     const RectangleShape &getEnemy() const;
 
     void Generate_OuterWalls(); //I muri esterni sono condivisi ad ogni stanza , quindi fanno aprte della classe padre
+
+    const unique_ptr<Enemy> &getE();
 
 
 };

@@ -54,6 +54,9 @@ protected:
     Texture texture;
     Sprite sprite;
 
+    Texture texture_FW;
+    Sprite sprite_FW;
+
 public:
 
     Personaggio(float x, float y, float size, RenderWindow &window);
@@ -61,7 +64,17 @@ public:
 
     /*GETTER and SETTER */
 
+
+
     int getHp() const;
+
+    const Texture &getTextureFw() const;
+
+    void setTextureFw(const Texture &textureFw);
+
+    const Sprite &getSpriteFw() const;
+
+    void setSpriteFw(const Sprite &spriteFw);
 
     void setHp(int hp);
 

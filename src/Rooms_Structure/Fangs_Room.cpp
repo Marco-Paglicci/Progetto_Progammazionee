@@ -8,7 +8,7 @@
 Fangs_Room::Fangs_Room(int width, int height) : Room(width, height) {
 
     genera_Fangs();
-    Enemy = EnemyFactory::createEnemy(1,2);
+    E = EnemyFactory::createEnemy(1,2);
 
 }
 
@@ -30,10 +30,10 @@ void Fangs_Room::drawRoom(RenderWindow &window) {
     window.draw(enemy);
 
 
-    Enemy->setX(enemy.getPosition().x-10);
-    Enemy->setY(enemy.getPosition().y-10);
+    E->setX(enemy.getPosition().x-10);
+    E->setY(enemy.getPosition().y-10);
 
-    Enemy->drawEnemy(window);
+    E->drawEnemy(window);
 
 
     // da rimuovere o no dipendentemente se si vogliono visualzzare i muri ( senza Texture )

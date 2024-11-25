@@ -76,3 +76,10 @@ void Room::Generate_OuterWalls()  {
 
 
 }
+
+const unique_ptr<Enemy> &Room::getE() {
+    return E;
+}
+
+
+

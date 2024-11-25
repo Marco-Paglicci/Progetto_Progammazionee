@@ -6,6 +6,7 @@
 
 Enemy::Enemy(int strenght, string name, Texture texturel, Texture texture_FW) {
 
+
 }
 
 

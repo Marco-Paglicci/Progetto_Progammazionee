@@ -31,6 +31,9 @@ Enemy_Monster::Enemy_Monster(int strenght,  string name, const Texture &texture,
 
     sprite.setTexture(texture);
     sprite.setScale(2.7, 3);
+    sprite_FW.setTexture(texture_FW);
+    sprite_FW.setScale(5,5);
+    sprite_FW.setPosition(500,0);
 }
 
 void Enemy_Monster::drawEnemy(RenderWindow &window) {

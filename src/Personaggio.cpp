@@ -75,8 +75,12 @@ const Texture &Personaggio::getTexture() const {
 void Personaggio::setTexture(string classe_) {
     //imposta sprite immaggine
     texture.loadFromFile("../assets/" + classe_ + ".png");
+    texture_FW.loadFromFile("../assets/personaggi_FW/" + classe_ + "_FW.png");
     sprite.setTexture(texture);
+    sprite_FW.setTexture(texture_FW);
     sprite.setScale(2.7, 3);
+    sprite_FW.setScale(6,6);
+    sprite_FW.setPosition(0,100);
 }
 const Sprite &Personaggio::getSprite() const {
     return sprite;
@@ -85,6 +89,23 @@ const Sprite &Personaggio::getSprite() const {
 void Personaggio::setSprite(const Sprite &sprite) {
     Personaggio::sprite = sprite;
 }
+
+const Texture &Personaggio::getTextureFw() const {
+    return texture_FW;
+}
+
+void Personaggio::setTextureFw(const Texture &textureFw) {
+    texture_FW = textureFw;
+}
+
+const Sprite &Personaggio::getSpriteFw() const {
+    return sprite_FW;
+}
+
+void Personaggio::setSpriteFw(const Sprite &spriteFw) {
+    sprite_FW = spriteFw;
+}
+
 
 /*-----------------------DRAWING PERSONAGGIO---------------------------*/
 
@@ -419,3 +440,4 @@ int Personaggio::getElapsedFrames() {
     ++frames;
     return frames;
 }
+

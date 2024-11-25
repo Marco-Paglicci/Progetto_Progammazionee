@@ -9,7 +9,7 @@ ZigZag_Room::ZigZag_Room(int width, int height): Room(width,height) {
 
 
     genera_ZigZag();
-    Enemy = EnemyFactory::createEnemy(2,2);
+    E = EnemyFactory::createEnemy(2,2);
 
 
 }
@@ -35,10 +35,10 @@ void ZigZag_Room::drawRoom(sf::RenderWindow &window) {
 
     // da rimuovere o no dipendentemente se si vogliono visualzzare i muri ( senza Texture )
     //todo : far visualizzzare ENEMY
-    Enemy->setX(enemy.getPosition().x-10);
-    Enemy->setY(enemy.getPosition().y-10);
+    E->setX(enemy.getPosition().x-10);
+    E->setY(enemy.getPosition().y-10);
 
-    Enemy->drawEnemy(window);
+    E->drawEnemy(window);
 
     /*
     for (const auto &wall: innerWalls) {
