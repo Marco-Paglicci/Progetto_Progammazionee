@@ -27,9 +27,13 @@ protected:
     Texture texture;
     Sprite sprite;
 
+    Texture texture_FW;
+    Sprite sprite_FW;
+
+
 public:
 
-    explicit Enemy(int strenght, string name,Texture texture);
+    explicit Enemy(int strenght, string name,Texture texturel,Texture texture_FW);
 
     virtual unique_ptr<Enemy> clone() const = 0;
 
@@ -37,7 +41,17 @@ public:
 
     /*getter and setter*/
 
+
+
     int getHp() const;
+
+    const Sprite &getSpriteFw() const;
+
+    void setSpriteFw(const Sprite &spriteFw);
+
+    const Texture &getTextureFw() const;
+
+    void setTextureFw(const Texture &textureFw);
 
     void setHp(int hp);
 

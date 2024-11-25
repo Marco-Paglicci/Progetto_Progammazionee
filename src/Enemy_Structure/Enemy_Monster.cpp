@@ -10,8 +10,8 @@ unique_ptr<Enemy> Enemy_Monster::clone() const {
     return make_unique<Enemy_Monster>(*this);
 }
 
-Enemy_Monster::Enemy_Monster(int strenght,  string name, const Texture &texture) : Enemy(strenght, name,
-                                                                                               texture) {
+Enemy_Monster::Enemy_Monster(int strenght,  string name, const Texture &texture,const Texture &texture_FW) : Enemy(strenght, name,
+                                                                                               texture,texture_FW) {
     switch (strenght) {
         case 1:
                 name = "Wounded " + name;

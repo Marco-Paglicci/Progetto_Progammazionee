@@ -8,7 +8,7 @@
 Fangs_Room::Fangs_Room(int width, int height) : Room(width, height) {
 
     genera_Fangs();
-    Enemy = EF.createEnemy(1,2);
+    Enemy = EnemyFactory::createEnemy(1,2);
 
 }
 
@@ -81,12 +81,7 @@ void Fangs_Room::generate_InnerWalls() {
     wall4.setPosition((width_ / 4) * 3, height_ - (wallHight));
     innerWalls.push_back(wall4);
 
-    //todo remove or set an enemy here
-    /*
-    RectangleShape CenterCube(sf::Vector2f(wallHight, wallHight));
-    CenterCube.setPosition(width_ / 2 - wallWidth * 2, (height_ / 3));
-    innerWalls.push_back(CenterCube);
-    */
+
 
     //rende tutti i muri  su Innerwalls bianchi
     for (auto &wall: innerWalls) {

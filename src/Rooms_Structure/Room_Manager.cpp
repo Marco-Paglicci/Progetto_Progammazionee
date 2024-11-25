@@ -20,7 +20,9 @@ Room_Manager::Room_Manager(int width, int height) {
 
 
 
-    //todo fix : a causa delle dimensioni ridotte dle RoomPool sceglie sempre la prima stanza , aggiungi altre staze
+
+
+    //todo fix : a causa delle dimensioni ridotte dle RoomPool sceglie sempre la seconda stanza , aggiungi altre staze
 }
 
 unique_ptr<Room> Room_Manager::getRandomRoom() {

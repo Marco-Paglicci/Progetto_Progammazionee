@@ -4,9 +4,10 @@
 
 #include "../../headers/Enemy.h"
 
-Enemy::Enemy(int strenght, string name, Texture texture) {
+Enemy::Enemy(int strenght, string name, Texture texturel, Texture texture_FW) {
 
 }
+
 
 
 /*getter and setter*/
@@ -75,6 +76,19 @@ void Enemy::setName(const string &name) {
     Enemy::name = name;
 }
 
+const Sprite &Enemy::getSpriteFw() const {
+    return sprite_FW;
+}
 
+void Enemy::setSpriteFw(const Sprite &spriteFw) {
+    sprite_FW = spriteFw;
+}
 
+const Texture &Enemy::getTextureFw() const {
+    return texture_FW;
+}
+
+void Enemy::setTextureFw(const Texture &textureFw) {
+    texture_FW = textureFw;
+}
 

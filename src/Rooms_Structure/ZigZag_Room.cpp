@@ -9,7 +9,7 @@ ZigZag_Room::ZigZag_Room(int width, int height): Room(width,height) {
 
 
     genera_ZigZag();
-    Enemy = EnemyFactory::createEnemy(1,2);
+    Enemy = EnemyFactory::createEnemy(2,2);
 
 
 }
@@ -35,15 +35,18 @@ void ZigZag_Room::drawRoom(sf::RenderWindow &window) {
 
     // da rimuovere o no dipendentemente se si vogliono visualzzare i muri ( senza Texture )
     //todo : far visualizzzare ENEMY
-    Enemy->setX(enemy.getPosition().x-55);
-    Enemy->setY(enemy.getPosition().y-55);
+    Enemy->setX(enemy.getPosition().x-10);
+    Enemy->setY(enemy.getPosition().y-10);
 
     Enemy->drawEnemy(window);
 
+    /*
     for (const auto &wall: innerWalls) {
         window.draw(wall);
     }
-    //todo:comment this
+
+     */
+
 }
 
 unique_ptr<Room> ZigZag_Room::clone() const {
@@ -91,4 +94,12 @@ void ZigZag_Room::generate_InnerWalls() {
     Room::entrance.setSize(sf::Vector2f(20.f, 20.f));
     Room::entrance.setFillColor(sf::Color::Green);
     Room::entrance.setPosition(width_ - (width_ / 10), height_ / 2);
+
+    //crea il trigger per avviare il combattimento
+    Room::enemy.setSize(sf::Vector2f(60.f, 60.f));
+    Room::enemy.setFillColor(sf::Color::Red);
+    Room::enemy.setPosition(width_ / 2 - 100 , (height_ / 2) - 100);
+
+    cout << "Generating ZIG Room" << endl;
+
 }

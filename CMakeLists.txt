@@ -59,8 +59,6 @@ add_executable(Progetto_Programmazione main.cpp headers/Engine.h
         src/Engine_StatePattern/headers/State_AnimatingSnake.h
         src/Enemy_Structure/Enemy.cpp
         headers/Enemy.h
-        src/Enemy_Structure/Enemy_Manager.cpp
-        headers/Enemy_Manager.h
         src/Enemy_Structure/EnemyFactory.cpp
         headers/EnemyFactory.h
         src/Enemy_Structure/Enemy_Monster.cpp

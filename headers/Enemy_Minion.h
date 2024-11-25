@@ -11,7 +11,10 @@
 class Enemy_Minion : public Enemy {
 
 public:
-    Enemy_Minion(int strenght,  string name, const Texture &texture);
+
+
+    Enemy_Minion(int strenght, string name, const Texture &texture, const Texture &texture_FW);
+
     void drawEnemy(RenderWindow &window) override;
 
     unique_ptr<Enemy> clone() const override;
