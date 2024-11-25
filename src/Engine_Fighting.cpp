@@ -4,7 +4,7 @@
 #include <iostream>
 #include "../headers/Engine.h"
 
-/////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 //Questo file è puramente per la separazione del codice e per una
 //pulizia dei vari passaggi di Engine, contiene le funzioni che si occupano
 //del setup e del codice grafico della finestra di combattimento
@@ -53,6 +53,10 @@ void Engine::fight_window_draw()
     for (auto &HP: Health_Bar) {
         window.draw(HP);
     }
+
+    /*------------------Draw Entites -----------------------*/
+
+    window.draw(Engine::getP()->getSpriteFw());
 
     window.display();
 

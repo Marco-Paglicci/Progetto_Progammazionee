@@ -13,6 +13,14 @@ void State_Fighting::handleInput(Engine &engine) {
         if (event.type == sf::Event::Closed) {
             engine.getWindow().close();
         }
+
+        //controlliamo input (controllo input da tastiera)
+        if (event.type == Event::KeyPressed) {
+            if (Keyboard::isKeyPressed(Keyboard::Escape)) {
+                engine.getWindow().close();
+            }
+        }
+
         //movimento cursore
         if (event.type == Event::KeyPressed && Keyboard::isKeyPressed(Keyboard::Up)) {
             engine.setSelectedOptionIndex((engine.getSelectedOptionIndex() - 1 + 4) % 4);
