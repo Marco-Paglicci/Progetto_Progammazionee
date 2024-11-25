@@ -15,7 +15,7 @@ private:
 
     static string enemy_name;
     static Texture enemy_Texture;
-    static Texture enemy_FG_Texture;
+    static Texture enemy_FW_Texture;
 
     static vector<Texture> monster_texture;
     static vector<Texture> minion_texture;

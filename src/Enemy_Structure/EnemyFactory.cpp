@@ -16,8 +16,12 @@ string EnemyFactory::enemy_name;
 vector<string> EnemyFactory::monster_names;
 vector<string> EnemyFactory::minions_names;
 vector<Texture> EnemyFactory::monster_texture;
+vector<Texture> EnemyFactory::monster_textureFW;
 vector<Texture> EnemyFactory::minion_texture;
+vector<Texture> EnemyFactory::minion_textureFW;
 Texture EnemyFactory::enemy_Texture;
+Texture EnemyFactory::enemy_FW_Texture;
+
 
 //Definisco prematuramente la variabile dedicata all'operatore logico causale
 std::mt19937 gen(std::random_device{}()); // Definisci una volta per tutte
@@ -56,20 +60,20 @@ EnemyFactory::EnemyFactory() {
     vector<string> monsters_FW_fileNames =
             {
                     "../assets/enemy_texture/monster_FW/ombra_FW.png",
-                    "../assets/enemy_texture/enemy_minion/golem_FW.png",
-                    "../assets/enemy_texture/enemy_minion/strega_FW.png",
-                    "../assets/enemy_texture/enemy_minion/ragno_FW.png",
-                    "../assets/enemy_texture/enemy_minion/demone_FW.png"
+                    "../assets/enemy_texture/monster_FW/golem_FW.png",
+                    "../assets/enemy_texture/monster_FW/strega_FW.png",
+                    "../assets/enemy_texture/monster_FW/ragno_FW.png",
+                    "../assets/enemy_texture/monster_FW/demone_FW.png"
 
             };
 
     vector<string> minion_FW_fileNames =
             {
-                    "../assets/enemy_texture/monster_FW/sgherro_FW.png",
-                    "../assets/enemy_texture/enemy_minion/predone_FW.png",
-                    "../assets/enemy_texture/enemy_minion/cultista_FW.png",
-                    "../assets/enemy_texture/enemy_minion/sentinella_FW.png",
-                    "../assets/enemy_texture/enemy_minion/bruto_FW.png"
+                    "../assets/enemy_texture/minion_FW/sgherro_FW.png",
+                    "../assets/enemy_texture/minion_FW/predone_FW.png",
+                    "../assets/enemy_texture/minion_FW/cultista_FW.png",
+                    "../assets/enemy_texture/minion_FW/sentinella_FW.png",
+                    "../assets/enemy_texture/minion_FW/bruto_FW.png"
 
             };
 
@@ -88,6 +92,20 @@ EnemyFactory::EnemyFactory() {
             cout<<"Errore caricamento texture" + fileName << endl;
         }
     }
+
+    for(const auto& fileName : minion_fileNames)
+    {
+        Texture texture;
+        if(texture.loadFromFile(fileName))
+        {
+            minion_texture.push_back(texture);
+
+        }else
+        {
+            cout<<"Errore caricamento texture" + fileName << endl;
+        }
+    }
+
 
     for(const auto& fileName : monsters_FW_fileNames)
     {
@@ -125,9 +143,9 @@ unique_ptr<Enemy> EnemyFactory::createEnemy(int enemyType, int strenght) {
 
     switch (enemyType) {
         case 1:
-            return make_unique<Enemy_Monster>(strenght, selectName(enemyType),enemy_Texture,enemy_FG_Texture);
+            return make_unique<Enemy_Monster>(strenght, selectName(enemyType),enemy_Texture,enemy_FW_Texture);
         case 2:
-            return make_unique<Enemy_Minion>(strenght, selectName(enemyType),enemy_Texture,enemy_FG_Texture);
+            return make_unique<Enemy_Minion>(strenght, selectName(enemyType),enemy_Texture,enemy_FW_Texture);
         case 3:
             //return make_unique<LongCorridor_Room>(width, height);
         default:
@@ -145,7 +163,7 @@ string EnemyFactory::selectName(int enemyType) {
              i = randomIndex();
             enemy_name = monster_names[i];
             enemy_Texture = monster_texture[i];
-            enemy_FG_Texture = monster_textureFW[i];
+            enemy_FW_Texture = monster_textureFW[i];
             cout << "Creating monster , index : " + to_string(i) + " name : " + enemy_name <<endl;
             break;
 
@@ -153,7 +171,7 @@ string EnemyFactory::selectName(int enemyType) {
             i = randomIndex();
             enemy_name = minions_names[i];
             enemy_Texture = minion_texture[i];
-            enemy_FG_Texture = monster_textureFW[i];
+            enemy_FW_Texture = minion_textureFW[i];
             cout << "Creating minion, index : "  + to_string(i) + " name : " + enemy_name <<endl;
             break;
 
