@@ -6,9 +6,9 @@
 #define PROGETTO_PROGRAMMAZIONE_ROOMFACTORY_H
 
 #include "Room.h"
-#include "../headers/Fangs_Room.h"
-#include "../headers/ZigZag_Room.h"
-#include "../headers/LongCorridor_Room.h"
+#include "Fangs_Room.h"
+#include "ZigZag_Room.h"
+#include "LongCorridor_Room.h"
 
 class RoomFactory {
 

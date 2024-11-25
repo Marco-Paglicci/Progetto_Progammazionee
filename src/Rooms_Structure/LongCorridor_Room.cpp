@@ -2,6 +2,7 @@
 // Created by Marco on 22/10/2024.
 //
 
+#include <iostream>
 #include "../../headers/LongCorridor_Room.h"
 
 LongCorridor_Room::LongCorridor_Room(int width, int height) : Room(width,height) {
@@ -13,6 +14,8 @@ void LongCorridor_Room::genera_LongCorridor() {
 
     Room::Generate_OuterWalls();
     generate_InnerWalls();
+
+
 }
 
 void LongCorridor_Room::drawRoom(sf::RenderWindow &window) {
@@ -36,7 +39,7 @@ void LongCorridor_Room::drawRoom(sf::RenderWindow &window) {
 }
 
 unique_ptr<Room> LongCorridor_Room::clone() const {
-    return make_unique<LongCorridor_Room>(*this);
+    return make_unique<LongCorridor_Room>(width_,height_);
 
 }
 
@@ -76,6 +79,8 @@ void LongCorridor_Room::generate_InnerWalls() {
     Room::entrance.setSize(sf::Vector2f(20.f, 20.f));
     Room::entrance.setFillColor(sf::Color::Green);
     Room::entrance.setPosition(width_ - (width_ / 10), height_ / 2);
+
+    cout << "Generating long Room" << endl;
 
 }
 

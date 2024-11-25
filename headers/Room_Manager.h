@@ -14,7 +14,8 @@ class Room_Manager {
 private:
 
     //vettore che contiene le varie stanze disponibili
-    vector<unique_ptr<Room>> roomPool;
+    vector<unique_ptr<
+            Room>> roomPool;
 
 public:
 
