@@ -187,6 +187,18 @@ public:
     void fight_window_setup();
 
     void fight_window_draw();
+
+    void attackAction(Engine &engine);
+
+    static void defendAction(Engine &engine);
+
+    static void useItemAction(Engine &engine);
+
+    static void runAwayAction(Engine &engine);
+
+    int rollD20();
+
+
 };
 
 

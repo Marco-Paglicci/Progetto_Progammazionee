@@ -10,7 +10,7 @@ Knight::Knight(float x, float y, float size, sf::RenderWindow &window) : Persona
 {
     this->setHp(40);
     cout << " HP knight " + getHp() << endl;
-    this->setArmor(10);
+    this->setArmor(7);
     unique_ptr<Treasure> treasure = TreasureFactory::createWeapon("Sword",15);
     auto* weaponPtr = dynamic_cast<Weapon*>(treasure.get());
     if(weaponPtr)

@@ -5,6 +5,23 @@
 #include <iostream>
 #include "../headers/State_Fighting.h"
 
+
+State_Fighting::State_Fighting() {
+
+
+        actions = {
+                Engine::attackAction,  // Attacco
+                Engine::defendAction,  // Difesa
+                Engine::useItemAction, // Usa oggetto
+                Engine::runAwayAction  // Fuga
+        };
+
+
+}
+
+
+
+
 void State_Fighting::handleInput(Engine &engine) {
 
     Event event{};
@@ -30,6 +47,14 @@ void State_Fighting::handleInput(Engine &engine) {
             engine.setSelectedOptionIndex((engine.getSelectedOptionIndex() + 1) % 4);
             cout << "DOWN - KEYPRESSED" << endl;
         }
+        if (event.type == Event::KeyPressed && Keyboard::isKeyPressed(Keyboard::Enter)) {
+            int selectedIndex = engine.getSelectedOptionIndex();
+            if (selectedIndex >= 0 && selectedIndex < actions.size()) {
+                actions[selectedIndex](engine); // Esegue l'azione associata
+            }
+            std::cout << "Enter - Action executed\n";
+        }
+
 
     }
 }
@@ -40,3 +65,4 @@ void State_Fighting::draw(Engine &engine) {
     handleInput(engine);
 
 }
+

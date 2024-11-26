@@ -8,7 +8,7 @@
 Thief::Thief(float x, float y, float size, RenderWindow &window) : Personaggio(x, y, size, window),W("DefaultWeapon",1) {
 
     this->setHp(30);
-    this->setArmor(5);
+    this->setArmor(10);
     unique_ptr<Treasure> treasure = TreasureFactory::createWeapon("Dagger",7);
     auto* weaponPtr = dynamic_cast<Weapon*>(treasure.get());
     if(weaponPtr)
