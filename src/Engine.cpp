@@ -208,14 +208,14 @@ void Engine::setSelectedOptionIndex(int selectedOptionIndex) {
 
 void Engine::class_setup() {
 
-        if (classe == "Knight") {
+        if (classe == "knight") {
             cout << "Class Chosen ! : " + classe << endl;
             P = make_unique<Knight>(100, 200, 30, window);
 
-        } else if (classe == "Mage") {
+        } else if (classe == "mage") {
             cout << "Class Chosen ! : " + classe << endl;
             P = make_unique<Mage>(100, 200, 30, window);
-        } else if (classe == "Thief") {
+        } else if (classe == "thief") {
             cout << "Class Chosen ! : " + classe << endl;
             P = make_unique<Thief>(100, 200, 30, window);
         } else {

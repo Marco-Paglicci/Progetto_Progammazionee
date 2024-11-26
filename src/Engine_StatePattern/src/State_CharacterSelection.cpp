@@ -12,14 +12,14 @@ void State_CharacterSelection::handleInput(Engine &engine) {
     while(engine.getWindow().pollEvent(event)) {
         if (event.type == Event::KeyPressed) {
             if (Keyboard::isKeyPressed((Keyboard::Num1))) {
-                engine.setClasse("Knight");
+                engine.setClasse("knight");
                 engine.setSceltaPersonaggio(false);
                 engine.setSceltaEffettuata(true);
                 engine.class_setup();
                 engine.changeState(new State_Playing());
             }
             if (Keyboard::isKeyPressed((Keyboard::Num2))) {
-                engine.setClasse("Thief");
+                engine.setClasse("thief");
                 engine.setSceltaPersonaggio(false);
                 engine.setSceltaEffettuata(true);
                 engine.class_setup();
@@ -27,7 +27,7 @@ void State_CharacterSelection::handleInput(Engine &engine) {
 
             }
             if (Keyboard::isKeyPressed((Keyboard::Num3))) {
-                engine.setClasse("Mage");
+                engine.setClasse("mage");
                 engine.setSceltaPersonaggio(false);
                 engine.setSceltaEffettuata(true);
                 engine.class_setup();

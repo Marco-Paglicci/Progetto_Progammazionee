@@ -7,6 +7,8 @@
 
 Mage::Mage(float x, float y, float size, RenderWindow &window) : Personaggio(x, y, size, window), W("Default Weapon",1) {
 
+    this->setHp(25);
+    this->setArmor(1);
     unique_ptr<Treasure> treasure = TreasureFactory::createWeapon("Staff",15);
     auto* weaponPtr = dynamic_cast<Weapon*>(treasure.get());
     if(weaponPtr)

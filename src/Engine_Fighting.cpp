@@ -42,6 +42,8 @@ void Engine::fight_window_draw()
     }
 
     //disegno healthbar
+
+
     for (int i = 0; i < (P->getHp() / 5); ++i) {
 
         sf::RectangleShape Bar(sf::Vector2f(30, 20));
@@ -55,7 +57,6 @@ void Engine::fight_window_draw()
     }
 
     /*------------------Draw Entites -----------------------*/
-
     window.draw(Engine::getP()->getSpriteFw());
     window.draw(Engine::getR()->getE()->getSpriteFw());
 
