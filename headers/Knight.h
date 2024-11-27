@@ -13,7 +13,7 @@ public:
     Knight(float x, float y, float size, RenderWindow &window);
 
 private:
-    Weapon W;
+
 };
 
 

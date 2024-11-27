@@ -5,15 +5,17 @@
 #include <iostream>
 #include "../headers/Mage.h"
 
-Mage::Mage(float x, float y, float size, RenderWindow &window) : Personaggio(x, y, size, window), W("Default Weapon",1) {
+Mage::Mage(float x, float y, float size, RenderWindow &window) : Personaggio(x, y, size, window){
 
     this->setHp(25);
     this->setArmor(1);
-    unique_ptr<Treasure> treasure = TreasureFactory::createWeapon("Staff",15);
+
+
+    unique_ptr<Treasure> treasure = TreasureFactory::createWeapon("Staff",8);
     auto* weaponPtr = dynamic_cast<Weapon*>(treasure.get());
     if(weaponPtr)
     {
-        W = *weaponPtr;
+        W = make_unique<Weapon>(*weaponPtr); ;
     }else
     {
         cout << " Error in created Treasure in Thief " << endl;

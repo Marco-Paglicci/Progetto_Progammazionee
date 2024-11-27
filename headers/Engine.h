@@ -58,11 +58,11 @@ private:
     // è una scelta che risolve molti dei problemi di gestione della memoria e indica chiaramente che Engine
     // possiede e gestisce il ciclo di vita del Personaggio.
 
-    unique_ptr<Personaggio> P;
+    static unique_ptr<Personaggio> P ;
 
     Room_Manager RM =  Room_Manager(800, 400);
 
-    unique_ptr<Room> R;
+    static unique_ptr<Room> R ;
 
 
     /*Menu*/
@@ -138,10 +138,10 @@ public:
     void setClasse(const string &classe);
     const string &getClasse() const;
 
-    const unique_ptr<Personaggio> &getP() const;
+    static const unique_ptr<Personaggio> &getP() ;
     const Room_Manager &getRm() const;
 
-    const unique_ptr<Room> &getR() const;
+    static const unique_ptr<Room> &getR()  ;
 
     void setR(unique_ptr<Room> &r);
 
@@ -188,7 +188,7 @@ public:
 
     void fight_window_draw();
 
-    void attackAction(Engine &engine);
+    static void attackAction(Engine &engine);
 
     static void defendAction(Engine &engine);
 
@@ -196,7 +196,7 @@ public:
 
     static void runAwayAction(Engine &engine);
 
-    int rollD20();
+    static int rollD20();
 
 
 };

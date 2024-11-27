@@ -18,7 +18,7 @@ private:
     /*attributi personaggio*/
     int hp;
     int armor;
-    Weapon W ;
+
 
     sf::RenderWindow &window_;
     float x_, y_;
@@ -44,6 +44,7 @@ protected:
     //classi derivate, per l'override di alcuni metodi
 
     string classe_;
+    unique_ptr<Weapon> W;
 
     //variabile per animazione
     int swap_frame = 0;
@@ -98,6 +99,11 @@ public:
 
     void setSprite(const Sprite &sprite);
 
+   Weapon* getWeapon() ;
+
+   void setWeapon(std::unique_ptr<Weapon> newWeapon);
+
+
 
     /* FUNZIONI GRAFICHE */
 
@@ -124,6 +130,8 @@ public:
     static int getElapsedFrames();
 
     void draw();
+
+
 
 };
 

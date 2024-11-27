@@ -6,7 +6,7 @@
 #include <iostream>
 #include "../headers/Personaggio.h"
 
-Personaggio::Personaggio(float x, float y, float size, RenderWindow &window) : x_(x), y_(y), size_(size),window_(window),W("Default Weapon",1){
+Personaggio::Personaggio(float x, float y, float size, RenderWindow &window) : x_(x), y_(y), size_(size),window_(window){
 
     //colore rappresentativo personaggio
     sf::Color color_personaggio(sf::Color::Black);
@@ -30,6 +30,8 @@ Personaggio::Personaggio(float x, float y, float size, RenderWindow &window) : x
 
     setPosition(x_, y_);
 
+    W = make_unique<Weapon>("DefaultWeapon", 1);
+
 }
 
 /*-----------------GETTER AND SETTER----------------------*/
@@ -50,13 +52,7 @@ void Personaggio::setArmor(int armor) {
     Personaggio::armor = armor;
 }
 
-const Weapon &Personaggio::getW() const {
-    return W;
-}
 
-void Personaggio::setW(const Weapon &w) {
-    W = w;
-}
 
 const string &Personaggio::getClasse() const {
     return classe_;
@@ -105,6 +101,16 @@ const Sprite &Personaggio::getSpriteFw() const {
 void Personaggio::setSpriteFw(const Sprite &spriteFw) {
     sprite_FW = spriteFw;
 }
+
+Weapon *Personaggio::getWeapon() {
+    return  W.get();  // Restituisce il puntatore grezzo
+}
+
+void Personaggio::setWeapon(std::unique_ptr<Weapon> newWeapon) {
+
+    W = std::move(newWeapon);  // Trasferisce la proprietà del nuovo Weapon
+}
+
 
 
 /*-----------------------DRAWING PERSONAGGIO---------------------------*/
@@ -440,4 +446,9 @@ int Personaggio::getElapsedFrames() {
     ++frames;
     return frames;
 }
+
+
+
+
+
 

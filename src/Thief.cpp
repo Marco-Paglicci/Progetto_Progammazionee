@@ -5,15 +5,17 @@
 #include <iostream>
 #include "../headers/Thief.h"
 
-Thief::Thief(float x, float y, float size, RenderWindow &window) : Personaggio(x, y, size, window),W("DefaultWeapon",1) {
+Thief::Thief(float x, float y, float size, RenderWindow &window) : Personaggio(x, y, size, window) {
 
     this->setHp(30);
     this->setArmor(10);
-    unique_ptr<Treasure> treasure = TreasureFactory::createWeapon("Dagger",7);
+
+
+    unique_ptr<Treasure> treasure = TreasureFactory::createWeapon("Dagger",3);
     auto* weaponPtr = dynamic_cast<Weapon*>(treasure.get());
     if(weaponPtr)
     {
-        W = *weaponPtr;
+       W = make_unique<Weapon>(*weaponPtr);
     }else
     {
         cout << " Error in created Treasure in Thief " << endl;

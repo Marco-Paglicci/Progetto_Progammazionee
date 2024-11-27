@@ -14,13 +14,24 @@
 
 void Engine::attackAction(Engine &engine) {
 
-    int attack_power  =  Engine::getP()->getW().getPower() * (rollD20()/10);
+    float attack_power  =  (static_cast<float>(Engine::getP()->getWeapon()->getPower() * (static_cast<float>(rollD20())/10)));
+    cout <<  "Weapon Attack :" + to_string(Engine::getP()->getWeapon()->getPower()) << endl ;
     cout << "Attack with " + to_string(attack_power) + " power !" << endl ;
-    int damage = attack_power * (1 - ((Engine::getR()->getE()->getArmour()*rollD20())/100));
+    int damage = static_cast<int>(round(attack_power * (1 - (static_cast<float>(Engine::getR()->getE()->getArmour()*rollD20())/100))));
     cout << "you hit ! Dealing  " + to_string(damage) + " damage  !" << endl ;
     Engine::getR()->getE()->setHp(Engine::getR()->getE()->getHp() - damage );
 
+    /* Durante il calcolo dei danni vengono usato numeri decimali
+     * quindi è fondamentale riportare il valore in float, per assegnare
+     * il dannop invece si riportas il valore numerico , arrotondando
+     * all'intero più vicino per comodità */
 
+
+    if(Engine::getR()->getE()->getHp() <= 0)
+    {
+        Engine::getR()->getE()->setIsAlive(false);
+        cout << "You killed the evil " +  Engine::getR()->getE()->getName() << endl ;
+    }
 }
 
 void Engine::defendAction(Engine &engine) {
@@ -40,7 +51,7 @@ void Engine::runAwayAction(Engine &engine) {
 
 int Engine::rollD20() {
 
-    int random = rand() % 21;
+    int random = rand() % 21 + 1;
     cout << "You rolled a  " + to_string(random) + " !" << endl ;
     if(random == 20)
     {

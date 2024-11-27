@@ -23,6 +23,8 @@ protected:
     int strenght;
     float x_, y_;
 
+    bool isAlive = true;
+
     /*variabili grafiche*/
     Texture texture;
     Sprite sprite;
@@ -44,6 +46,14 @@ public:
 
 
     int getHp() const;
+
+    int getStrenght() const;
+
+    void setStrenght(int strenght);
+
+    bool isAlive1() const;
+
+    void setIsAlive(bool isAlive);
 
     const Sprite &getSpriteFw() const;
 

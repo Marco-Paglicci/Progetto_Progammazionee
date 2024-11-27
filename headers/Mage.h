@@ -18,7 +18,7 @@ public:
     void Camminata_SX() override;
 
 private:
-    Weapon W;
+
 };
 
 
