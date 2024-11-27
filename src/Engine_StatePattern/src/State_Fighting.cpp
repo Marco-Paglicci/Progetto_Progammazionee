@@ -4,10 +4,10 @@
 
 #include <iostream>
 #include "../headers/State_Fighting.h"
+#include "../headers/State_Playing.h"
 
 
 State_Fighting::State_Fighting() {
-
 
         actions = {
                 Engine::attackAction,  // Attacco
@@ -15,7 +15,6 @@ State_Fighting::State_Fighting() {
                 Engine::useItemAction, // Usa oggetto
                 Engine::runAwayAction  // Fuga
         };
-
 
 }
 
@@ -62,6 +61,11 @@ void State_Fighting::handleInput(Engine &engine) {
 
 void State_Fighting::draw(Engine &engine) {
 
+    if(!engine.getR()->getE()->isAlive())
+    {
+        engine.getWindow().clear();
+        engine.setCurrentState(new State_Playing());
+    }
     engine.fight_window_draw();
     handleInput(engine);
 

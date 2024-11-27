@@ -5,11 +5,12 @@
 #include "../headers/Engine.h"
 
 ////////////////////////////////////////////////////////////////////////////////
-//Questo file è puramente per la separazione del codice e per una
-//pulizia dei vari passaggi di Engine, contiene le funzioni che si occupano
-//del setup e del codice grafico della finestra di combattimento
-//la sua chiamata e utilizzo è gestito dallo StatePattern
-/////////////////////////////////////////////////////////////////////
+//Questo file è puramente per la separazione del codice e per una             //
+//pulizia dei vari passaggi di Engine, contiene le funzioni che si occupano   //
+//del setup e del codice grafico della finestra di combattimento              //
+//la sua chiamata e utilizzo è gestito dallo StatePattern                     //
+////////////////////////////////////////////////////////////////////////////////
+
 void Engine::fight_window_draw()
 {
 
