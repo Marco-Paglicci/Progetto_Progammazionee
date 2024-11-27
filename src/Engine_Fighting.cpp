@@ -85,9 +85,7 @@ void Engine::fight_window_draw()
         cout << "Enemy not founded" << endl;
 
     }
-    //Il nome del nemico deve essere estratto dopo il set up della stanza altrimenti non verrà trovato nessun puntatore associato
 
-    window.draw(enemyNameText); //disegna nome del nemico
 
     Enemy_Health_Bar.clear();
 
@@ -107,7 +105,7 @@ void Engine::fight_window_draw()
             Bar.setFillColor(sf::Color::Green);
         }
         // Posizione sotto il nemico
-        Bar.setPosition((window.getSize().x / 2) + (35 * i), window.getSize().y / 2);   //todo spostare barra salute
+        Bar.setPosition(50 + (35 * i), 50);   //todo spostare barra salute
         Enemy_Health_Bar.push_back(Bar);
     }
 
@@ -131,6 +129,9 @@ void Engine::fight_window_draw()
 
     // Disegna la casella di testo dei messaggi
     drawMessages(window);
+
+    //Il nome del nemico deve essere estratto dopo il set up della stanza altrimenti non verrà trovato nessun puntatore associato
+    window.draw(enemyNameText); //disegna nome del nemico
 
 
     window.display();
@@ -200,7 +201,7 @@ void Engine::fight_window_setup() {
     enemyNameText.setStyle(sf::Text::Bold);
 
     // Posiziona il nome sopra il nemico (regola la posizione a seconda delle esigenze)
-    enemyNameText.setPosition(window.getSize().x / 2  , window.getSize().y / 2 + 50  );
+    enemyNameText.setPosition(50  , 100  );
 
     initMessageBox(); // inizializzo la casella di testo per messaggio
 

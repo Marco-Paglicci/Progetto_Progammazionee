@@ -22,7 +22,7 @@ void Engine::initMessageBox() {
     messageBox.setFont(font);
     messageBox.setCharacterSize(20);
     messageBox.setFillColor(sf::Color::White);
-    messageBox.setPosition(50, 50); // Posiziona sopra il personaggio
+    messageBox.setPosition(window.getSize().x/2 , window.getSize().y / 2); // Posiziona sopra il personaggio
 }
 
 void Engine::addMessage(const std::string& message) {

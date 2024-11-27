@@ -87,7 +87,7 @@ int Engine::rollD20() {
 
     int random = 0;
 
-    while (clock.getElapsedTime().asSeconds() < 1.5f) {
+    while (clock.getElapsedTime().asSeconds() < 1.0f) {
         random = rand() % 20 + 1;
     }
 
@@ -107,7 +107,7 @@ int Engine::enemyrollD20()
 
     int random = 0;
 
-    while (clock.getElapsedTime().asSeconds() < 2.0f) {
+    while (clock.getElapsedTime().asSeconds() < 1.0f) {
         random = rand() % 20 + 1;
     }
 
