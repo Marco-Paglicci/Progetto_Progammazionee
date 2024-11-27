@@ -20,7 +20,7 @@ void Engine::initMessageBox() {
         throw std::runtime_error("Font not loaded!");
     }
     messageBox.setFont(font);
-    messageBox.setCharacterSize(15);
+    messageBox.setCharacterSize(20);
     messageBox.setFillColor(sf::Color::White);
     messageBox.setPosition(50, 50); // Posiziona sopra il personaggio
 }

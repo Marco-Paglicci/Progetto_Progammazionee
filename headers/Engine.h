@@ -208,7 +208,11 @@ public:
 
     static void runAwayAction(Engine &engine);
 
+    static void enemy_attack_Action();
+
     static int rollD20();
+
+    static int enemyrollD20();
 
     /* message box */
 

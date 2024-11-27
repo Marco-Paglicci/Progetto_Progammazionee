@@ -23,7 +23,7 @@ protected:
     int strenght;
     float x_, y_;
 
-    bool isAlive = true;
+    bool Alive = true;
 
     /*variabili grafiche*/
     Texture texture;
@@ -51,7 +51,7 @@ public:
 
     void setStrenght(int strenght);
 
-    bool isAlive1() const;
+    bool isAlive() const;
 
     void setIsAlive(bool isAlive);
 

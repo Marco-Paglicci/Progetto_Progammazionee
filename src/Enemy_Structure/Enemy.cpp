@@ -93,12 +93,12 @@ void Enemy::setTextureFw(const Texture &textureFw) {
     texture_FW = textureFw;
 }
 
-bool Enemy::isAlive1() const {
-    return isAlive;
+bool Enemy::isAlive() const {
+    return Alive;
 }
 
 void Enemy::setIsAlive(bool isAlive) {
-    Enemy::isAlive = isAlive;
+    Enemy::Alive = isAlive;
 }
 
 int Enemy::getStrenght() const {

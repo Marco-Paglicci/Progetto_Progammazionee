@@ -45,9 +45,24 @@ void Engine::fight_window_draw()
 
     /*---------player healtbar------------*/
 
+    Health_Bar.clear();
+
     for (int i = 0; i < (P->getHp() / 5); ++i) {
 
         sf::RectangleShape Bar(sf::Vector2f(30, 20));
+
+        if((P->getHp() / 5 )  <= 1)
+        {
+            Bar.setFillColor(sf::Color::Red);
+        }
+        else if((P->getHp() / 5 ) == 2 )
+        {
+            Bar.setFillColor(sf::Color::Yellow);
+        }else
+        {
+            Bar.setFillColor(sf::Color::Green);
+        }
+
         Bar.setPosition((window.getSize().x / 2) + (35 * i), fightText.getPosition().y);
         Bar.setFillColor(sf::Color::Green);
         Health_Bar.push_back(Bar);
@@ -79,9 +94,19 @@ void Engine::fight_window_draw()
     for (int i = 0; i < (Engine::getR()->getE()->getHp() / 5); ++i) {
 
         sf::RectangleShape Bar(sf::Vector2f(30, 20));
+        if((Engine::getR()->getE()->getHp() / 5 )  <= 1)
+        {
+            Bar.setFillColor(sf::Color::Red);
+        }
+        else if((Engine::getR()->getE()->getHp() / 5 ) == 2 )
+        {
+            Bar.setFillColor(sf::Color::Yellow);
+        }else
+        {
+            Bar.setFillColor(sf::Color::Green);
+        }
         // Posizione sotto il nemico
         Bar.setPosition((window.getSize().x / 2) + (35 * i), window.getSize().y / 2);   //todo spostare barra salute
-        Bar.setFillColor(sf::Color::Green);
         Enemy_Health_Bar.push_back(Bar);
     }
 
