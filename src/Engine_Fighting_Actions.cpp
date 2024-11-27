@@ -15,23 +15,36 @@
 void Engine::attackAction(Engine &engine) {
 
     float attack_power  =  (static_cast<float>(Engine::getP()->getWeapon()->getPower() * (static_cast<float>(rollD20())/10)));
+    int damage = static_cast<int>(round(attack_power * (1 - (static_cast<float>(Engine::getR()->getE()->getArmour()*rollD20())/100))));
+
+
+    // Aggiungi messaggi alla casella di testo
+    addMessage("Weapon Attack: " + std::to_string(getP()->getWeapon()->getPower()));
+    addMessage("Attack with " + std::to_string(attack_power) + " power!");
+    addMessage("You hit! Dealing " + std::to_string(damage) + " damage!");
+
+    Engine::getR()->getE()->setHp(Engine::getR()->getE()->getHp() - damage );
+    addMessage("Enemy health = " + std::to_string(getR()->getE()->getHp()));
+
+
+    //todo remove testing
     cout <<  "Weapon Attack :" + to_string(Engine::getP()->getWeapon()->getPower()) << endl ;
     cout << "Attack with " + to_string(attack_power) + " power !" << endl ;
-    int damage = static_cast<int>(round(attack_power * (1 - (static_cast<float>(Engine::getR()->getE()->getArmour()*rollD20())/100))));
     cout << "you hit ! Dealing  " + to_string(damage) + " damage  !" << endl ;
-    Engine::getR()->getE()->setHp(Engine::getR()->getE()->getHp() - damage );
-
+    cout << "Enemy healt  =   " + to_string(Engine::getR()->getE()->getHp()) << endl;
     /* Durante il calcolo dei danni vengono usato numeri decimali
      * quindi è fondamentale riportare il valore in float, per assegnare
      * il dannop invece si riportas il valore numerico , arrotondando
      * all'intero più vicino per comodità */
 
-
-    if(Engine::getR()->getE()->getHp() <= 0)
-    {
-        Engine::getR()->getE()->setIsAlive(false);
+    if (getR()->getE()->getHp() <= 0) {
+        getR()->getE()->setIsAlive(false);
         cout << "You killed the evil " +  Engine::getR()->getE()->getName() << endl ;
+        addMessage("You killed the evil " + getR()->getE()->getName() + "!");
     }
+
+
+
 }
 
 void Engine::defendAction(Engine &engine) {
@@ -51,15 +64,20 @@ void Engine::runAwayAction(Engine &engine) {
 
 int Engine::rollD20() {
 
-    int random = rand() % 21 + 1;
-    cout << "You rolled a  " + to_string(random) + " !" << endl ;
-    if(random == 20)
-    {
-        cout << "critical hit  !" << endl ;
+    Clock clock;
+
+    int random = 0;
+
+    while (clock.getElapsedTime().asSeconds() < 2.0f) {
+        random = rand() % 20 + 1;
     }
-    if(random == 1)
-    {
-        cout << "critical FAILURE  !" << endl ;
+
+    addMessage("You rolled a " + std::to_string(random) + "!");
+    if (random == 20) {
+        addMessage("Critical hit!");
+    } else if (random == 1) {
+        addMessage("Critical FAILURE!");
     }
+
     return random;
 }

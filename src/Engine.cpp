@@ -11,6 +11,9 @@
 //////////////////////////////////////////////////////////////////////////
 unique_ptr<Personaggio> Engine::P = nullptr;
 unique_ptr<Room> Engine::R = nullptr;
+queue<std::string> Engine::messages = {};
+
+
 
 
 

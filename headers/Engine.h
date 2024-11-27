@@ -7,6 +7,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include <queue>
 
 /*personaggi*/
 #include "Personaggio.h"
@@ -99,6 +100,17 @@ private:
 
     vector<sf::RectangleShape> Health_Bar;
     Font fight_fontText;
+
+    Text enemyNameText;
+    vector<sf::RectangleShape> Enemy_Health_Bar;
+
+    /* message box */
+    Text messageBox;                // Casella di testo per i messaggi
+    Font font;                      // Font del testo
+    static queue<std::string> messages;   // Coda per i messaggi da visualizzare
+    Clock messageTimer;             // Timer per intervallo tra i messaggi
+    float messageDelay = 2.0f;          // Ritardo tra un messaggio e il successivo
+
 
     /*cursore*/
 
@@ -197,6 +209,14 @@ public:
     static void runAwayAction(Engine &engine);
 
     static int rollD20();
+
+    /* message box */
+
+    void initMessageBox();
+    static void addMessage(const std::string& message);
+    void updateMessages();
+    void drawMessages(sf::RenderWindow& window);
+
 
 
 };

@@ -177,7 +177,7 @@ string EnemyFactory::selectName(int enemyType) {
 
     }
 
-
+    cout << "Enemy name generated " + enemy_name << endl;
     return enemy_name;
 }
 

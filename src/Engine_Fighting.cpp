@@ -43,6 +43,7 @@ void Engine::fight_window_draw()
 
     //disegno healthbar
 
+    /*---------player healtbar------------*/
 
     for (int i = 0; i < (P->getHp() / 5); ++i) {
 
@@ -56,9 +57,55 @@ void Engine::fight_window_draw()
         window.draw(HP);
     }
 
+    /*-------------------enemy healtbar --------------------*/
+
+
+    if( Engine::getR() != nullptr && Engine::getR()->getE() != nullptr )
+    {
+        enemyNameText.setString(Engine::getR()->getE()->getName());  // Nome del nemico
+
+    }else
+    {
+        cout << "Enemy not founded" << endl;
+
+    }
+    //Il nome del nemico deve essere estratto dopo il set up della stanza altrimenti non verrà trovato nessun puntatore associato
+
+    window.draw(enemyNameText); //disegna nome del nemico
+
+    Enemy_Health_Bar.clear();
+
+    // Calcola la lunghezza della barra in base agli HP del nemico
+    for (int i = 0; i < (Engine::getR()->getE()->getHp() / 5); ++i) {
+
+        sf::RectangleShape Bar(sf::Vector2f(30, 20));
+        // Posizione sotto il nemico
+        Bar.setPosition((window.getSize().x / 2) + (35 * i), window.getSize().y / 2);   //todo spostare barra salute
+        Bar.setFillColor(sf::Color::Green);
+        Enemy_Health_Bar.push_back(Bar);
+    }
+
+
+
+    // Disegna la barra della salute del nemico
+    for (auto &HP: Enemy_Health_Bar) {
+        window.draw(HP);
+    }
+
+
+
     /*------------------Draw Entites -----------------------*/
     window.draw(Engine::getP()->getSpriteFw());
     window.draw(Engine::getR()->getE()->getSpriteFw());
+
+
+    /*----------------- Message Box --------------------------*/
+    // Aggiorna i messaggi
+    updateMessages();
+
+    // Disegna la casella di testo dei messaggi
+    drawMessages(window);
+
 
     window.display();
 
@@ -119,6 +166,17 @@ void Engine::fight_window_setup() {
     cursor.setRadius(5);
     cursor.setFillColor(sf::Color::Red);
     cursor.setPosition(fightText.getPosition().x - 20, fightText.getPosition().y);
+
+    // Configura il font per il nome del nemico
+    enemyNameText.setFont(fight_fontText);
+    enemyNameText.setCharacterSize(15);
+    enemyNameText.setFillColor(sf::Color::White);
+    enemyNameText.setStyle(sf::Text::Bold);
+
+    // Posiziona il nome sopra il nemico (regola la posizione a seconda delle esigenze)
+    enemyNameText.setPosition(window.getSize().x / 2  , window.getSize().y / 2 + 50  );
+
+    initMessageBox(); // inizializzo la casella di testo per messaggio
 
     cout << "FG room set up complete " << endl;
 

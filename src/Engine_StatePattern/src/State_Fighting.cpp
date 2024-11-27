@@ -57,6 +57,7 @@ void State_Fighting::handleInput(Engine &engine) {
 
 
     }
+
 }
 
 void State_Fighting::draw(Engine &engine) {
