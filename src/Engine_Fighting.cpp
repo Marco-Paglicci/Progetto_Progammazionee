@@ -44,36 +44,47 @@ void Engine::fight_window_draw()
 
     //disegno healthbar
 
-    /*---------player healtbar------------*/
+    /*--------------------------player healtbar--------------------------------------------*/
 
     Health_Bar.clear();
 
-    for (int i = 0; i < (P->getHp() / 5); ++i) {
-
+    if (P->getHp() < 5) {
         sf::RectangleShape Bar(sf::Vector2f(30, 20));
-
-        if((P->getHp() / 5 )  <= 1)
-        {
-            Bar.setFillColor(sf::Color::Red);
-        }
-        else if((P->getHp() / 5 ) == 2 )
-        {
-            Bar.setFillColor(sf::Color::Yellow);
-        }else
-        {
-            Bar.setFillColor(sf::Color::Green);
-        }
-
-        Bar.setPosition((window.getSize().x / 2) + (35 * i), fightText.getPosition().y);
-        Bar.setFillColor(sf::Color::Green);
+        Bar.setFillColor(isRed ? sf::Color::Red : sf::Color::Transparent);
+        Bar.setPosition(50, 50);
         Health_Bar.push_back(Bar);
+
+        // Gestione del lampeggio
+        if (blinkClock.getElapsedTime().asSeconds() > 0.3f) {
+            isRed = !isRed;
+            blinkClock.restart();
+        }
+    } else {
+        for (int i = 0; i < (P->getHp() / 5); ++i) {
+
+            sf::RectangleShape Bar(sf::Vector2f(30, 20));
+
+            if ((P->getHp() / 5) <= 1) {
+                Bar.setFillColor(sf::Color::Red);
+            } else if ((P->getHp() / 5) == 2) {
+                Bar.setFillColor(sf::Color::Yellow);
+            } else {
+                Bar.setFillColor(sf::Color::Green);
+            }
+
+            Bar.setPosition((window.getSize().x / 2) + (35 * i), fightText.getPosition().y);
+            Bar.setFillColor(sf::Color::Green);
+            Health_Bar.push_back(Bar);
+        }
     }
+
+
 
     for (auto &HP: Health_Bar) {
         window.draw(HP);
     }
 
-    /*-------------------enemy healtbar --------------------*/
+    /*-------------------------enemy healtbar------------------- --------------------*/
 
 
     if( Engine::getR() != nullptr && Engine::getR()->getE() != nullptr )
@@ -89,24 +100,35 @@ void Engine::fight_window_draw()
 
     Enemy_Health_Bar.clear();
 
-    // Calcola la lunghezza della barra in base agli HP del nemico
-    for (int i = 0; i < (Engine::getR()->getE()->getHp() / 5); ++i) {
-
+    //Se gli hp sono inferiori ad una barra (<5)
+    if (Engine::getR()->getE()->getHp() < 5) {
         sf::RectangleShape Bar(sf::Vector2f(30, 20));
-        if((Engine::getR()->getE()->getHp() / 5 )  <= 1)
-        {
-            Bar.setFillColor(sf::Color::Red);
-        }
-        else if((Engine::getR()->getE()->getHp() / 5 ) == 2 )
-        {
-            Bar.setFillColor(sf::Color::Yellow);
-        }else
-        {
-            Bar.setFillColor(sf::Color::Green);
-        }
-        // Posizione sotto il nemico
-        Bar.setPosition(50 + (35 * i), 50);   //todo spostare barra salute
+        Bar.setFillColor(isRed ? sf::Color::Red : sf::Color::Transparent);
+        Bar.setPosition(50, 50);
         Enemy_Health_Bar.push_back(Bar);
+
+        // Gestione del lampeggio
+        if (blinkClock.getElapsedTime().asSeconds() > 0.3f) {
+            isRed = !isRed;
+            blinkClock.restart();
+        }
+
+    } else {
+        // Calcola la lunghezza della barra in base agli HP del nemico
+        for (int i = 0; i < (Engine::getR()->getE()->getHp() / 5); ++i) {
+
+            sf::RectangleShape Bar(sf::Vector2f(30, 20));
+            if ((Engine::getR()->getE()->getHp() / 5) <= 1) {
+                Bar.setFillColor(sf::Color::Red);
+            } else if ((Engine::getR()->getE()->getHp() / 5) == 2) {
+                Bar.setFillColor(sf::Color::Yellow);
+            } else {
+                Bar.setFillColor(sf::Color::Green);
+            }
+            // Posizione sotto il nemico
+            Bar.setPosition(50 + (35 * i), 50);
+            Enemy_Health_Bar.push_back(Bar);
+        }
     }
 
 
@@ -115,6 +137,9 @@ void Engine::fight_window_draw()
     for (auto &HP: Enemy_Health_Bar) {
         window.draw(HP);
     }
+
+
+
 
 
 

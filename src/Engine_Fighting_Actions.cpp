@@ -28,7 +28,8 @@ void Engine::attackAction(Engine &engine) {
     cout <<  "Weapon Attack :" + to_string(Engine::getP()->getWeapon()->getPower()) << endl ;
     cout << "Attack with " + to_string(attack_power) + " power !" << endl ;
     cout << "you hit ! Dealing  " + to_string(damage) + " damage  !" << endl ;
-    cout << "Enemy healt  =   " + to_string(Engine::getR()->getE()->getHp()) << endl;
+    cout << "Enemy health  =   " + to_string(Engine::getR()->getE()->getHp()) << endl;
+
     /* Durante il calcolo dei danni vengono usato numeri decimali
      * quindi è fondamentale riportare il valore in float, per assegnare
      * il dannop invece si riportas il valore numerico , arrotondando

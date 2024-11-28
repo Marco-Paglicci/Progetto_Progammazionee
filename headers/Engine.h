@@ -104,6 +104,9 @@ private:
     Text enemyNameText;
     vector<sf::RectangleShape> Enemy_Health_Bar;
 
+    Clock blinkClock;
+    bool isRed = false;
+
     /* message box */
     Text messageBox;                // Casella di testo per i messaggi
     Font font;                      // Font del testo

@@ -27,13 +27,16 @@ void Fangs_Room::drawRoom(RenderWindow &window) {
     window.draw(right);
     window.draw(entrance);
     window.draw(exit);
-    window.draw(enemy);
+
 
 
     E->setX(enemy.getPosition().x-10);
     E->setY(enemy.getPosition().y-10);
 
-    E->drawEnemy(window);
+    if(E->isAlive())
+    {
+        E->drawEnemy(window);
+    }
 
 
     // da rimuovere o no dipendentemente se si vogliono visualzzare i muri ( senza Texture )
