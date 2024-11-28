@@ -46,6 +46,8 @@ protected:
     string classe_;
     unique_ptr<Weapon> W;
 
+    int armor_boost = 0;
+
     //variabile per animazione
     int swap_frame = 0;
     int swap_frame_camminata = 0;
@@ -103,7 +105,9 @@ public:
 
    void setWeapon(std::unique_ptr<Weapon> newWeapon);
 
+    int getArmorBoost() const;
 
+    void setArmorBoost(int armorBoost);
 
     /* FUNZIONI GRAFICHE */
 

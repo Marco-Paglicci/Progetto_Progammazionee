@@ -213,6 +213,10 @@ public:
 
     static void enemy_attack_Action();
 
+    static void enemy_defend_Action();
+
+    static void enemy_turn();
+
     static int rollD20();
 
     static int enemyrollD20();

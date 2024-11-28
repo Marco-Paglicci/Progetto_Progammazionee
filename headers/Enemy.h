@@ -23,6 +23,8 @@ protected:
     int strenght;
     float x_, y_;
 
+    int armor_boost = 0 ;
+
     bool Alive = true;
 
     /*variabili grafiche*/
@@ -92,6 +94,10 @@ public:
     const string &getName() const;
 
     void setName(const string &name);
+
+    int getArmorBoost() const;
+
+    void setArmorBoost(int armorBoost);
 };
 
 

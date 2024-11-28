@@ -109,3 +109,11 @@ void Enemy::setStrenght(int strenght) {
     Enemy::strenght = strenght;
 }
 
+int Enemy::getArmorBoost() const {
+    return armor_boost;
+}
+
+void Enemy::setArmorBoost(int armorBoost) {
+    armor_boost = armorBoost;
+}
+
