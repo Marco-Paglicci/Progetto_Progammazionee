@@ -20,9 +20,17 @@ void Engine::attackAction(Engine &engine) {
 
     Engine::getR()->getE()->setArmorBoost(0);
 
-    addMessage("You hit! Dealing " + std::to_string(damage) + " damage!");
+    if(damage > 0)
+    {
+        addMessage("You hit! Dealing " + std::to_string(damage) + " damage!");
 
-    Engine::getR()->getE()->setHp(Engine::getR()->getE()->getHp() - damage );
+        Engine::getR()->getE()->setHp(Engine::getR()->getE()->getHp() - damage );
+    }else
+    {
+        addMessage("You missed the enemy entirely !");
+    }
+
+
     addMessage("Enemy health = " + std::to_string(getR()->getE()->getHp()));
 
 
@@ -52,13 +60,14 @@ void Engine::attackAction(Engine &engine) {
 
 void Engine::defendAction(Engine &engine) {
     std::cout << "Defending...\n";
-    addMessage("You brace for impact, increasing your armor for the next turn!");
+    addMessage("You brace for impact, increasing your armor !");
     Engine::getP()->setArmorBoost(5);  // Aggiunge un bonus di armatura
 
     if ( getP()->getHp() < 5) {
         int heal = rand() % 3 + 2; // Guarisce tra 2 e 5 HP
         getP()->setHp(  getP()->getHp() + heal);
-        addMessage(  "You can recover a little in a defensive stance ! (+ " + to_string(heal) + " HP)!");
+        addMessage(  "You can recover a little in a defensive stance !");
+        addMessage( "(+ " + to_string(heal) + " HP)!");
     }
 
     enemy_turn();
@@ -115,8 +124,18 @@ void Engine::enemy_attack_Action() {
     float attack_power = static_cast<float>(getR()->getE()->getAttack() * (static_cast<float>(enemyrollD20()) / 10));
     int effective_armour = getP()->getArmor() + getP()->getArmorBoost();    //controlla se ho un boost alle statistiche
     int damage = static_cast<int>(round(attack_power * (1 - (static_cast<float>(effective_armour * rollD20()) / 100))));
-    addMessage("Enemy attacks! Dealing " + std::to_string(damage) + " damage!");
-    Engine::getP()->setHp(Engine::getP()->getHp() - damage);
+
+    if(damage > 0)
+    {
+        addMessage("Enemy attacks! Dealing " + std::to_string(damage) + " damage!");
+        Engine::getP()->setHp(Engine::getP()->getHp() - damage);
+
+    }else
+    {
+        addMessage(getR()->getE()->getName() + " miss you !");
+
+    }
+
     addMessage("Your health = " + std::to_string(Engine::getP()->getHp()));
 
     cout << "La tua vita adesso = " + to_string(Engine::getP()->getHp()) << endl;
@@ -139,7 +158,8 @@ void Engine::enemy_defend_Action() {
     if ( getR()->getE()->getHp() < 5) {
         int heal = rand() % 3 + 2; // Guarisce tra 2 e 5 HP
         getR()->getE()->setHp( getR()->getE()->getHp() + heal);
-        addMessage( getR()->getE()->getName() + " regains some health during its defensive stance (+ " + to_string(heal) + " HP)!");
+        addMessage( getR()->getE()->getName() + " regains some health during its defensive stance ");
+        addMessage( getR()->getE()->getName() + "(+ " + to_string(heal) + " HP)!");
     }
 
 }

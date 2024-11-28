@@ -73,7 +73,6 @@ void Engine::fight_window_draw()
             }
 
             Bar.setPosition((window.getSize().x / 2) + (35 * i), fightText.getPosition().y);
-            Bar.setFillColor(sf::Color::Green);
             Health_Bar.push_back(Bar);
         }
     }
