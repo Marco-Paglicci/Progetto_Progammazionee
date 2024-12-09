@@ -185,9 +185,9 @@ void Engine::fight_window_setup() {
     talkText.setStyle(sf::Text::Bold);
     itemsText.setStyle(sf::Text::Bold);
 
-    fightText.setString("fight!");
-    runText.setString("Defend");
-    talkText.setString("talk?");
+    fightText.setString("Attacca");
+    runText.setString("Difenditi");
+    talkText.setString("Speciale");
     itemsText.setString("items");
 
     /////////////////////////////////////////////////////////////////////////////////

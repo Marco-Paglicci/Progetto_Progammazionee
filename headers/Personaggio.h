@@ -60,6 +60,13 @@ protected:
     Texture texture_FW;
     Sprite sprite_FW;
 
+    /*variabili per combattimento*/
+
+    bool special_ready;
+    int turn_counter;
+    int special_refresh;
+
+
 public:
 
     Personaggio(float x, float y, float size, RenderWindow &window);
@@ -135,6 +142,19 @@ public:
 
     void draw();
 
+    virtual void special_attack() ;
+
+    bool isSpecialReady() const;
+
+    void setSpecialReady(bool specialReady);
+
+    int getTurnCounter() const;
+
+    void setTurnCounter(int turnCounter);
+
+    int getSpecialRefresh() const;
+
+    void setSpecialRefresh(int specialRefresh);
 
 
 };

@@ -21,7 +21,7 @@ Enemy_Minion::Enemy_Minion(int strenght,  string name, const Texture &texture, c
             break;
         case 2:
             this->setName(name);
-            Hp = 9;
+            Hp = 10 ;
             armour = 2;
             attack = 3;
             break;

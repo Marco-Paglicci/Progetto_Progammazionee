@@ -12,7 +12,10 @@ class Knight : public Personaggio{
 public:
     Knight(float x, float y, float size, RenderWindow &window);
 
+     void special_attack() override;
+
 private:
+
 
 };
 

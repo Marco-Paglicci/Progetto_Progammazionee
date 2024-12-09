@@ -12,6 +12,10 @@ Knight::Knight(float x, float y, float size, sf::RenderWindow &window) : Persona
     cout << " HP knight " + to_string(getHp()) << endl;
     this->setArmor(7);
 
+    this->setSpecialReady(true);
+    this->setTurnCounter(0);
+    this->setSpecialRefresh(3);
+
     unique_ptr<Treasure> treasure = TreasureFactory::createWeapon("Sword",5);
     auto* weaponPtr = dynamic_cast<Weapon*>(treasure.get());
     if(weaponPtr)
@@ -20,5 +24,24 @@ Knight::Knight(float x, float y, float size, sf::RenderWindow &window) : Persona
     }else
     {
         cout << " Error in created Treasure in Knight " << endl;
+    }
+}
+
+void Knight::special_attack() {
+    if(this->getTurnCounter() == this->getSpecialRefresh())
+    {
+        this->setTurnCounter(0);
+        if(!this->isSpecialReady())
+        {
+            this->setSpecialReady(true);
+        }
+    }
+    if(!this->isSpecialReady())
+    {
+        cout << " SPECIAL NOT READY " << endl;
+        return;
+    }else
+    {
+       cout << "SPECIAL READY" << endl;
     }
 }

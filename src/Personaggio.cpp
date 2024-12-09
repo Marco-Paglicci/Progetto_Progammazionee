@@ -455,6 +455,34 @@ void Personaggio::setArmorBoost(int armorBoost) {
     armor_boost = armorBoost;
 }
 
+bool Personaggio::isSpecialReady() const {
+    return special_ready;
+}
+
+void Personaggio::setSpecialReady(bool specialReady) {
+    special_ready = specialReady;
+}
+
+int Personaggio::getTurnCounter() const {
+    return turn_counter;
+}
+
+void Personaggio::setTurnCounter(int turnCounter) {
+    turn_counter = turnCounter;
+}
+
+int Personaggio::getSpecialRefresh() const {
+    return special_refresh;
+}
+
+void Personaggio::setSpecialRefresh(int specialRefresh) {
+    special_refresh = specialRefresh;
+}
+
+void Personaggio::special_attack() {
+
+}
+
 
 
 

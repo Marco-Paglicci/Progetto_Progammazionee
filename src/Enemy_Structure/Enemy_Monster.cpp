@@ -24,14 +24,14 @@ Enemy_Monster::Enemy_Monster(int strenght,  string name, const Texture &texture,
                 break;
         case 2:
                 this->setName(name);
-                Hp = 20;
+                Hp = 15;
                 armour = 3;
                 attack = 5;
             break;
 
         case 3:
                 this->setName(name + " infuriato");
-                Hp = 25;
+                Hp = 20;
                 armour = 5;
                 attack = 8;
             break;

@@ -207,9 +207,15 @@ public:
 
     static void defendAction(Engine &engine);
 
-    static void useItemAction(Engine &engine);
+    static void useSpecialAction(Engine &engine);
 
     static void runAwayAction(Engine &engine);
+
+    static void knight_special();
+
+    static void thief_special();
+
+    static void mage_special();
 
     static void enemy_attack_Action();
 

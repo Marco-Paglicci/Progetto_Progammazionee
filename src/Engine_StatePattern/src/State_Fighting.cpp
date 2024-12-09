@@ -12,7 +12,7 @@ State_Fighting::State_Fighting() {
         actions = {
                 Engine::attackAction,  // Attacco
                 Engine::defendAction,  // Difesa
-                Engine::useItemAction, // Usa oggetto
+                Engine::useSpecialAction, // Usa oggetto
                 Engine::runAwayAction  // Fuga
         };
 
