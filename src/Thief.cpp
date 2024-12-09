@@ -10,6 +10,10 @@ Thief::Thief(float x, float y, float size, RenderWindow &window) : Personaggio(x
     this->setHp(30);
     this->setArmor(10);
 
+    this->setSpecialReady(true);
+    this->setTurnCounter(0);
+    this->setSpecialRefresh(3);
+
 
     unique_ptr<Treasure> treasure = TreasureFactory::createWeapon("Dagger",3);
     auto* weaponPtr = dynamic_cast<Weapon*>(treasure.get());
@@ -178,5 +182,25 @@ void Thief::Camminata_SX() {
         sprite.setScale(2.7, 3);
         swap_frame_camminata = 5;
     }
+}
+
+void Thief::special_attack() {
+    if(this->getTurnCounter() == this->getSpecialRefresh())
+    {
+        this->setTurnCounter(0);
+        if(!this->isSpecialReady())
+        {
+            this->setSpecialReady(true);
+        }
+    }
+    if(!this->isSpecialReady())
+    {
+        cout << " SPECIAL NOT READY " << endl;
+        return;
+    }else
+    {
+        cout << "SPECIAL READY" << endl;
+    }
+
 }
 
