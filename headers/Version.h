@@ -7,7 +7,7 @@
 
 #include <string>
 
-static const std::string VERSION = "1.5";
+static const std::string VERSION = "1.5.2";
 
 
 #endif //PROGETTO_PROGRAMMAZIONE_VERSION_H
