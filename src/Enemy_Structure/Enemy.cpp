@@ -93,3 +93,27 @@ void Enemy::setTextureFw(const Texture &textureFw) {
     texture_FW = textureFw;
 }
 
+bool Enemy::isAlive() const {
+    return Alive;
+}
+
+void Enemy::setIsAlive(bool isAlive) {
+    Enemy::Alive = isAlive;
+}
+
+int Enemy::getStrenght() const {
+    return strenght;
+}
+
+void Enemy::setStrenght(int strenght) {
+    Enemy::strenght = strenght;
+}
+
+int Enemy::getArmorBoost() const {
+    return armor_boost;
+}
+
+void Enemy::setArmorBoost(int armorBoost) {
+    armor_boost = armorBoost;
+}
+

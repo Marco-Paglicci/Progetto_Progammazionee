@@ -5,15 +5,21 @@
 #include <iostream>
 #include "../headers/Mage.h"
 
-Mage::Mage(float x, float y, float size, RenderWindow &window) : Personaggio(x, y, size, window), W("Default Weapon",1) {
+Mage::Mage(float x, float y, float size, RenderWindow &window) : Personaggio(x, y, size, window){
 
     this->setHp(25);
     this->setArmor(1);
-    unique_ptr<Treasure> treasure = TreasureFactory::createWeapon("Staff",15);
+
+    this->setSpecialReady(true);
+    this->setTurnCounter(0);
+    this->setSpecialRefresh(5);
+
+
+    unique_ptr<Treasure> treasure = TreasureFactory::createWeapon("Staff",8);
     auto* weaponPtr = dynamic_cast<Weapon*>(treasure.get());
     if(weaponPtr)
     {
-        W = *weaponPtr;
+        W = make_unique<Weapon>(*weaponPtr); ;
     }else
     {
         cout << " Error in created Treasure in Thief " << endl;
@@ -138,4 +144,24 @@ void Mage::Camminata_UP() {
         sprite.setScale(2.7, 3);
         swap_frame_camminata = 5;
     }
+}
+
+void Mage::special_attack() {
+    if(this->getTurnCounter() == this->getSpecialRefresh())
+    {
+        this->setTurnCounter(0);
+        if(!this->isSpecialReady())
+        {
+            this->setSpecialReady(true);
+        }
+    }
+    if(!this->isSpecialReady())
+    {
+        cout << " SPECIAL NOT READY " << endl;
+        return;
+    }else
+    {
+        cout << "SPECIAL READY" << endl;
+    }
+
 }

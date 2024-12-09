@@ -23,6 +23,10 @@ protected:
     int strenght;
     float x_, y_;
 
+    int armor_boost = 0 ;
+
+    bool Alive = true;
+
     /*variabili grafiche*/
     Texture texture;
     Sprite sprite;
@@ -44,6 +48,14 @@ public:
 
 
     int getHp() const;
+
+    int getStrenght() const;
+
+    void setStrenght(int strenght);
+
+    bool isAlive() const;
+
+    void setIsAlive(bool isAlive);
 
     const Sprite &getSpriteFw() const;
 
@@ -82,6 +94,10 @@ public:
     const string &getName() const;
 
     void setName(const string &name);
+
+    int getArmorBoost() const;
+
+    void setArmorBoost(int armorBoost);
 };
 
 

@@ -2,6 +2,7 @@
 // Created by Marco on 28/10/2024.
 //
 
+#include <iostream>
 #include "../../headers/Enemy_Monster.h"
 
 
@@ -11,23 +12,33 @@ unique_ptr<Enemy> Enemy_Monster::clone() const {
 }
 
 Enemy_Monster::Enemy_Monster(int strenght,  string name, const Texture &texture,const Texture &texture_FW) : Enemy(strenght, name,
-                                                                                               texture,texture_FW) {
+
+                                                                                                 texture,texture_FW) {
     switch (strenght) {
+
         case 1:
-                name = "Wounded " + name;
+                this->setName(name + " ferito") ;
                 Hp = 10;
                 armour = 1;
                 attack = 3;
+                break;
         case 2:
-                Hp = 20;
+                this->setName(name);
+                Hp = 15;
                 armour = 3;
                 attack = 5;
+            break;
+
         case 3:
-                name = "Angry " + name;
-                Hp = 25;
+                this->setName(name + " infuriato");
+                Hp = 20;
                 armour = 5;
                 attack = 8;
+            break;
+
     }
+
+    cout << "forza = " + to_string(strenght) + " nome = " + this->getName() <<endl;
 
     sprite.setTexture(texture);
     sprite.setScale(2.7, 3);

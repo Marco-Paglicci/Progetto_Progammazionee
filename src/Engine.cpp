@@ -6,6 +6,17 @@
 #include "../headers/Engine.h"
 #include "Engine_StatePattern/headers/State_StartMenu.h"
 
+// Definizione dei membri statici altrimenti si creano problematiche
+//nel programma in quanto non possono essere definiti all'interno del costruttore
+//////////////////////////////////////////////////////////////////////////
+unique_ptr<Personaggio> Engine::P = nullptr;
+unique_ptr<Room> Engine::R = nullptr;
+queue<std::string> Engine::messages = {};
+
+
+
+
+
 Engine::Engine() {
 
     resolution = Vector2f(800, 600);
@@ -163,7 +174,7 @@ void Engine::ResetClock(Clock clock) {
     clock.restart();
 }
 
-const unique_ptr<Personaggio> &Engine::getP() const {
+const unique_ptr<Personaggio> &Engine::getP()  {
     return P;
 }
 
@@ -172,7 +183,7 @@ const Room_Manager &Engine::getRm() const {
     return RM;
 }
 
-const unique_ptr<Room> &Engine::getR() const {
+const unique_ptr<Room> &Engine::getR()  {
     return R;
 }
 
@@ -226,10 +237,6 @@ void Engine::class_setup() {
         P->setTexture(classe);
 
 }
-
-
-
-
 
 
 

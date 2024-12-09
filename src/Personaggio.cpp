@@ -6,7 +6,7 @@
 #include <iostream>
 #include "../headers/Personaggio.h"
 
-Personaggio::Personaggio(float x, float y, float size, RenderWindow &window) : x_(x), y_(y), size_(size),window_(window),W("Default Weapon",1){
+Personaggio::Personaggio(float x, float y, float size, RenderWindow &window) : x_(x), y_(y), size_(size),window_(window){
 
     //colore rappresentativo personaggio
     sf::Color color_personaggio(sf::Color::Black);
@@ -30,80 +30,8 @@ Personaggio::Personaggio(float x, float y, float size, RenderWindow &window) : x
 
     setPosition(x_, y_);
 
-}
+    W = make_unique<Weapon>("DefaultWeapon", 1);
 
-/*-----------------GETTER AND SETTER----------------------*/
-
-int Personaggio::getHp() const {
-    return hp;
-}
-
-void Personaggio::setHp(int hp) {
-    Personaggio::hp = hp;
-}
-
-int Personaggio::getArmor() const {
-    return armor;
-}
-
-void Personaggio::setArmor(int armor) {
-    Personaggio::armor = armor;
-}
-
-const Weapon &Personaggio::getW() const {
-    return W;
-}
-
-void Personaggio::setW(const Weapon &w) {
-    W = w;
-}
-
-const string &Personaggio::getClasse() const {
-    return classe_;
-}
-
-void Personaggio::setClasse(const string &classe) {
-    classe_ = classe;
-}
-
-
-
-const Texture &Personaggio::getTexture() const {
-    return texture;
-}
-
-void Personaggio::setTexture(string classe_) {
-    //imposta sprite immaggine
-    texture.loadFromFile("../assets/" + classe_ + ".png");
-    texture_FW.loadFromFile("../assets/personaggi_FW/" + classe_ + "_FW.png");
-    sprite.setTexture(texture);
-    sprite_FW.setTexture(texture_FW);
-    sprite.setScale(2.7, 3);
-    sprite_FW.setScale(6,6);
-    sprite_FW.setPosition(0,100);
-}
-const Sprite &Personaggio::getSprite() const {
-    return sprite;
-}
-
-void Personaggio::setSprite(const Sprite &sprite) {
-    Personaggio::sprite = sprite;
-}
-
-const Texture &Personaggio::getTextureFw() const {
-    return texture_FW;
-}
-
-void Personaggio::setTextureFw(const Texture &textureFw) {
-    texture_FW = textureFw;
-}
-
-const Sprite &Personaggio::getSpriteFw() const {
-    return sprite_FW;
-}
-
-void Personaggio::setSpriteFw(const Sprite &spriteFw) {
-    sprite_FW = spriteFw;
 }
 
 
@@ -440,4 +368,122 @@ int Personaggio::getElapsedFrames() {
     ++frames;
     return frames;
 }
+
+
+/*-----------------GETTER AND SETTER----------------------*/
+
+int Personaggio::getHp() const {
+    return hp;
+}
+
+void Personaggio::setHp(int hp) {
+    Personaggio::hp = hp;
+}
+
+int Personaggio::getArmor() const {
+    return armor;
+}
+
+void Personaggio::setArmor(int armor) {
+    Personaggio::armor = armor;
+}
+
+
+
+const string &Personaggio::getClasse() const {
+    return classe_;
+}
+
+void Personaggio::setClasse(const string &classe) {
+    classe_ = classe;
+}
+
+
+
+const Texture &Personaggio::getTexture() const {
+    return texture;
+}
+
+void Personaggio::setTexture(string classe_) {
+    //imposta sprite immaggine
+    texture.loadFromFile("../assets/" + classe_ + ".png");
+    texture_FW.loadFromFile("../assets/personaggi_FW/" + classe_ + "_FW.png");
+    sprite.setTexture(texture);
+    sprite_FW.setTexture(texture_FW);
+    sprite.setScale(2.7, 3);
+    sprite_FW.setScale(6,6);
+    sprite_FW.setPosition(0,100);
+}
+const Sprite &Personaggio::getSprite() const {
+    return sprite;
+}
+
+void Personaggio::setSprite(const Sprite &sprite) {
+    Personaggio::sprite = sprite;
+}
+
+const Texture &Personaggio::getTextureFw() const {
+    return texture_FW;
+}
+
+void Personaggio::setTextureFw(const Texture &textureFw) {
+    texture_FW = textureFw;
+}
+
+const Sprite &Personaggio::getSpriteFw() const {
+    return sprite_FW;
+}
+
+void Personaggio::setSpriteFw(const Sprite &spriteFw) {
+    sprite_FW = spriteFw;
+}
+
+Weapon *Personaggio::getWeapon() {
+    return  W.get();  // Restituisce il puntatore grezzo
+}
+
+void Personaggio::setWeapon(std::unique_ptr<Weapon> newWeapon) {
+
+    W = std::move(newWeapon);  // Trasferisce la proprietà del nuovo Weapon
+}
+
+int Personaggio::getArmorBoost() const {
+    return armor_boost;
+}
+
+void Personaggio::setArmorBoost(int armorBoost) {
+    armor_boost = armorBoost;
+}
+
+bool Personaggio::isSpecialReady() const {
+    return special_ready;
+}
+
+void Personaggio::setSpecialReady(bool specialReady) {
+    special_ready = specialReady;
+}
+
+int Personaggio::getTurnCounter() const {
+    return turn_counter;
+}
+
+void Personaggio::setTurnCounter(int turnCounter) {
+    turn_counter = turnCounter;
+}
+
+int Personaggio::getSpecialRefresh() const {
+    return special_refresh;
+}
+
+void Personaggio::setSpecialRefresh(int specialRefresh) {
+    special_refresh = specialRefresh;
+}
+
+void Personaggio::special_attack() {
+
+}
+
+
+
+
 

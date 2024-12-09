@@ -7,6 +7,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include <queue>
 
 /*personaggi*/
 #include "Personaggio.h"
@@ -58,11 +59,11 @@ private:
     // è una scelta che risolve molti dei problemi di gestione della memoria e indica chiaramente che Engine
     // possiede e gestisce il ciclo di vita del Personaggio.
 
-    unique_ptr<Personaggio> P;
+    static unique_ptr<Personaggio> P ;
 
     Room_Manager RM =  Room_Manager(800, 400);
 
-    unique_ptr<Room> R;
+    static unique_ptr<Room> R ;
 
 
     /*Menu*/
@@ -99,6 +100,20 @@ private:
 
     vector<sf::RectangleShape> Health_Bar;
     Font fight_fontText;
+
+    Text enemyNameText;
+    vector<sf::RectangleShape> Enemy_Health_Bar;
+
+    Clock blinkClock;
+    bool isRed = false;
+
+    /* message box */
+    Text messageBox;                // Casella di testo per i messaggi
+    Font font;                      // Font del testo
+    static queue<std::string> messages;   // Coda per i messaggi da visualizzare
+    Clock messageTimer;             // Timer per intervallo tra i messaggi
+    float messageDelay = 2.0f;          // Ritardo tra un messaggio e il successivo
+
 
     /*cursore*/
 
@@ -138,10 +153,10 @@ public:
     void setClasse(const string &classe);
     const string &getClasse() const;
 
-    const unique_ptr<Personaggio> &getP() const;
+    static const unique_ptr<Personaggio> &getP() ;
     const Room_Manager &getRm() const;
 
-    const unique_ptr<Room> &getR() const;
+    static const unique_ptr<Room> &getR()  ;
 
     void setR(unique_ptr<Room> &r);
 
@@ -187,6 +202,40 @@ public:
     void fight_window_setup();
 
     void fight_window_draw();
+
+    static void attackAction(Engine &engine);
+
+    static void defendAction(Engine &engine);
+
+    static void useSpecialAction(Engine &engine);
+
+    static void runAwayAction(Engine &engine);
+
+    static void knight_special();
+
+    static void thief_special();
+
+    static void mage_special();
+
+    static void enemy_attack_Action();
+
+    static void enemy_defend_Action();
+
+    static void enemy_turn();
+
+    static int rollD20();
+
+    static int enemyrollD20();
+
+    /* message box */
+
+    void initMessageBox();
+    static void addMessage(const std::string& message);
+    void updateMessages();
+    void drawMessages(sf::RenderWindow& window);
+
+
+
 };
 
 

@@ -18,8 +18,10 @@ public:
     void Camminata_DX() override;
     void Camminata_SX() override;
 
+    void special_attack() override;
+
 private:
-    Weapon W;
+
 };
 
 

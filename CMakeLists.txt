@@ -68,6 +68,8 @@ add_executable(Progetto_Programmazione main.cpp headers/Engine.h
         headers/Enemy_Monster.h
         src/Enemy_Structure/Enemy_Minion.cpp
         headers/Enemy_Minion.h
+        src/Engine_Fighting_Actions.cpp
+        src/Engine_messagebox.cpp
 )
 
 

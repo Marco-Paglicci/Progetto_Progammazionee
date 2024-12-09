@@ -18,7 +18,7 @@ private:
     /*attributi personaggio*/
     int hp;
     int armor;
-    Weapon W ;
+
 
     sf::RenderWindow &window_;
     float x_, y_;
@@ -44,6 +44,9 @@ protected:
     //classi derivate, per l'override di alcuni metodi
 
     string classe_;
+    unique_ptr<Weapon> W;
+
+    int armor_boost = 0;
 
     //variabile per animazione
     int swap_frame = 0;
@@ -56,6 +59,13 @@ protected:
 
     Texture texture_FW;
     Sprite sprite_FW;
+
+    /*variabili per combattimento*/
+
+    bool special_ready;
+    int turn_counter;
+    int special_refresh;
+
 
 public:
 
@@ -98,6 +108,13 @@ public:
 
     void setSprite(const Sprite &sprite);
 
+   Weapon* getWeapon() ;
+
+   void setWeapon(std::unique_ptr<Weapon> newWeapon);
+
+    int getArmorBoost() const;
+
+    void setArmorBoost(int armorBoost);
 
     /* FUNZIONI GRAFICHE */
 
@@ -124,6 +141,21 @@ public:
     static int getElapsedFrames();
 
     void draw();
+
+    virtual void special_attack() ;
+
+    bool isSpecialReady() const;
+
+    void setSpecialReady(bool specialReady);
+
+    int getTurnCounter() const;
+
+    void setTurnCounter(int turnCounter);
+
+    int getSpecialRefresh() const;
+
+    void setSpecialRefresh(int specialRefresh);
+
 
 };
 

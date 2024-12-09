@@ -2,6 +2,7 @@
 // Created by Marco on 21/11/2024.
 //
 
+#include <iostream>
 #include "../../headers/Enemy_Minion.h"
 
 unique_ptr<Enemy> Enemy_Minion::clone() const {
@@ -13,20 +14,26 @@ Enemy_Minion::Enemy_Minion(int strenght,  string name, const Texture &texture, c
                                                                                          texture,texture_FW) {
     switch (strenght) {
         case 1:
-            name = "Wounded " + name;
+            this->setName(name + " ferito") ;
             Hp = 5;
             armour = 1;
             attack = 2;
+            break;
         case 2:
-            Hp = 9;
+            this->setName(name);
+            Hp = 10 ;
             armour = 2;
             attack = 3;
+            break;
         case 3:
-            name = "Angry " + name;
+            this->setName(name + " infuriato");
             Hp = 15;
             armour = 0;
             attack = 5;
+            break;
     }
+
+    cout << "forza = " + to_string(strenght) + " nome = " + this->getName() <<endl;
 
     sprite.setTexture(texture);
     sprite.setScale(2.7, 3);
