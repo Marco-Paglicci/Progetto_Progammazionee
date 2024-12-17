@@ -37,3 +37,15 @@ unique_ptr<Room> Room_Manager::getRandomRoom() {
     return roomPool[randomIndex]->clone();  // Restituisce una stanza casuale
 
 }
+
+void Room_Manager::addRoom(int width, int height, int type)
+{
+    roomPool.push_back(RoomFactory::createRoom(1,width,height));
+    cout << "Room added with addRoom" << endl;
+}
+
+void Room_Manager::addRoom_Pointer(unique_ptr<Room> r) {
+
+    roomPool.push_back(std::move(r));
+
+}

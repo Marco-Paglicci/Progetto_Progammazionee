@@ -5,8 +5,9 @@
 #ifndef PROGETTO_PROGRAMMAZIONE_ROOM_H
 #define PROGETTO_PROGRAMMAZIONE_ROOM_H
 
-#include <SFML/Graphics.hpp>
+
 #include "EnemyFactory.h"
+#include <SFML/Graphics.hpp>
 
 
 using namespace sf;
@@ -74,6 +75,12 @@ public:
     void Generate_OuterWalls(); //I muri esterni sono condivisi ad ogni stanza , quindi fanno aprte della classe padre
 
     const unique_ptr<Enemy> &getE();
+
+    int getHeight() const;
+
+    int getWidth() const;
+
+    void changeEntranceColor(const string& color);
 
 
 };

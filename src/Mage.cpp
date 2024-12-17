@@ -7,7 +7,7 @@
 
 Mage::Mage(float x, float y, float size, RenderWindow &window) : Personaggio(x, y, size, window){
 
-    this->setHp(25);
+    this->setHp(25 );
     this->setArmor(1);
 
     this->setSpecialReady(true);

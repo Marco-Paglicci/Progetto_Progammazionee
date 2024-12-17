@@ -16,12 +16,25 @@ void Engine::fight_window_draw()
 
     window.clear(sf::Color::Black);
 
+    //if special ready change font color
+
+    if(P->isSpecialReady())
+    {
+        talkText.setFillColor(Color::Yellow);
+    }else
+    {
+        talkText.setFillColor(Color::White);
+    }
+
     window.draw(Fight_Rect2);
     window.draw(Fight_Rect1);
     window.draw(fightText);
     window.draw(runText);
     window.draw(talkText);
     window.draw(itemsText);
+
+
+
 
     // Disegna il cursore a seconda della posizione
     window.draw(cursor);

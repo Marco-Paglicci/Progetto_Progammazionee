@@ -3,6 +3,8 @@
 //
 
 #include "../../headers/Room.h"
+#include <unordered_map>
+#include <iostream>
 
 Room::Room(int width, int height) : width_(width), height_(height) {}
 
@@ -79,6 +81,37 @@ void Room::Generate_OuterWalls()  {
 
 const unique_ptr<Enemy> &Room::getE() {
     return E;
+}
+
+int Room::getHeight() const {
+    return height_;
+}
+
+int Room::getWidth() const {
+    return width_;
+}
+
+void Room::changeEntranceColor(const string &color)  {
+
+    static const unordered_map<string, Color> colorMap = {
+            {"Red", Color::Red},
+            {"Green", Color::Green},
+            {"Blue", Color::Blue},
+            {"Yellow", Color::Yellow},
+            {"White", Color::White},
+            {"Black", Color::Black},
+            {"Cyan", Color::Cyan},
+            {"Magenta", Color::Magenta},
+            {"Transparent",Color::Transparent}
+    };
+
+    auto it = colorMap.find(color);
+    if (it != colorMap.end()) {
+        entrance.setFillColor(it->second); // Cambia il colore del RectangleShape
+        cout << "Color changed to " << color << std::endl;
+    } else {
+        cout << "Invalid color input: " << color << std::endl;
+    }
 }
 
 
