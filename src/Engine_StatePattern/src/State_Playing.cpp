@@ -18,6 +18,15 @@ void State_Playing::draw(Engine &engine) {
 
         engine.input();
 
+        if(engine.getR()->getE()->isAlive())
+        {
+            engine.getR()->changeEntranceColor("Transparent");
+        }else
+        {
+            engine.getR()->changeEntranceColor("Green");
+        }
+
+
         /*------CODICE PER LIMITARE IL MOVIMENTO IN ROOM------*/
 
         //questo codice si occupa delle collisioni  con le pareti della stanza durante il movimento , esterne o interne
@@ -52,7 +61,7 @@ void State_Playing::draw(Engine &engine) {
                 engine.getP()->Collision(engine.getP()->getCollisionDirection(wall.getGlobalBounds()));
             }
         }
-        if (engine.getP()->getCollisionRect().intersects((engine.getR()->getEntrance().getGlobalBounds()))) {
+        if (!engine.getR()->getE()->isAlive() && engine.getP()->getCollisionRect().intersects((engine.getR()->getEntrance().getGlobalBounds()))) {
             engine.getWindow().clear();
             engine.setAnimatingSnake(true);
             engine.setCurrentState(new State_AnimatingSnake());

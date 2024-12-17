@@ -6,10 +6,15 @@ project(Progetto_Programmazione)
 # Specifica la versione di C++
 set(CMAKE_CXX_STANDARD 20)
 
+#Trova SFML
 # Aggiungi SFML_DIR per indicare il percorso dove si trovano i file di configurazione di SFML
-set(SFML_DIR "C:/SFML/lib/cmake/SFML")  # Modifica questo percorso!
-
+set(SFML_DIR "C:/SFML/lib/cmake/SFML")
 find_package(SFML 2.5 COMPONENTS system window graphics network audio REQUIRED)
+
+# Propaga la directory di inclusione di SFML per tutti i target
+include_directories(${SFML_INCLUDE_DIR})
+
+
 
 add_executable(Progetto_Programmazione main.cpp headers/Engine.h
         src/Engine.cpp
@@ -70,15 +75,49 @@ add_executable(Progetto_Programmazione main.cpp headers/Engine.h
         headers/Enemy_Minion.h
         src/Engine_Fighting_Actions.cpp
         src/Engine_messagebox.cpp
+
+
 )
 
+target_link_libraries(${PROJECT_NAME} PRIVATE sfml-system sfml-window sfml-graphics sfml-audio )
 
 
-target_link_libraries(${PROJECT_NAME}  sfml-system sfml-window sfml-graphics)
 
+
+
+#implemento Room come libreria per fare in modod di implementare il goolge test
+add_library(rooms STATIC
+        src/Rooms_Structure/Room.cpp
+        src/Rooms_Structure/Room_Manager.cpp
+        src/Rooms_Structure/RoomFactory.cpp
+        src/Rooms_Structure/Fangs_Room.cpp
+        src/Rooms_Structure/ZigZag_Room.cpp
+        src/Rooms_Structure/LongCorridor_Room.cpp
+        src/Enemy_Structure/Enemy.cpp
+        src/Enemy_Structure/EnemyFactory.cpp
+        src/Enemy_Structure/Enemy_Monster.cpp
+        src/Enemy_Structure/Enemy_Minion.cpp
+
+)
+
+target_include_directories(rooms PRIVATE ${SFML_INCLUDE_DIR})
+
+
+target_link_libraries(rooms PRIVATE sfml-system sfml-window sfml-graphics sfml-audio)
+
+
+
+
+# Crea un target condivisibile per SFML
 # Copia i file .dll nella directory di output
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory
         "C:/SFML/bin"
         $<TARGET_FILE_DIR:${PROJECT_NAME}>
 )
+
+
+add_subdirectory(test)
+
+
+
