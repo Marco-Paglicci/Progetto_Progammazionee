@@ -11,6 +11,9 @@
 
 class State_CharacterSelection : public State {
 
+private:
+
+
 public:
     void handleInput(Engine& engine) override;
     void draw(Engine& engine) override;
@@ -18,6 +21,8 @@ public:
     void enter(Engine &engine) override;
 
     void exit(Engine &engine) override;
+
+    void playEffect(Engine &engine);
 };
 
 

@@ -108,7 +108,7 @@ void Room::changeEntranceColor(const string &color)  {
     auto it = colorMap.find(color);
     if (it != colorMap.end()) {
         entrance.setFillColor(it->second); // Cambia il colore del RectangleShape
-        cout << "Color changed to " << color << std::endl;
+
     } else {
         cout << "Invalid color input: " << color << std::endl;
     }

@@ -16,6 +16,19 @@ void State_StartMenu::handleInput(Engine &engine) {
         if (event.type == Event::KeyPressed) {
             if (Keyboard::isKeyPressed((Keyboard::Enter))) {
 
+                engine.soundBuffer.loadFromFile("../assets/audio/effects/menu_sound.ogg");
+                engine.ENTER.setBuffer(engine.soundBuffer);
+                engine.ENTER.play();
+
+                // Ottieni la durata del suono
+                sf::Time soundDuration = engine.ENTER.getBuffer()->getDuration();
+
+                // Aspetta finché il suono non termina
+                sf::Clock clock;
+                while (clock.getElapsedTime() < soundDuration) {
+                    // Continua a eseguire il ciclo per mantenere il programma attivo
+                }
+
                 engine.changeState(new State_CharacterSelection());
 
             }
@@ -52,12 +65,12 @@ void State_StartMenu::draw(Engine &engine) {
 
 void State_StartMenu::enter(Engine &engine) {
 
-    if (!menu_soundtrack.openFromFile("../assets/audio/soundtracks/menu_soundtrack.ogg")) {
+    if (!engine.menu_soundtrack.openFromFile("../assets/audio/soundtracks/menu_soundtrack.ogg")) {
         cout << "Errore: impossibile caricare la traccia audio del menu!" << endl;
     } else {
-        menu_soundtrack.setLoop(true); // Riproduzione in loop
-        menu_soundtrack.setVolume(100); // Volume al 50%
-        menu_soundtrack.play();        // Avvia la musica
+        engine.menu_soundtrack.setLoop(true); // Riproduzione in loop
+        engine.menu_soundtrack.setVolume(100); // Volume al 50%
+        engine.menu_soundtrack.play();        // Avvia la musica
         cout << "Playing soundtrack" << endl;
     }
 
@@ -65,5 +78,5 @@ void State_StartMenu::enter(Engine &engine) {
 
 void State_StartMenu::exit(Engine &engine) {
 
-    menu_soundtrack.stop();
+     engine.menu_soundtrack.stop();
 }

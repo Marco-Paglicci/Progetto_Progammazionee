@@ -15,9 +15,10 @@
 class State_StartMenu : public State {
 
 private:
-    Music menu_soundtrack;
+
 
     bool entry = true;
+
 
 
 
