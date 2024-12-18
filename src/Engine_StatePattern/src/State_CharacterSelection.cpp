@@ -54,3 +54,11 @@ void State_CharacterSelection::draw(Engine &engine) {
     handleInput(engine);
 
 }
+
+void State_CharacterSelection::enter(Engine &engine) {
+
+}
+
+void State_CharacterSelection::exit(Engine &engine) {
+
+}

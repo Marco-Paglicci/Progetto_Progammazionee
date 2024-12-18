@@ -73,3 +73,11 @@ void State_Playing::draw(Engine &engine) {
         engine.getWindow().display();
 
 }
+
+void State_Playing::enter(Engine &engine) {
+
+}
+
+void State_Playing::exit(Engine &engine) {
+
+}

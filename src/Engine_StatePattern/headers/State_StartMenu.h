@@ -11,11 +11,23 @@
 #include "State_CharacterSelection.h"
 
 
+
 class State_StartMenu : public State {
+
+private:
+    Music menu_soundtrack;
+
+    bool entry = true;
+
+
 
 public:
     void handleInput(Engine& engine) override;
     void draw(Engine& engine) override;
+
+    void enter(Engine &engine) override;
+
+    void exit(Engine &engine) override;
 };
 
 

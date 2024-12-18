@@ -71,3 +71,11 @@ void State_Fighting::draw(Engine &engine) {
 
 }
 
+void State_Fighting::enter(Engine &engine) {
+
+}
+
+void State_Fighting::exit(Engine &engine) {
+
+}
+
