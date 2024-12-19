@@ -163,6 +163,21 @@ public:
     Music playing_soundtrack;
     Music menu_soundtrack;
     Music play_soundtrack;
+    Music fight_soundtrack;
+
+    static void dice_sound();
+
+    static void attack_sound();
+
+    static void defend_sound();
+
+    static void special_sound();
+
+    static void special_notready_sound();
+
+    static void magicHeal_sound();
+
+    static void lowHp_sound();
 
     /*getter and setter*/
 

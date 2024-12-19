@@ -47,7 +47,7 @@ void State_Playing::draw(Engine &engine) {
             engine.getP()->getCollisionRect().intersects(engine.getR()->getBottom().getGlobalBounds()) ||
             engine.getP()->getCollisionRect().intersects(engine.getR()->getLeft().getGlobalBounds()) ||
             engine.getP()->getCollisionRect().intersects(engine.getR()->getRight().getGlobalBounds())) {
-            cout << "entrato nell'if infinito " << endl;
+
             for (const auto &wall: engine.getR()->getOuterWalls()) {
                 if (engine.getP()->getCollisionRect().intersects(wall.getGlobalBounds())) {
                     engine.getP()->Collision(engine.getP()->getCollisionDirection(wall.getGlobalBounds()));
@@ -64,12 +64,12 @@ void State_Playing::draw(Engine &engine) {
         if (!engine.getR()->getE()->isAlive() && engine.getP()->getCollisionRect().intersects((engine.getR()->getEntrance().getGlobalBounds()))) {
             engine.getWindow().clear();
             engine.setAnimatingSnake(true);
-            engine.setCurrentState(new State_AnimatingSnake());
+            engine.changeState(new State_AnimatingSnake());
         }
         if (engine.getR()->getE()->isAlive() &&   engine.getP()->getCollisionRect().intersects((engine.getR()->getEnemy().getGlobalBounds()))) {
             engine.getWindow().clear();
             playEnemySound(engine);
-            engine.setCurrentState(new State_Fighting());
+            engine.changeState(new State_Fighting());
         }
         engine.getWindow().display();
 
@@ -82,24 +82,25 @@ void State_Playing::enter(Engine &engine) {
         engine.play_soundtrack.setLoop(true); // Riproduzione in loop
         engine.play_soundtrack.setVolume(20); // Volume al 50%
         engine.play_soundtrack.play();        // Avvia la musica
-        cout << "Playing soundtrack" << endl;
+        cout << "Playing soundtrack for play mode" << endl;
     }
 }
 
 void State_Playing::exit(Engine &engine) {
-
+    engine.play_soundtrack.stop();
+    cout << "stopping soundtrack" << endl;
 }
 
 void State_Playing::playEnemySound(Engine &engine) {
 
-    engine.soundBuffer.loadFromFile("../assets/audio/effects/enemy_contact_sound.ogg");
+    engine.soundBuffer.loadFromFile("../assets/audio/effects/enemy_contact_sound_v2.ogg");
     engine.enemy_sound.setBuffer(engine.soundBuffer);
     engine.chosed.play();
 
-    // Ottieni la durata del suono
+
     Time soundDuration = engine.enemy_sound.getBuffer()->getDuration();
 
-    // Aspetta finché il suono non termina
+
     Clock clock;
     while (clock.getElapsedTime() < soundDuration) {
         // Continua a eseguire il ciclo per mantenere il programma attivo
