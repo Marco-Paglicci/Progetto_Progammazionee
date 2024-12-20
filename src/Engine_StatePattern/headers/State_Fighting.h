@@ -19,6 +19,10 @@ public:
     void handleInput(Engine& engine) override;
     void draw(Engine& engine) override;
 
+    void enter(Engine &engine) override;
+
+    void exit(Engine &engine) override;
+
     State_Fighting();
 
 protected:
@@ -27,6 +31,8 @@ protected:
     //E' un vettore che definisce le azioni eseguibili nello stato di fight
     //attraverso funzioni diverse , in questo modo possiamo scorrere il vettore
     //per identificare la specifica azione
+
+
 };
 
 #endif //PROGETTO_PROGRAMMAZIONE_STATE_FIGHTING_H

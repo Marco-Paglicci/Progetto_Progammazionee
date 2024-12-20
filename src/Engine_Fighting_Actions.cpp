@@ -14,6 +14,8 @@
 
 void Engine::attackAction(Engine &engine) {
 
+    attack_sound();
+
     getP()->setTurnCounter(getP()->getTurnCounter() + 1); //alzo il contatore per la ricarica della special
     getP()->special_attack(); //se posso ricarico la special
 
@@ -22,6 +24,8 @@ void Engine::attackAction(Engine &engine) {
     int damage = static_cast<int>(round(attack_power * (1 - (static_cast<float>(effective_armour*enemyrollD20())/100))));
 
     Engine::getR()->getE()->setArmorBoost(0);
+
+
 
     if(damage > 0)
     {
@@ -35,6 +39,8 @@ void Engine::attackAction(Engine &engine) {
 
 
     addMessage("Salute nemico = " + std::to_string(getR()->getE()->getHp()));
+
+
 
 
     //todo remove testing
@@ -54,6 +60,7 @@ void Engine::attackAction(Engine &engine) {
         cout << "You killed the evil " +  Engine::getR()->getE()->getName() << endl ;
     }else
     {
+
         enemy_turn();
     }
 
@@ -62,6 +69,8 @@ void Engine::attackAction(Engine &engine) {
 }
 
 void Engine::defendAction(Engine &engine) {
+
+    defend_sound();
 
     getP()->setTurnCounter(getP()->getTurnCounter() + 1);  //alzo il contatore per la ricarica della special
     getP()->special_attack(); //se posso ricarico la special
@@ -111,17 +120,26 @@ void Engine::knight_special()
 {
     if (!getP()->isSpecialReady()) {
         cout << "special no ready " <<endl;
-
+        getP()->special_attack();
+        special_notready_sound();
         addMessage("La tua speciale non è pronta!");
 
     }else
     {
+        getP()->setSpecialReady(false);
 
         cout << "special  ready " <<endl;
 
+        special_sound();    //Riproduce il suono per il power up
 
         addMessage("Carichi l'energia della spada");
         addMessage("PER DISTRUGGERE IL MALE !");
+
+        attack_sound();
+        attack_sound();
+        attack_sound();
+
+        //riproduce numerose volte il suono dell'attacco
 
         float attack_power  =  (static_cast<float>(Engine::getP()->getWeapon()->getPower() * (static_cast<float>(rollD20())/10))) * 2; //Raddoppia l'attacco
 
@@ -160,13 +178,20 @@ void Engine::thief_special()
 {
     if (!getP()->isSpecialReady()) {
         cout << "special no ready " <<endl;
-
+        getP()->special_attack();
+        special_notready_sound();
         addMessage("Your special attack is not ready yet!");
 
     }else
     {
+        getP()->setSpecialReady(false);
+
+        special_sound();
+
         addMessage("Diventi tuttuno con l'ombra, sei oscurità !");
         addMessage("Sei praticamente invisibile !");
+
+        defend_sound();
 
         Engine::getP()->setArmorBoost(20);  // Aggiunge un bonus di armatura (cosi alto ti rende incolpibile)
 
@@ -176,6 +201,8 @@ void Engine::thief_special()
             addMessage(  "Puoi recuperare un po di forze !");
             addMessage( "(+ " + to_string(heal) + " HP)!");
         }
+
+        attack_sound();
 
         addMessage("Attacchi dall'ombra !");
 
@@ -216,13 +243,21 @@ void Engine::mage_special() {
 
     if (!getP()->isSpecialReady()) {
         cout << "special no ready " <<endl;
-
+        getP()->special_attack();
+        special_notready_sound();
         addMessage("Your special attack is not ready yet!");
 
     }else
     {
+
+        getP()->setSpecialReady(false);
+
+        special_sound();
+
         addMessage("Concentri la tua magia su te stesso !");
         addMessage("Recuperi energia !");
+
+        magicHeal_sound();
 
         Engine::getP()->setArmorBoost(20);  // Aggiunge un bonus di armatura (cosi alto ti rende incolpibile)
 
@@ -253,6 +288,7 @@ void Engine::enemy_turn() {
     //controlla se player è ferito per il colpo di grazia
     if(getP()->getHp() <= 5)
     {
+        lowHp_sound();
         addMessage(getR()->getE()->getName() + " ti vede debole , e ti attacca feroce!");
         enemy_attack_Action();
         return;
@@ -282,6 +318,9 @@ void Engine::enemy_turn() {
 
 void Engine::enemy_attack_Action() {
 
+    attack_sound();
+
+
     float attack_power = static_cast<float>(getR()->getE()->getAttack() * (static_cast<float>(enemyrollD20()) / 10));
     int effective_armour = getP()->getArmor() + getP()->getArmorBoost();    //controlla se ho un boost alle statistiche
     int damage = static_cast<int>(round(attack_power * (1 - (static_cast<float>(effective_armour * rollD20()) / 100))));
@@ -304,7 +343,9 @@ void Engine::enemy_attack_Action() {
     getP()->setArmorBoost(0);       //Alla fine del turno avversario resetta il il boost
 
     if (Engine::getP()->getHp() <= 0) {
+        gameover_sound();
         addMessage("Sei stato sconfitto da " + getR()->getE()->getName() + "...");
+
         std::cout << "Game Over!\n";
     }
 }
@@ -312,6 +353,8 @@ void Engine::enemy_attack_Action() {
 void Engine::enemy_defend_Action() {
 
     // Incrementa temporaneamente l'armatura del nemico
+    defend_sound();
+
 
     getR()->getE()->setArmorBoost(5);
     addMessage(getR()->getE()->getName() + " si prepara al tuo attacco !");
@@ -333,6 +376,8 @@ int Engine::rollD20() {
 
     int random = 0;
 
+    dice_sound();
+
     while (clock.getElapsedTime().asSeconds() < 1.0f) {
         random = rand() % 20 + 1;
     }
@@ -353,6 +398,8 @@ int Engine::enemyrollD20()
 
     int random = 0;
 
+    dice_sound();
+
     while (clock.getElapsedTime().asSeconds() < 1.0f) {
         random = rand() % 20 + 1;
     }
@@ -365,4 +412,198 @@ int Engine::enemyrollD20()
     }
 
     return random;
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+            /*                AUDIO EFFECTS                   */
+////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+void Engine::dice_sound()
+{
+    Sound dice_thrown;
+    SoundBuffer dice_buffer;
+
+    if(!dice_buffer.loadFromFile("../assets/audio/effects/dice_sound.ogg"))
+    {
+        cout << "Errore caricamento file dice sound" <<endl;
+    }else
+    {
+        dice_thrown.setBuffer(dice_buffer);
+        dice_thrown.play();
+
+        Time soundDuration = dice_thrown.getBuffer()->getDuration();
+
+
+        Clock clock;
+        while (clock.getElapsedTime() < soundDuration) {
+            // Continua a eseguire il ciclo per mantenere il programma attivo
+        }
+    }
+
+}
+
+
+void Engine::attack_sound()
+{
+    Sound attack;
+    SoundBuffer attack_buffer;
+
+    if(!attack_buffer.loadFromFile("../assets/audio/effects/attack_sound.ogg"))
+    {
+        cout << "Errore caricamento file attack_sound" <<endl;
+    }else
+    {
+        attack.setBuffer(attack_buffer);
+        attack.play();
+
+        Time soundDuration = attack.getBuffer()->getDuration();
+
+
+        Clock clock;
+        while (clock.getElapsedTime() < soundDuration) {
+            // Continua a eseguire il ciclo per mantenere il programma attivo
+        }
+    }
+}
+
+void Engine::defend_sound() {
+
+    Sound defend;
+    SoundBuffer defend_buffer;
+
+    if(!defend_buffer.loadFromFile("../assets/audio/effects/defend_sound.ogg"))
+    {
+        cout << "Errore caricamento file attack_sound" <<endl;
+    }else
+    {
+        defend.setBuffer(defend_buffer);
+        defend.play();
+
+        Time soundDuration = defend.getBuffer()->getDuration();
+
+
+        Clock clock;
+        while (clock.getElapsedTime() < soundDuration) {
+            // Continua a eseguire il ciclo per mantenere il programma attivo
+        }
+    }
+}
+
+void Engine::special_sound() {
+    Sound special;
+    SoundBuffer special_buffer;
+
+    if(!special_buffer.loadFromFile("../assets/audio/effects/powerReady_sound_v2.ogg"))
+    {
+        cout << "Errore caricamento file attack_sound" <<endl;
+    }else
+    {
+        special.setBuffer(special_buffer);
+        special.play();
+
+        Time soundDuration = special.getBuffer()->getDuration();
+
+
+        Clock clock;
+        while (clock.getElapsedTime() < soundDuration) {
+            // Continua a eseguire il ciclo per mantenere il programma attivo
+        }
+    }
+}
+
+void Engine::special_notready_sound() {
+
+    Sound special;
+    SoundBuffer special_buffer;
+
+    if(!special_buffer.loadFromFile("../assets/audio/effects/notReady_sound.ogg"))
+    {
+        cout << "Errore caricamento file attack_sound" <<endl;
+    }else
+    {
+        special.setBuffer(special_buffer);
+        special.play();
+
+        Time soundDuration = special.getBuffer()->getDuration();
+
+
+        Clock clock;
+        while (clock.getElapsedTime() < soundDuration) {
+            // Continua a eseguire il ciclo per mantenere il programma attivo
+        }
+    }
+}
+
+
+
+void Engine::lowHp_sound() {
+
+    Sound lowHp;
+    SoundBuffer lowHp_buffer;
+
+    if(!lowHp_buffer.loadFromFile("../assets/audio/effects/lowHp_sound.ogg"))
+    {
+        cout << "Errore caricamento file attack_sound" <<endl;
+    }else
+    {
+        lowHp.setBuffer(lowHp_buffer);
+        lowHp.play();
+
+        Time soundDuration = lowHp.getBuffer()->getDuration();
+
+
+        Clock clock;
+        while (clock.getElapsedTime() < soundDuration) {
+            // Continua a eseguire il ciclo per mantenere il programma attivo
+        }
+    }
+}
+
+void Engine::magicHeal_sound() {
+
+    Sound magicHeal;
+    SoundBuffer magicHeal_buffer;
+
+    if(!magicHeal_buffer.loadFromFile("../assets/audio/effects/magicHeal_sound.ogg"))
+    {
+        cout << "Errore caricamento file attack_sound" <<endl;
+    }else
+    {
+        magicHeal.setBuffer(magicHeal_buffer);
+        magicHeal.play();
+
+        Time soundDuration = magicHeal.getBuffer()->getDuration();
+
+
+        Clock clock;
+        while (clock.getElapsedTime() < soundDuration) {
+            // Continua a eseguire il ciclo per mantenere il programma attivo
+        }
+    }
+}
+
+void Engine::gameover_sound() {
+
+    Sound gameover;
+    SoundBuffer gameover_buffer;
+
+    if(!gameover_buffer.loadFromFile("../assets/audio/effects/gameover_sound.ogg"))
+    {
+        cout << "Errore caricamento file attack_sound" <<endl;
+    }else
+    {
+        gameover.setBuffer(gameover_buffer);
+        gameover.play();
+
+        Time soundDuration = gameover.getBuffer()->getDuration();
+
+
+        Clock clock;
+        while (clock.getElapsedTime() < soundDuration) {
+            // Continua a eseguire il ciclo per mantenere il programma attivo
+        }
+    }
 }

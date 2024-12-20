@@ -107,9 +107,18 @@ void Engine::setClasse(const string &classe) {
 
 void Engine::changeState(State *newState) {
 
+    //Quando effettua un cambioi di stato , chiam le funzioni di ingresso e uscita degli stati (se implementate)
+    if(currentState)
+    {
+        currentState->exit(*this);
+        delete currentState; // Pulisce lo stato precedente
+    }
 
-    delete currentState; // Pulisce lo stato precedente
     currentState = newState;
+    if(currentState)
+    {
+        currentState->enter(*this);
+    }
 
 }
 
@@ -237,7 +246,6 @@ void Engine::class_setup() {
         P->setTexture(classe);
 
 }
-
 
 
 

@@ -12,3 +12,11 @@ void State_AnimatingSnake::draw(Engine &engine)
 {
         engine.snakeAnimation();
 }
+
+void State_AnimatingSnake::enter(Engine &engine) {
+
+}
+
+void State_AnimatingSnake::exit(Engine &engine) {
+
+}

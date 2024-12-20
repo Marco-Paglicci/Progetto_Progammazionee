@@ -64,10 +64,30 @@ void State_Fighting::draw(Engine &engine) {
     if(!engine.getR()->getE()->isAlive())
     {
         engine.getWindow().clear();
-        engine.setCurrentState(new State_Playing());
+        engine.changeState(new State_Playing());
     }
     engine.fight_window_draw();
     handleInput(engine);
 
 }
+
+void State_Fighting::enter(Engine &engine) {
+
+    if (!engine.fight_soundtrack.openFromFile("../assets/audio/soundtracks/fight_soundtrack.ogg")) {
+        cout << "Errore: impossibile caricare la traccia audio del menu!" << endl;
+    } else {
+        engine.fight_soundtrack.setLoop(true); // Riproduzione in loop
+        engine.fight_soundtrack.setVolume(10); // Volume al 50% //TODO ADJUST VOLUME
+        engine.fight_soundtrack.play();        // Avvia la musica
+        cout << "Playing soundtrack for fighting" << endl;
+    }
+
+}
+
+void State_Fighting::exit(Engine &engine) {
+
+    engine.fight_soundtrack.stop();
+}
+
+
 

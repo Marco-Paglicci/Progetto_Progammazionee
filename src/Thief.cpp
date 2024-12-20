@@ -193,9 +193,10 @@ void Thief::special_attack() {
             this->setSpecialReady(true);
         }
     }
-    if(!this->isSpecialReady())
+    if(!isSpecialReady())
     {
         cout << " SPECIAL NOT READY " << endl;
+        turn_counter = turn_counter + 1 ;
         return;
     }else
     {

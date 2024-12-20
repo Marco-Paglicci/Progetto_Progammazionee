@@ -121,6 +121,10 @@ private:
     bool cursor_position = "";
     int selectedOptionIndex = 0;
 
+
+
+
+
 public:
 
     Engine();
@@ -147,6 +151,35 @@ public:
 
     bool isAnimatingSnake() const;
     void setAnimatingSnake(bool animatingSnake);
+
+    /*audio*/
+    SoundBuffer soundBuffer;
+
+    Sound enemy_sound;
+    Sound ENTER;
+    Sound chosed;
+
+    Music chose_soundtrack;
+    Music playing_soundtrack;
+    Music menu_soundtrack;
+    Music play_soundtrack;
+    Music fight_soundtrack;
+
+    static void dice_sound();
+
+    static void attack_sound();
+
+    static void defend_sound();
+
+    static void special_sound();
+
+    static void special_notready_sound();
+
+    static void magicHeal_sound();
+
+    static void lowHp_sound();
+
+    static void gameover_sound();
 
     /*getter and setter*/
 

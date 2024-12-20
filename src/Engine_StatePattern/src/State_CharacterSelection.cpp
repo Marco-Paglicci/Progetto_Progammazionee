@@ -16,6 +16,9 @@ void State_CharacterSelection::handleInput(Engine &engine) {
                 engine.setSceltaPersonaggio(false);
                 engine.setSceltaEffettuata(true);
                 engine.class_setup();
+
+                playEffect(engine);
+
                 engine.changeState(new State_Playing());
             }
             if (Keyboard::isKeyPressed((Keyboard::Num2))) {
@@ -23,6 +26,9 @@ void State_CharacterSelection::handleInput(Engine &engine) {
                 engine.setSceltaPersonaggio(false);
                 engine.setSceltaEffettuata(true);
                 engine.class_setup();
+
+                playEffect(engine);
+
                 engine.changeState(new State_Playing());
 
             }
@@ -31,6 +37,9 @@ void State_CharacterSelection::handleInput(Engine &engine) {
                 engine.setSceltaPersonaggio(false);
                 engine.setSceltaEffettuata(true);
                 engine.class_setup();
+
+                playEffect(engine);
+
                 engine.changeState(new State_Playing());
 
             }
@@ -52,5 +61,41 @@ void State_CharacterSelection::draw(Engine &engine) {
     if (engine.isVisible())
         engine.scelta();
     handleInput(engine);
+
+}
+
+void State_CharacterSelection::enter(Engine &engine)
+{
+    if (!engine.chose_soundtrack.openFromFile("../assets/audio/soundtracks/chose_soundtrack.ogg")) {
+        cout << "Errore: impossibile caricare la traccia audio del menu!" << endl;
+    } else {
+        engine.chose_soundtrack.setLoop(false); // Riproduzione in loop
+        engine.chose_soundtrack.setVolume(100); // Volume al 50%
+        engine.chose_soundtrack.play();        // Avvia la musica
+        cout << "Playing soundtrack" << endl;
+    }
+
+}
+
+void State_CharacterSelection::exit(Engine &engine)
+{
+    engine.chose_soundtrack.stop();
+}
+
+void State_CharacterSelection::playEffect(Engine &engine) {
+
+    engine.soundBuffer.loadFromFile("../assets/audio/effects/enter_sound.ogg");
+    engine.chosed.setBuffer(engine.soundBuffer);
+    engine.chosed.play();
+
+    // Ottieni la durata del suono
+    sf::Time soundDuration = engine.chosed.getBuffer()->getDuration();
+
+    // Aspetta finché il suono non termina
+    sf::Clock clock;
+    while (clock.getElapsedTime() < soundDuration) {
+        // Continua a eseguire il ciclo per mantenere il programma attivo
+    }
+
 
 }
