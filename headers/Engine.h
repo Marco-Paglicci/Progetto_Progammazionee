@@ -139,6 +139,8 @@ public:
 
     void class_setup();
 
+    void game_over();
+
     /*state function*/
     void changeState(State* newState);
 
@@ -164,6 +166,7 @@ public:
     Music menu_soundtrack;
     Music play_soundtrack;
     Music fight_soundtrack;
+    Music gameover_soundtrack;
 
     static void dice_sound();
 

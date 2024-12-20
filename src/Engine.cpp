@@ -6,6 +6,9 @@
 #include "../headers/Engine.h"
 #include "Engine_StatePattern/headers/State_StartMenu.h"
 
+
+
+
 // Definizione dei membri statici altrimenti si creano problematiche
 //nel programma in quanto non possono essere definiti all'interno del costruttore
 //////////////////////////////////////////////////////////////////////////
@@ -55,7 +58,7 @@ Engine::Engine() {
 
 
     /*state*/
-    currentState = new State_StartMenu();
+    currentState = new State_StartMenu();  //todo remove
 
 }
 
