@@ -179,6 +179,8 @@ public:
 
     static void lowHp_sound();
 
+    static void gameover_sound();
+
     /*getter and setter*/
 
     void setClasse(const string &classe);

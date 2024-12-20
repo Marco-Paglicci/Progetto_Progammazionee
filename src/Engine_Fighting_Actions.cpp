@@ -343,7 +343,9 @@ void Engine::enemy_attack_Action() {
     getP()->setArmorBoost(0);       //Alla fine del turno avversario resetta il il boost
 
     if (Engine::getP()->getHp() <= 0) {
+        gameover_sound();
         addMessage("Sei stato sconfitto da " + getR()->getE()->getName() + "...");
+
         std::cout << "Game Over!\n";
     }
 }
@@ -574,6 +576,29 @@ void Engine::magicHeal_sound() {
         magicHeal.play();
 
         Time soundDuration = magicHeal.getBuffer()->getDuration();
+
+
+        Clock clock;
+        while (clock.getElapsedTime() < soundDuration) {
+            // Continua a eseguire il ciclo per mantenere il programma attivo
+        }
+    }
+}
+
+void Engine::gameover_sound() {
+
+    Sound gameover;
+    SoundBuffer gameover_buffer;
+
+    if(!gameover_buffer.loadFromFile("../assets/audio/effects/gameover_sound.ogg"))
+    {
+        cout << "Errore caricamento file attack_sound" <<endl;
+    }else
+    {
+        gameover.setBuffer(gameover_buffer);
+        gameover.play();
+
+        Time soundDuration = gameover.getBuffer()->getDuration();
 
 
         Clock clock;
