@@ -10,7 +10,7 @@ ZigZag_Room::ZigZag_Room(int width, int height): Room(width,height) {
 
     genera_ZigZag();
     E = EnemyFactory::createEnemy(2,2);
-
+    this->setHaveEnemy(true);
 
 }
 

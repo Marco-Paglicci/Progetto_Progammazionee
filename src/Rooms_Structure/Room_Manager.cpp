@@ -12,6 +12,12 @@ Room_Manager::Room_Manager(int width, int height) {
     roomPool.push_back(RoomFactory::createRoom(2, width, height));  // Crea ZIGZAG
     roomPool.push_back(RoomFactory::createRoom(1,width,height));    //Crea Fangs
     roomPool.push_back(RoomFactory::createRoom(3, width, height));  // Crea LONG CORRIDOR
+    roomPool.push_back(RoomFactory::createRoom(2, width, height));  // Crea ZIGZAG
+    roomPool.push_back(RoomFactory::createRoom(1,width,height));    //Crea Fangs
+    roomPool.push_back(RoomFactory::createRoom(3, width, height));  // Crea LONG CORRIDOR
+    roomPool.push_back(RoomFactory::createRoom(2, width, height));  // Crea ZIGZAG
+    roomPool.push_back(RoomFactory::createRoom(1,width,height));    //Crea Fangs
+    roomPool.push_back(RoomFactory::createRoom(3, width, height));  // Crea LONG CORRIDOR
 
 
 

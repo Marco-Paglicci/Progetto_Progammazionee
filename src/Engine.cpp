@@ -58,7 +58,7 @@ Engine::Engine() {
 
 
     /*state*/
-    currentState = new State_StartMenu();  //todo remove
+    currentState = new State_StartMenu();
 
 }
 

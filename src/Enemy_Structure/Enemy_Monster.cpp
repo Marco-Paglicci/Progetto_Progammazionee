@@ -24,7 +24,7 @@ Enemy_Monster::Enemy_Monster(int strenght,  string name, const Texture &texture,
                 break;
         case 2:
                 this->setName(name);
-                Hp = 15;
+                Hp = 1;                        //todo remove testing
                 armour = 3;
                 attack = 5;
             break;

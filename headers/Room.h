@@ -30,6 +30,7 @@ protected:
     RectangleShape entrance;
     RectangleShape exit;
     RectangleShape enemy;
+    bool haveEnemy;
 
     //objects
     EnemyFactory EF =  EnemyFactory();
@@ -81,6 +82,10 @@ public:
     int getWidth() const;
 
     void changeEntranceColor(const string& color);
+
+    bool isHaveEnemy() const;
+
+    void setHaveEnemy(bool haveEnemy);
 
 
 };

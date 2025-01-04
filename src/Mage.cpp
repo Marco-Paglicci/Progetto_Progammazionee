@@ -158,7 +158,6 @@ void Mage::special_attack() {
     if(!isSpecialReady())
     {
         cout << " SPECIAL NOT READY " << endl;
-        turn_counter = turn_counter + 1 ;
         return;
     }else
     {

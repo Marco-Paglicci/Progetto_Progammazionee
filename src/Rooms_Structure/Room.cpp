@@ -114,5 +114,13 @@ void Room::changeEntranceColor(const string &color)  {
     }
 }
 
+bool Room::isHaveEnemy() const {
+    return haveEnemy;
+}
+
+void Room::setHaveEnemy(bool haveEnemy) {
+    Room::haveEnemy = haveEnemy;
+}
+
 
 

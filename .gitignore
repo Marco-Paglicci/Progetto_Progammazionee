@@ -14,3 +14,18 @@
 /cmake-build-debug/.cmake/api/v1/reply/target-Progetto_Programmazione-Debug-9cf3d8a9d210563c0170.json
 /cmake-build-debug/CMakeFiles/clion-Debug-log.txt
 /cmake-build-debug/Testing/Temporary/LastTest.log
+
+.idea/
+cmake-build-*/
+*.iml
+
+# File generati dalla compilazione
+*.o
+*.so
+*.a
+*.out
+*.log
+
+# File specifici del sistema operativo
+.DS_Store
+Thumbs.db

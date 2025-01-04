@@ -8,6 +8,7 @@
 LongCorridor_Room::LongCorridor_Room(int width, int height) : Room(width,height) {
 
     genera_LongCorridor();
+    this->setHaveEnemy(false);
 }
 
 void LongCorridor_Room::genera_LongCorridor() {
@@ -26,8 +27,7 @@ void LongCorridor_Room::drawRoom(sf::RenderWindow &window) {
     window.draw(left);
     window.draw(right);
     window.draw(entrance);
-    window.draw(exit);
-    window.draw(enemy);
+
 
     // da rimuovere o no dipendentemente se si vogliono visualzzare i muri ( senza Texture )
 
@@ -35,7 +35,8 @@ void LongCorridor_Room::drawRoom(sf::RenderWindow &window) {
     for (const auto &wall: innerWalls) {
         window.draw(wall);
     }
-    */
+     */
+
 }
 
 unique_ptr<Room> LongCorridor_Room::clone() const {
@@ -78,6 +79,7 @@ void LongCorridor_Room::generate_InnerWalls() {
 
     Room::entrance.setSize(sf::Vector2f(20.f, 20.f));
     Room::entrance.setFillColor(sf::Color::Green);
+    //todo remove testing
     Room::entrance.setPosition(width_ - (width_ / 10), height_ / 2);
 
     cout << "Generating long Room" << endl;

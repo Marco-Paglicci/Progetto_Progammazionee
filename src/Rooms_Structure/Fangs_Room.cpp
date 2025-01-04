@@ -9,6 +9,7 @@ Fangs_Room::Fangs_Room(int width, int height) : Room(width, height) {
 
     genera_Fangs();
     E = EnemyFactory::createEnemy(1,2);
+    this->setHaveEnemy(true);
 
 }
 

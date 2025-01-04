@@ -75,6 +75,9 @@ add_executable(Progetto_Programmazione main.cpp headers/Engine.h
         headers/Enemy_Minion.h
         src/Engine_Fighting_Actions.cpp
         src/Engine_messagebox.cpp
+        src/Engine_StatePattern/src/State_GameOver.cpp
+        src/Engine_StatePattern/headers/State_GameOver.h
+        src/Engine_gameover.cpp
 
 
 )

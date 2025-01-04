@@ -18,14 +18,18 @@ void State_Playing::draw(Engine &engine) {
 
         engine.input();
 
-        if(engine.getR()->getE()->isAlive())
-        {
+    //todo rimuovi testing
+
+    if (engine.getR()->isHaveEnemy()) {
+
+        if (engine.getR()->getE()->isAlive()) {
             engine.getR()->changeEntranceColor("Transparent");
-        }else
-        {
+        } else {
             engine.getR()->changeEntranceColor("Green");
         }
-
+    } else {
+        engine.getR()->changeEntranceColor("Green");
+    }
 
         /*------CODICE PER LIMITARE IL MOVIMENTO IN ROOM------*/
 
@@ -61,6 +65,14 @@ void State_Playing::draw(Engine &engine) {
                 engine.getP()->Collision(engine.getP()->getCollisionDirection(wall.getGlobalBounds()));
             }
         }
+    //per le stanze senza un nemico all'interno
+    if (!engine.getR()->isHaveEnemy() &&
+        engine.getP()->getCollisionRect().intersects((engine.getR()->getEntrance().getGlobalBounds()))) {
+        engine.getWindow().clear();
+        engine.setAnimatingSnake(true);
+        engine.changeState(new State_AnimatingSnake());
+        }
+    //per le stanze con un nemico all'interno
         if (!engine.getR()->getE()->isAlive() && engine.getP()->getCollisionRect().intersects((engine.getR()->getEntrance().getGlobalBounds()))) {
             engine.getWindow().clear();
             engine.setAnimatingSnake(true);
@@ -80,7 +92,7 @@ void State_Playing::enter(Engine &engine) {
         cout << "Errore: impossibile caricare la traccia audio del menu!" << endl;
     } else {
         engine.play_soundtrack.setLoop(true); // Riproduzione in loop
-        engine.play_soundtrack.setVolume(20); // Volume al 50%
+        engine.play_soundtrack.setVolume(60); // Volume al 50%
         engine.play_soundtrack.play();        // Avvia la musica
         cout << "Playing soundtrack for play mode" << endl;
     }
