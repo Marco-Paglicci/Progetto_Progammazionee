@@ -37,6 +37,9 @@ Enemy_Minion::Enemy_Minion(int strenght,  string name, const Texture &texture, c
 
     sprite.setTexture(texture);
     sprite.setScale(2.7, 3);
+    sprite_FW.setTexture(texture_FW);
+    sprite_FW.setScale(5,5);
+    sprite_FW.setPosition(500,0);
 }
 
 

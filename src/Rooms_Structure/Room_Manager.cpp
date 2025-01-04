@@ -10,6 +10,7 @@ Room_Manager::Room_Manager(int width, int height) {
 
 
     roomPool.push_back(RoomFactory::createRoom(2, width, height));  // Crea ZIGZAG
+    /*
     roomPool.push_back(RoomFactory::createRoom(1,width,height));    //Crea Fangs
     roomPool.push_back(RoomFactory::createRoom(3, width, height));  // Crea LONG CORRIDOR
     roomPool.push_back(RoomFactory::createRoom(2, width, height));  // Crea ZIGZAG
@@ -18,30 +19,29 @@ Room_Manager::Room_Manager(int width, int height) {
     roomPool.push_back(RoomFactory::createRoom(2, width, height));  // Crea ZIGZAG
     roomPool.push_back(RoomFactory::createRoom(1,width,height));    //Crea Fangs
     roomPool.push_back(RoomFactory::createRoom(3, width, height));  // Crea LONG CORRIDOR
-
+    */
 
 
     //todo fix : a causa delle dimensioni ridotte dle RoomPool sceglie sempre la prima stanza , aggiungi altre staze
 }
 
 unique_ptr<Room> Room_Manager::getRandomRoom() {
-
     if (roomPool.empty()) return nullptr;
 
-    cout << "Dimensione roomPool: " << roomPool.size() << endl;
+    std::cout << "Dimensione roomPool: " << roomPool.size() << std::endl;
 
+    // Inizializza il seme per la generazione casuale una sola volta
+    static bool initialized = false;
+    if (!initialized) {
+        srand(std::time(nullptr));
+        initialized = true;
+    }
 
-    //sceglie un indice casuale all'interno del vettore
-    random_device rd;
-    mt19937 gen(rd());
-    uniform_int_distribution<> distr(0, roomPool.size() - 1);
+    // Sceglie un indice casuale all'interno del vettore
+    int randomIndex = rand() % roomPool.size();
+    std::cout << "Indice casuale scelto: " << randomIndex << std::endl;
 
-    int randomIndex = distr(gen);  // Genera l'indice casuale
-    cout << "Indice casuale scelto: " << randomIndex << endl;
-
-
-    return roomPool[randomIndex]->clone();  // Restituisce una stanza casuale
-
+    return roomPool[randomIndex]->clone(); // Restituisce una stanza casuale
 }
 
 void Room_Manager::addRoom(int width, int height, int type)

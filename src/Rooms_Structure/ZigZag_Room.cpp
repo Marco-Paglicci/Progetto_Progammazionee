@@ -31,15 +31,17 @@ void ZigZag_Room::drawRoom(sf::RenderWindow &window) {
     window.draw(right);
     window.draw(entrance);
     window.draw(exit);
-    window.draw(enemy);
 
-    // da rimuovere o no dipendentemente se si vogliono visualzzare i muri ( senza Texture )
-    //todo : far visualizzzare ENEMY
+
     E->setX(enemy.getPosition().x-10);
     E->setY(enemy.getPosition().y-10);
 
-    E->drawEnemy(window);
+    if(E->isAlive())
+    {
+        E->drawEnemy(window);
+    }
 
+    // da rimuovere o no dipendentemente se si vogliono visualzzare i muri ( senza Texture )
     /*
     for (const auto &wall: innerWalls) {
         window.draw(wall);
