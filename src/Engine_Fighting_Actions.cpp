@@ -54,10 +54,13 @@ void Engine::attackAction(Engine &engine) {
      * il dannop invece si riportas il valore numerico , arrotondando
      * all'intero più vicino per comodità */
 
+
     if (getR()->getE()->getHp() <= 0) {
         getR()->getE()->setIsAlive(false);
         addMessage("Hai ucciso  " + getR()->getE()->getName() + "!");
         cout << "You killed the evil " +  Engine::getR()->getE()->getName() << endl ;
+        clearMessages();
+
     }else
     {
 

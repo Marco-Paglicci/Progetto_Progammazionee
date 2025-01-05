@@ -42,5 +42,12 @@ void Engine::drawMessages(sf::RenderWindow& window) {
     if (!messages.empty()) {
         window.draw(messageBox);
     }
+
+
+}
+void Engine::clearMessages() {
+    while (!messages.empty()) {
+        messages.pop();
+    }
 }
 

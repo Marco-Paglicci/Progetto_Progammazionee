@@ -63,9 +63,9 @@ void State_Fighting::draw(Engine &engine) {
 
     if(!engine.getR()->getE()->isAlive())
     {
-        // todo remove testing
+
         engine.getWindow().clear();
-        cout << "il nemico è morto " <<endl;
+
         engine.changeState(new State_Playing());
     }else {
         engine.fight_window_draw();

@@ -18,7 +18,7 @@ void State_Playing::draw(Engine &engine) {
 
         engine.input();
 
-    //todo rimuovi testing
+
 
     if (engine.getR()->isHaveEnemy()) {
 

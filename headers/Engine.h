@@ -269,7 +269,12 @@ public:
     static void addMessage(const std::string& message);
     void updateMessages();
     void drawMessages(sf::RenderWindow& window);
+    static void clearMessages();
 
+
+    static const queue<std::string> &getMessages();
+
+    static void setMessages(const queue<std::string> &messages);
 
 
 };

@@ -15,6 +15,7 @@ private:
 
     //vettore che contiene le varie stanze disponibili
     vector<unique_ptr<Room>> roomPool;
+    static bool initialized ;
 
 public:
 

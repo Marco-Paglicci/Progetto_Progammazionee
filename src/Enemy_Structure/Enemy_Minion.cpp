@@ -33,6 +33,7 @@ Enemy_Minion::Enemy_Minion(int strenght,  string name, const Texture &texture, c
             break;
     }
 
+
     cout << "forza = " + to_string(strenght) + " nome = " + this->getName() <<endl;
 
     sprite.setTexture(texture);

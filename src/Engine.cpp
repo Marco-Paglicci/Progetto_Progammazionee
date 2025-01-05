@@ -250,6 +250,14 @@ void Engine::class_setup() {
 
 }
 
+const queue<std::string> &Engine::getMessages() {
+    return messages;
+}
+
+void Engine::setMessages(const queue<std::string> &messages) {
+    Engine::messages = messages;
+}
+
 
 
 
