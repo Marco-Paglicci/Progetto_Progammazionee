@@ -8,7 +8,7 @@ Enemy_Boss::Enemy_Boss(int strenght,  string name, const Texture &texture, const
                                                                                                               texture,texture_FW) {
 
     Hp = 40;
-    armour = 7;
+    armour = 5;
     attack = 10;
 
     this->setName(name);

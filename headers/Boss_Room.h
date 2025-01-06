@@ -13,7 +13,7 @@ class Boss_Room : public Room {
 
 protected:
 
-    bool boss_room = true;
+
 
 public:
 
@@ -26,9 +26,7 @@ public:
 
     unique_ptr<Room> clone() const  override;
 
-    bool isBossRoom() const;
-
-    void setBossRoom(bool bossRoom);
+    bool isBossRoom() const override;
 
 };
 

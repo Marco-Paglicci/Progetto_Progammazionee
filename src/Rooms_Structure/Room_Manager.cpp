@@ -22,7 +22,7 @@ Room_Manager::Room_Manager(int width, int height) {
 
 
 
-
+    /*
     // Crea stanze casuali
     for (int i = 0; i < num_rooms - 1; ++i) {
         int randomType = 1 + (rand() % 3); // Sceglie un tipo casuale tra 1, 2, e 3
@@ -31,7 +31,7 @@ Room_Manager::Room_Manager(int width, int height) {
         cout << "Room created with id: " + to_string(room->getId()) << endl;
         roomPool.push_back(move(room));
     }
-
+    */
 
    //Stanza finale
     roomPool.push_back(RoomFactory::createRoom(4, width, height));

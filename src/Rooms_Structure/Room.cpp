@@ -130,5 +130,13 @@ void Room::setId(int id) {
     Room::id = id;
 }
 
+bool Room::isBossRoom() const {
+    return boss_room;
+}
+
+void Room::setBossRoom(bool bossRoom) {
+    boss_room = bossRoom;
+}
+
 
 

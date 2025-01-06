@@ -141,6 +141,8 @@ public:
 
     void game_over();
 
+    void win();
+
     /*state function*/
     void changeState(State* newState);
 

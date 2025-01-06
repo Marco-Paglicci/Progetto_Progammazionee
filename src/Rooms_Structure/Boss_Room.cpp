@@ -9,6 +9,7 @@ Boss_Room::Boss_Room(int width, int height) : Room(width, height) {
     genera_Boss_Room();
     E = EnemyFactory::createEnemy(3,3);
     this->setHaveEnemy(true);
+    this->setBossRoom(true);
 
 }
 
@@ -60,9 +61,6 @@ unique_ptr<Room> Boss_Room::clone() const {
 }
 
 bool Boss_Room::isBossRoom() const {
-    return boss_room;
+    return true;
 }
 
-void Boss_Room::setBossRoom(bool bossRoom) {
-    boss_room = bossRoom;
-}

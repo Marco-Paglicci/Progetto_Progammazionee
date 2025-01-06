@@ -82,6 +82,9 @@ add_executable(Progetto_Programmazione main.cpp headers/Engine.h
         headers/Boss_Room.h
         src/Enemy_Structure/Enemy_Boss.cpp
         headers/Enemy_Boss.h
+        src/Engine_StatePattern/src/State_Win.cpp
+        src/Engine_StatePattern/headers/State_Win.h
+        src/Engine_Win.cpp
 
 
 )

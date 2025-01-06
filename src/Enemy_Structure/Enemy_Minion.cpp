@@ -15,20 +15,20 @@ Enemy_Minion::Enemy_Minion(int strenght,  string name, const Texture &texture, c
     switch (strenght) {
         case 1:
             this->setName(name + " ferito") ;
-            Hp = 5;
+            Hp = 10;
             armour = 1;
             attack = 2;
             break;
         case 2:
             this->setName(name);
             Hp = 10 ;
-            armour = 2;
+            armour = 1;
             attack = 3;
             break;
         case 3:
             this->setName(name + " infuriato");
             Hp = 15;
-            armour = 0;
+            armour = 1;
             attack = 5;
             break;
     }

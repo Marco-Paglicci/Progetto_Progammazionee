@@ -5,6 +5,8 @@
 #include <iostream>
 #include "../headers/State_Fighting.h"
 #include "../headers/State_Playing.h"
+#include "../headers/State_Win.h"
+#include "../headers/State_GameOver.h"
 
 
 State_Fighting::State_Fighting() {
@@ -63,11 +65,20 @@ void State_Fighting::draw(Engine &engine) {
 
     if(!engine.getR()->getE()->isAlive())
     {
-
-        engine.getWindow().clear();
-
-        engine.changeState(new State_Playing());
+        if(engine.getR()->isBossRoom() )
+        {
+            engine.getWindow().clear();
+            engine.changeState(new State_Win());
+        }else{
+            engine.getWindow().clear();
+            engine.changeState(new State_Playing());
+        }
     }else {
+        if(engine.getP()->getHp() <= 0)
+        {
+            engine.getWindow().clear();
+            engine.changeState(new State_GameOver());
+        }
         engine.fight_window_draw();
         handleInput(engine);
     }

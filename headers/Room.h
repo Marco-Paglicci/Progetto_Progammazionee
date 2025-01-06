@@ -33,6 +33,7 @@ protected:
     RectangleShape exit;
     RectangleShape enemy;
     bool haveEnemy;
+    bool boss_room = false;
 
     //objects
     EnemyFactory EF =  EnemyFactory();
@@ -92,6 +93,12 @@ public:
     int getId() const;
 
     void setId(int id);
+
+    virtual bool isBossRoom() const;
+
+    void setBossRoom(bool bossRoom);
+
+
 };
 
 
