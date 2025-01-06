@@ -7,7 +7,7 @@
 Boss_Room::Boss_Room(int width, int height) : Room(width, height) {
 
     genera_Boss_Room();
-    E = EnemyFactory::createEnemy(3,3); // todo implementare boss enemy type
+    E = EnemyFactory::createEnemy(3,3);
     this->setHaveEnemy(true);
 
 }
@@ -19,6 +19,20 @@ void Boss_Room::genera_Boss_Room() {
 }
 
 void Boss_Room::drawRoom(RenderWindow &window) {
+
+    window.draw(background_image);
+    window.draw(top);
+    window.draw(bottom);
+    window.draw(left);
+    window.draw(right);
+
+    E->setX(enemy.getPosition().x-10);
+    E->setY(enemy.getPosition().y-10);
+
+    if(E->isAlive())
+    {
+        E->drawEnemy(window);
+    }
 
 }
 
@@ -37,10 +51,18 @@ void Boss_Room::generate_InnerWalls() {
 
     Room::enemy.setSize(sf::Vector2f(60.f, 60.f));
     Room::enemy.setFillColor(sf::Color::Red);
-    Room::enemy.setPosition(width_ / 2 -20, (height_ / 2)-20);
+    Room::enemy.setPosition(width_ / 2 -20, (height_ / 2) + 50 );
 
 }
 
 unique_ptr<Room> Boss_Room::clone() const {
     return make_unique<Boss_Room>(width_,height_);;
+}
+
+bool Boss_Room::isBossRoom() const {
+    return boss_room;
+}
+
+void Boss_Room::setBossRoom(bool bossRoom) {
+    boss_room = bossRoom;
 }

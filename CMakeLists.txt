@@ -80,6 +80,8 @@ add_executable(Progetto_Programmazione main.cpp headers/Engine.h
         src/Engine_gameover.cpp
         src/Rooms_Structure/Boss_Room.cpp
         headers/Boss_Room.h
+        src/Enemy_Structure/Enemy_Boss.cpp
+        headers/Enemy_Boss.h
 
 
 )

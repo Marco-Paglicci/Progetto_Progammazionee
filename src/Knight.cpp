@@ -16,7 +16,7 @@ Knight::Knight(float x, float y, float size, sf::RenderWindow &window) : Persona
     this->setTurnCounter(0);
     this->setSpecialRefresh(3);
 
-    unique_ptr<Treasure> treasure = TreasureFactory::createWeapon("Sword",5);
+    unique_ptr<Treasure> treasure = TreasureFactory::createWeapon("Sword",999); //TODO RIMUOVERE TESTING FORZA ESAGERATA
     auto* weaponPtr = dynamic_cast<Weapon*>(treasure.get());
     if(weaponPtr)
     {

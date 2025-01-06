@@ -26,7 +26,9 @@ public:
 
     unique_ptr<Room> clone() const  override;
 
+    bool isBossRoom() const;
 
+    void setBossRoom(bool bossRoom);
 
 };
 

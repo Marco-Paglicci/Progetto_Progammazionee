@@ -6,6 +6,7 @@
 #include <random>
 #include "../../headers/EnemyFactory.h"
 #include "../../headers/Enemy_Minion.h"
+#include "../../headers/Enemy_Boss.h"
 
 //La definizione precedente al costruttore è necessaria per evitare problemi
 //dato che gli elementi sono definiti come statici , questo codice aggiuntivo permetto al file.cpp
@@ -19,8 +20,11 @@ vector<Texture> EnemyFactory::monster_texture;
 vector<Texture> EnemyFactory::monster_textureFW;
 vector<Texture> EnemyFactory::minion_texture;
 vector<Texture> EnemyFactory::minion_textureFW;
+vector<Texture> EnemyFactory::boss_texture;
+vector<Texture> EnemyFactory::boss_textureFW;
 Texture EnemyFactory::enemy_Texture;
 Texture EnemyFactory::enemy_FW_Texture;
+;
 
 
 //Definisco prematuramente la variabile dedicata all'operatore logico causale
@@ -57,6 +61,11 @@ EnemyFactory::EnemyFactory() {
 
             };
 
+    vector<string> boss_filenames =
+            {
+                    "../assets/enemy_texture/enemy_boss/giovanni.png"
+            };
+
     vector<string> monsters_FW_fileNames =
             {
                     "../assets/enemy_texture/monster_FW/ombra_FW.png",
@@ -75,6 +84,11 @@ EnemyFactory::EnemyFactory() {
                     "../assets/enemy_texture/minion_FW/sentinella_FW.png",
                     "../assets/enemy_texture/minion_FW/bruto_FW.png"
 
+            };
+
+    vector<string> boss_FW_filenames =
+            {
+                    "../assets/enemy_texture/enemy_boss_FW/boss_FW.png"
             };
 
     //carica le texture dai file su vettori di texture, si utilizza load from file e l'apposito ciclo
@@ -106,6 +120,18 @@ EnemyFactory::EnemyFactory() {
         }
     }
 
+    for(const auto& fileName : boss_filenames)
+    {
+        Texture texture;
+        if(texture.loadFromFile(fileName))
+        {
+            boss_texture.push_back(texture);
+
+        }else
+        {
+            cout<<"Errore caricamento texture" + fileName << endl;
+        }
+    }
 
     for(const auto& fileName : monsters_FW_fileNames)
     {
@@ -132,6 +158,19 @@ EnemyFactory::EnemyFactory() {
         }
     }
 
+    for(const auto& fileName : boss_FW_filenames)
+    {
+        Texture texture;
+        if(texture.loadFromFile(fileName))
+        {
+            boss_textureFW.push_back(texture);
+
+        }else
+        {
+            cout<<"Errore caricamento texture" + fileName << endl;
+        }
+    }
+
 
 }
 
@@ -147,7 +186,7 @@ unique_ptr<Enemy> EnemyFactory::createEnemy(int enemyType, int strenght) {
         case 2:
             return make_unique<Enemy_Minion>(strenght, selectName(enemyType),enemy_Texture,enemy_FW_Texture);
         case 3:
-            //return make_unique<LongCorridor_Room>(width, height);
+            return make_unique<Enemy_Boss>(strenght, selectName(enemyType),enemy_Texture,enemy_FW_Texture);
         default:
             cout << "Enemy type not recognized!" << std::endl;
             return nullptr;
@@ -173,6 +212,16 @@ string EnemyFactory::selectName(int enemyType) {
             enemy_Texture = minion_texture[i];
             enemy_FW_Texture = minion_textureFW[i];
             cout << "Creating minion, index : "  + to_string(i) + " name : " + enemy_name <<endl;
+            break;
+
+        case 3:
+            enemy_name = "Paolo";
+            enemy_Texture = boss_texture[0];
+            enemy_FW_Texture = boss_textureFW[0];
+            cout << "Creating boss , name : " + enemy_name <<endl;
+            break;
+        default:
+            cout << "Enemy type not recognized!" << std::endl;
             break;
 
     }
