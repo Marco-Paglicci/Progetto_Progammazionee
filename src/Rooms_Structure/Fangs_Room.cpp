@@ -98,7 +98,7 @@ void Fangs_Room::generate_InnerWalls() {
     Room::entrance.setFillColor(sf::Color::Green);
     Room::entrance.setPosition(width_ - (width_ / 10), height_ / 2);
 
-    //TODO remove test enemy
+
     //crea il trigger per avviare il combattimento
     Room::enemy.setSize(sf::Vector2f(60.f, 60.f));
     Room::enemy.setFillColor(sf::Color::Red);

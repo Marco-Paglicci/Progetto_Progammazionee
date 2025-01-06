@@ -102,6 +102,7 @@ void Engine::fight_window_draw()
     if( Engine::getR() != nullptr && Engine::getR()->getE() != nullptr )
     {
         enemyNameText.setString(Engine::getR()->getE()->getName());  // Nome del nemico
+        cout << "Enemy name: " + Engine::getR()->getE()->getName() << endl;
 
     }else
     {

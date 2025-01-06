@@ -122,5 +122,13 @@ void Room::setHaveEnemy(bool haveEnemy) {
     Room::haveEnemy = haveEnemy;
 }
 
+int Room::getId() const {
+    return id;
+}
+
+void Room::setId(int id) {
+    Room::id = id;
+}
+
 
 

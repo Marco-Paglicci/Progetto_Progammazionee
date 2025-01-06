@@ -21,6 +21,8 @@ protected:
     int width_;
     int height_;
 
+    int id;
+
     //pareti Esterne e Interne
     RectangleShape top, bottom, left, right;
     vector<sf::RectangleShape> innerWalls;
@@ -87,7 +89,9 @@ public:
 
     void setHaveEnemy(bool haveEnemy);
 
+    int getId() const;
 
+    void setId(int id);
 };
 
 

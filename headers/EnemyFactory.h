@@ -17,17 +17,19 @@ private:
     static Texture enemy_Texture;
     static Texture enemy_FW_Texture;
 
+
     static vector<Texture> monster_texture;
     static vector<Texture> minion_texture;
+    static vector<Texture> boss_texture;
 
     static vector<Texture> monster_textureFW;
     static vector<Texture> minion_textureFW;
-
+    static vector<Texture> boss_textureFW;
 
 
     static vector<string> monster_names ;
     static vector<string> minions_names ;
- //   static vector<string> boss_names;
+ //  static vector<string> boss_names;
 
 
 public:

@@ -51,6 +51,8 @@ Engine::Engine() {
     P = make_unique<Personaggio>(100, 200, 30, window);
 
     //stanza e variabili di appoggio per il suo funzionamento
+    int num_rooms = RM.getRoompoolSize();
+    cout << "Numero di stanze generate : " + to_string(num_rooms) << endl;
     R = RM.getRandomRoom();
     if (R == nullptr) {
         cout << "errore! Engine : getRandomRoom " << endl;

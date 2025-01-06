@@ -28,4 +28,6 @@ cmake-build-*/
 
 # File specifici del sistema operativo
 .DS_Store
-Thumbs.db
+Thumbs.db!/test/
+!/test/lib/
+!/cmake-build-debug/

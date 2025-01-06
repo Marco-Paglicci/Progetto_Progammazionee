@@ -79,7 +79,7 @@ void State_Fighting::enter(Engine &engine) {
         cout << "Errore: impossibile caricare la traccia audio del menu!" << endl;
     } else {
         engine.fight_soundtrack.setLoop(true); // Riproduzione in loop
-        engine.fight_soundtrack.setVolume(60); // Volume al 50% //TODO ADJUST VOLUME
+        engine.fight_soundtrack.setVolume(60); // Volume al 50%
         engine.fight_soundtrack.play();        // Avvia la musica
         cout << "Playing soundtrack for fighting" << endl;
     }

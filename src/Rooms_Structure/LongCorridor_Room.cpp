@@ -79,7 +79,6 @@ void LongCorridor_Room::generate_InnerWalls() {
 
     Room::entrance.setSize(sf::Vector2f(20.f, 20.f));
     Room::entrance.setFillColor(sf::Color::Green);
-    //todo remove testing
     Room::entrance.setPosition(width_ - (width_ / 10), height_ / 2);
 
     cout << "Generating long Room" << endl;
