@@ -6,26 +6,34 @@
 #include <iostream>
 #include "../../headers/Room_Manager.h"
 
+bool Room_Manager::initialized = false;
+
 Room_Manager::Room_Manager(int width, int height) {
 
-     initialized = false;
     if (!initialized) {
         srand(std::time(nullptr));
         initialized = true;
     }
 
     int num_rooms = 5 + (rand() % 5);
+    roompool_size = num_rooms;
 
     cout << "Numero di stanze generate : " + to_string(num_rooms) << endl;
 
     // Crea stanze casuali
     for (int i = 0; i < num_rooms - 1; ++i) {
         int randomType = 1 + (rand() % 3); // Sceglie un tipo casuale tra 1, 2, e 3
-        roomPool.push_back(RoomFactory::createRoom(randomType, width, height));
+        auto room = RoomFactory::createRoom(randomType, width, height);
+        room->setId(i);
+        //todo rimuovere test
+        cout << "Room created with id: " + to_string(room->getId()) << endl;
+        roomPool.push_back(move(room));
     }
 
     //todo crea nuovo tipo di stanza che identifica la stanza finale su RoomFactory;
     //todo fix : a causa delle dimensioni ridotte dle RoomPool sceglie sempre la prima stanza , aggiungi altre staze
+
+
 }
 
 unique_ptr<Room> Room_Manager::getRandomRoom() {
@@ -56,4 +64,12 @@ void Room_Manager::addRoom_Pointer(unique_ptr<Room> r) {
 
     roomPool.push_back(std::move(r));
 
+}
+
+int Room_Manager::getRoompoolSize() const {
+    return roompool_size;
+}
+
+void Room_Manager::setRoompoolSize(int roompoolSize) {
+    roompool_size = roompoolSize;
 }

@@ -17,6 +17,9 @@ private:
     vector<unique_ptr<Room>> roomPool;
     static bool initialized ;
 
+
+    int roompool_size;
+
 public:
 
     Room_Manager(int width, int height);
@@ -26,6 +29,11 @@ public:
     void addRoom(int width, int height,int type);
 
     void addRoom_Pointer(unique_ptr<Room>);
+
+    int getRoompoolSize() const;
+
+    void setRoompoolSize(int roompoolSize);
+
 
 };
 
