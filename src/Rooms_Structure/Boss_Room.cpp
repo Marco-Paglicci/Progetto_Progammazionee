@@ -51,7 +51,7 @@ void Boss_Room::generate_InnerWalls() {
 
     Room::enemy.setSize(sf::Vector2f(60.f, 60.f));
     Room::enemy.setFillColor(sf::Color::Red);
-    Room::enemy.setPosition(width_ / 2 -20, (height_ / 2) + 50 );
+    Room::enemy.setPosition(width_ / 2 - 30, (height_ / 2) -50 );
 
 }
 

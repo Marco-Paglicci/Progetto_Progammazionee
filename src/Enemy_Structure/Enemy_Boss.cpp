@@ -11,6 +11,8 @@ Enemy_Boss::Enemy_Boss(int strenght,  string name, const Texture &texture, const
     armour = 7;
     attack = 10;
 
+    this->setName(name);
+
     sprite.setTexture(texture);
     sprite.setScale(2.7, 3);
     sprite_FW.setTexture(texture_FW);

@@ -43,7 +43,7 @@ void Engine::attackAction(Engine &engine) {
 
 
 
-    //todo remove testing
+
     cout <<  "Weapon Attack :" + to_string(Engine::getP()->getWeapon()->getPower()) << endl ;
     cout << "Attack with " + to_string(attack_power) + " power !" << endl ;
     cout << "you hit ! Dealing  " + to_string(damage) + " damage  !" << endl ;

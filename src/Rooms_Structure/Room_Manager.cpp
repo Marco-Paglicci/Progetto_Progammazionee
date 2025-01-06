@@ -31,11 +31,9 @@ Room_Manager::Room_Manager(int width, int height) {
         cout << "Room created with id: " + to_string(room->getId()) << endl;
         roomPool.push_back(move(room));
     }
-     */
+    */
 
-    //todo crea nuovo tipo di stanza che identifica la stanza finale su RoomFactory;
-    //todo fix : a causa delle dimensioni ridotte dle RoomPool sceglie sempre la prima stanza , aggiungi altre staze
-    //Stanza finale
+   //Stanza finale
     roomPool.push_back(RoomFactory::createRoom(4, width, height));
 
 
