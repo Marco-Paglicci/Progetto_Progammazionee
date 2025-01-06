@@ -6,9 +6,11 @@
 #include <iostream>
 #include "../../headers/Room_Manager.h"
 
+bool Room_Manager::initialized = false;
+
 Room_Manager::Room_Manager(int width, int height) {
 
-     initialized = false;
+
     if (!initialized) {
         srand(std::time(nullptr));
         initialized = true;

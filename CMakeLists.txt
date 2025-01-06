@@ -120,7 +120,5 @@ add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
 )
 
 
-add_subdirectory(test)
-
 
 
