@@ -25,6 +25,8 @@ cmake-build-*/
 *.a
 *.out
 *.log
+*~
+
 
 # File specifici del sistema operativo
 .DS_Store
