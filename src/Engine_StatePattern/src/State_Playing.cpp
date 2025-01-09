@@ -88,7 +88,7 @@ void State_Playing::draw(Engine &engine) {
 }
 
 void State_Playing::enter(Engine &engine) {
-    if (!engine.play_soundtrack.openFromFile("../assets/audio/soundtracks/play_soundtrack.ogg")) {
+    if (!engine.play_soundtrack.openFromFile("./assets/audio/soundtracks/play_soundtrack.ogg")) {
         cout << "Errore: impossibile caricare la traccia audio del menu!" << endl;
     } else {
         engine.play_soundtrack.setLoop(true); // Riproduzione in loop
@@ -105,7 +105,7 @@ void State_Playing::exit(Engine &engine) {
 
 void State_Playing::playEnemySound(Engine &engine) {
 
-    engine.soundBuffer.loadFromFile("../assets/audio/effects/enemy_contact_sound_v2.ogg");
+    engine.soundBuffer.loadFromFile("./assets/audio/effects/enemy_contact_sound_v2.ogg");
     engine.enemy_sound.setBuffer(engine.soundBuffer);
     engine.chosed.play();
 

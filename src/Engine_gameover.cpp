@@ -10,7 +10,7 @@ void Engine::game_over() {
     window.clear(sf::Color::Black);
 
     Font font;
-    font.loadFromFile("../assets/Thor.ttf");
+    font.loadFromFile("./assets/Thor.ttf");
     Text text;
     text.setFont(font);
     text.setCharacterSize(100);
@@ -18,7 +18,7 @@ void Engine::game_over() {
     text.setStyle(sf::Text::Bold);
 
     Font font2;
-    font2.loadFromFile("../assets/spqri.ttf");
+    font2.loadFromFile("./assets/spqri.ttf");
     Text subtext;
     subtext.setFont(font2);
     subtext.setCharacterSize(22);

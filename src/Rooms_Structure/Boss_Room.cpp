@@ -44,7 +44,7 @@ void Boss_Room::generate_InnerWalls() {
 
     //svuota innerWalls dai muri precedenti e ne crea nuovi
     innerWalls.clear();
-    background_texture.loadFromFile("../assets/background/background_BOSS.png");
+    background_texture.loadFromFile("./assets/background/background_BOSS.png");
     background_image.setTexture(background_texture);
     background_image.setScale(4, 4);
 

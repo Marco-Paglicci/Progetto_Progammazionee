@@ -16,7 +16,7 @@
 
 
 void Engine::initMessageBox() {
-    if (!font.loadFromFile("../assets/Thor.ttf")) {
+    if (!font.loadFromFile("./assets/Thor.ttf")) {
         throw std::runtime_error("Font not loaded!");
     }
     messageBox.setFont(font);

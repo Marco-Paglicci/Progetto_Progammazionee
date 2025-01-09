@@ -10,7 +10,7 @@ void Engine::menu() {
     window.clear(sf::Color::Black);
 
     sf::Font font;
-    font.loadFromFile("../assets/Thor.ttf");
+    font.loadFromFile("./assets/Thor.ttf");
     sf::Text text;
     text.setFont(font);
     text.setCharacterSize(50);
@@ -18,7 +18,7 @@ void Engine::menu() {
     text.setStyle(sf::Text::Bold);
 
     sf::Font font2;
-    font2.loadFromFile("../assets/spqri.ttf");
+    font2.loadFromFile("./assets/spqri.ttf");
     sf::Text text2;
     text2.setFont(font2);
     text2.setCharacterSize(30);

@@ -27,7 +27,7 @@ Engine::Engine() {
     window.setFramerateLimit(FPS);
 
     /*texture and background*/
-    background.loadFromFile("../assets/background/background.png");
+    background.loadFromFile("./assets/background/background.png");
     sprite.setTexture(background);
     sprite.setScale(4, 4);
 

@@ -16,7 +16,7 @@ void State_StartMenu::handleInput(Engine &engine) {
         if (event.type == Event::KeyPressed) {
             if (Keyboard::isKeyPressed((Keyboard::Enter))) {
 
-                engine.soundBuffer.loadFromFile("../assets/audio/effects/menu_sound.ogg");
+                engine.soundBuffer.loadFromFile("./assets/audio/effects/menu_sound.ogg");
                 engine.ENTER.setBuffer(engine.soundBuffer);
                 engine.ENTER.play();
 
@@ -65,7 +65,7 @@ void State_StartMenu::draw(Engine &engine) {
 
 void State_StartMenu::enter(Engine &engine) {
 
-    if (!engine.menu_soundtrack.openFromFile("../assets/audio/soundtracks/menu_soundtrack.ogg")) {
+    if (!engine.menu_soundtrack.openFromFile("./assets/audio/soundtracks/menu_soundtrack.ogg")) {
         cout << "Errore: impossibile caricare la traccia audio del menu!" << endl;
     } else {
         engine.menu_soundtrack.setLoop(true); // Riproduzione in loop

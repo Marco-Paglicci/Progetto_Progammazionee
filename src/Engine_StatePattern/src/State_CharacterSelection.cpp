@@ -66,7 +66,7 @@ void State_CharacterSelection::draw(Engine &engine) {
 
 void State_CharacterSelection::enter(Engine &engine)
 {
-    if (!engine.chose_soundtrack.openFromFile("../assets/audio/soundtracks/chose_soundtrack.ogg")) {
+    if (!engine.chose_soundtrack.openFromFile("./assets/audio/soundtracks/chose_soundtrack.ogg")) {
         cout << "Errore: impossibile caricare la traccia audio del menu!" << endl;
     } else {
         engine.chose_soundtrack.setLoop(false); // Riproduzione in loop
@@ -84,7 +84,7 @@ void State_CharacterSelection::exit(Engine &engine)
 
 void State_CharacterSelection::playEffect(Engine &engine) {
 
-    engine.soundBuffer.loadFromFile("../assets/audio/effects/enter_sound.ogg");
+    engine.soundBuffer.loadFromFile("./assets/audio/effects/enter_sound.ogg");
     engine.chosed.setBuffer(engine.soundBuffer);
     engine.chosed.play();
 

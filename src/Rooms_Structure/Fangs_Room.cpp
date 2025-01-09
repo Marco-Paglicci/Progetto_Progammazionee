@@ -63,7 +63,7 @@ void Fangs_Room::generate_InnerWalls() {
 
     //svuota innerWalls dai muri precedenti e ne crea nuovi
     innerWalls.clear();
-    background_texture.loadFromFile("../assets/background/background_FANGS.png");
+    background_texture.loadFromFile("./assets/background/background_FANGS.png");
     background_image.setTexture(background_texture);
     background_image.setScale(4, 4);
 

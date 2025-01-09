@@ -54,7 +54,7 @@ void LongCorridor_Room::generate_InnerWalls() {
 
     //svuota innerWalls dai muri precedenti e ne crea nuovi
     innerWalls.clear();
-    background_texture.loadFromFile("../assets/background/LONG_CORRIDOR.png");
+    background_texture.loadFromFile("./assets/background/LONG_CORRIDOR.png");
     background_image.setTexture(background_texture);
     background_image.setScale(4, 4);
     //GENERA I WALLS

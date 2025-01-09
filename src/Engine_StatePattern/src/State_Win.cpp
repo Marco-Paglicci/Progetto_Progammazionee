@@ -49,7 +49,7 @@ void State_Win::draw(Engine &engine) {
 
 void State_Win::enter(Engine &engine) {
 
-    if (!engine.gameover_soundtrack.openFromFile("../assets/audio/soundtracks/gameover_soundtrack.ogg")) {
+    if (!engine.gameover_soundtrack.openFromFile("./assets/audio/soundtracks/gameover_soundtrack.ogg")) {
         cout << "Errore: impossibile caricare la traccia audio del menu!" << endl;
     } else {
         engine.gameover_soundtrack.setLoop(true); // Riproduzione in loop

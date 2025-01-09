@@ -86,7 +86,7 @@ void State_Fighting::draw(Engine &engine) {
 
 void State_Fighting::enter(Engine &engine) {
 
-    if (!engine.fight_soundtrack.openFromFile("../assets/audio/soundtracks/fight_soundtrack.ogg")) {
+    if (!engine.fight_soundtrack.openFromFile("./assets/audio/soundtracks/fight_soundtrack.ogg")) {
         cout << "Errore: impossibile caricare la traccia audio del menu!" << endl;
     } else {
         engine.fight_soundtrack.setLoop(true); // Riproduzione in loop

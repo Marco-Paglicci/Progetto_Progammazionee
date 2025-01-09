@@ -43,52 +43,52 @@ EnemyFactory::EnemyFactory() {
     //della texture al nemico , carico per monster e minion siaq la texture principale sia il close up
     vector<string> monsters_fileNames =
             {
-                "../assets/enemy_texture/enemy_monster/ombra_strisciante.png",
-                "../assets/enemy_texture/enemy_monster/golem_pietra.png",
-                "../assets/enemy_texture/enemy_monster/strega.png",
-                "../assets/enemy_texture/enemy_monster/ragno.png",
-                "../assets/enemy_texture/enemy_monster/demone.png"
+                "./assets/enemy_texture/enemy_monster/ombra_strisciante.png",
+                "./assets/enemy_texture/enemy_monster/golem_pietra.png",
+                "./assets/enemy_texture/enemy_monster/strega.png",
+                "./assets/enemy_texture/enemy_monster/ragno.png",
+                "./assets/enemy_texture/enemy_monster/demone.png"
             };
 
 
     vector<string> minion_fileNames =
             {
-                    "../assets/enemy_texture/enemy_minion/sgherro.png",
-                    "../assets/enemy_texture/enemy_minion/predone.png",
-                    "../assets/enemy_texture/enemy_minion/cultista.png",
-                    "../assets/enemy_texture/enemy_minion/sentinella.png",
-                    "../assets/enemy_texture/enemy_minion/bruto.png"
+                    "./assets/enemy_texture/enemy_minion/sgherro.png",
+                    "./assets/enemy_texture/enemy_minion/predone.png",
+                    "./assets/enemy_texture/enemy_minion/cultista.png",
+                    "./assets/enemy_texture/enemy_minion/sentinella.png",
+                    "./assets/enemy_texture/enemy_minion/bruto.png"
 
             };
 
     vector<string> boss_filenames =
             {
-                    "../assets/enemy_texture/enemy_boss/giovanni.png"
+                    "./assets/enemy_texture/enemy_boss/giovanni.png"
             };
 
     vector<string> monsters_FW_fileNames =
             {
-                    "../assets/enemy_texture/monster_FW/ombra_FW.png",
-                    "../assets/enemy_texture/monster_FW/golem_FW.png",
-                    "../assets/enemy_texture/monster_FW/strega_FW.png",
-                    "../assets/enemy_texture/monster_FW/ragno_FW.png",
-                    "../assets/enemy_texture/monster_FW/demone_FW.png"
+                    "./assets/enemy_texture/monster_FW/ombra_FW.png",
+                    "./assets/enemy_texture/monster_FW/golem_FW.png",
+                    "./assets/enemy_texture/monster_FW/strega_FW.png",
+                    "./assets/enemy_texture/monster_FW/ragno_FW.png",
+                    "./assets/enemy_texture/monster_FW/demone_FW.png"
 
             };
 
     vector<string> minion_FW_fileNames =
             {
-                    "../assets/enemy_texture/minion_FW/sgherro_FW.png",
-                    "../assets/enemy_texture/minion_FW/predone_FW.png",
-                    "../assets/enemy_texture/minion_FW/cultista_FW.png",
-                    "../assets/enemy_texture/minion_FW/sentinella_FW.png",
-                    "../assets/enemy_texture/minion_FW/bruto_FW.png"
+                    "./assets/enemy_texture/minion_FW/sgherro_FW.png",
+                    "./assets/enemy_texture/minion_FW/predone_FW.png",
+                    "./assets/enemy_texture/minion_FW/cultista_FW.png",
+                    "./assets/enemy_texture/minion_FW/sentinella_FW.png",
+                    "./assets/enemy_texture/minion_FW/bruto_FW.png"
 
             };
 
     vector<string> boss_FW_filenames =
             {
-                    "../assets/enemy_texture/enemy_boss_FW/boss_FW.png"
+                    "./assets/enemy_texture/enemy_boss_FW/boss_FW.png"
             };
 
     //carica le texture dai file su vettori di texture, si utilizza load from file e l'apposito ciclo

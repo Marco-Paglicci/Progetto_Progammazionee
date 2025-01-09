@@ -176,7 +176,7 @@ find_package(SFML 2.5 COMPONENTS system window graphics network audio REQUIRED)
 include_directories(${SFML_INCLUDE_DIR})
 
 target_link_libraries(core PRIVATE sfml-system sfml-window sfml-graphics sfml-audio)
-target_link_libraries(${PROJECT_NAME} PRIVATE  sfml-system sfml-window sfml-graphics sfml-audio )
+target_link_libraries(${PROJECT_NAME} PRIVATE   sfml-system sfml-window sfml-graphics sfml-audio )
 
 add_subdirectory(test)
 
@@ -187,4 +187,5 @@ add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
         "C:/SFML/bin"
         $<TARGET_FILE_DIR:${PROJECT_NAME}>
 )
+
 

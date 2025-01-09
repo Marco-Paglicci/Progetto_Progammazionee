@@ -8,7 +8,7 @@ void Engine::scelta() {
     window.clear(sf::Color::Black);
     //Font per il titolo e setting per la scritta
     sf::Font font2;
-    font2.loadFromFile("../assets/spqri.ttf");
+    font2.loadFromFile("./assets/spqri.ttf");
     sf::Text text;
     text.setFont(font2);
     text.setCharacterSize(30);
@@ -17,7 +17,7 @@ void Engine::scelta() {
 
     //font per i nomi dei personaggi
     sf::Font name;
-    name.loadFromFile("../assets/Thor.ttf");
+    name.loadFromFile("./assets/Thor.ttf");
     //cavaliere
     sf::Text knight;
     knight.setFont(name);
@@ -85,28 +85,28 @@ void Engine::scelta() {
 
     //impostazione immagine e posizione close-ip Knight
     sf::Texture Knight_closeup;
-    Knight_closeup.loadFromFile("../assets/Character_Choose/Knight_closeup.png");
+    Knight_closeup.loadFromFile("./assets/Character_Choose/Knight_closeup.png");
     sf::Sprite KNIGHT(Knight_closeup);
     KNIGHT.setScale(10, 10);
     KNIGHT.setPosition(-50, (window.getSize().y / 5));
     window.draw(KNIGHT);
 
     sf::Texture thief_closeup;
-    thief_closeup.loadFromFile("../assets/Character_Choose/thief_closeup.png");
+    thief_closeup.loadFromFile("./assets/Character_Choose/thief_closeup.png");
     sf::Sprite THIEF(thief_closeup);
     THIEF.setScale(10, 10);
     THIEF.setPosition(130, (window.getSize().y / 5));
     window.draw(THIEF);
 
     sf::Texture mage_closeup;
-    mage_closeup.loadFromFile("../assets/Character_Choose/mage_closeup.png");
+    mage_closeup.loadFromFile("./assets/Character_Choose/mage_closeup.png");
     sf::Sprite MAGE(mage_closeup);
     MAGE.setScale(10, 10);
     MAGE.setPosition(350, (window.getSize().y / 5));
     window.draw(MAGE);
 
     sf::Texture archer_closeup;
-    archer_closeup.loadFromFile("../assets/Character_Choose/archer_closeup.png");
+    archer_closeup.loadFromFile("./assets/Character_Choose/archer_closeup.png");
     sf::Sprite ARCHER(archer_closeup);
     ARCHER.setScale(10, 10);
     ARCHER.setPosition(550, (window.getSize().y / 5));

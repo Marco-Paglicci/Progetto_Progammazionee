@@ -429,7 +429,7 @@ void Engine::dice_sound()
     Sound dice_thrown;
     SoundBuffer dice_buffer;
 
-    if(!dice_buffer.loadFromFile("../assets/audio/effects/dice_sound.ogg"))
+    if(!dice_buffer.loadFromFile("./assets/audio/effects/dice_sound.ogg"))
     {
         cout << "Errore caricamento file dice sound" <<endl;
     }else
@@ -454,7 +454,7 @@ void Engine::attack_sound()
     Sound attack;
     SoundBuffer attack_buffer;
 
-    if(!attack_buffer.loadFromFile("../assets/audio/effects/attack_sound.ogg"))
+    if(!attack_buffer.loadFromFile("./assets/audio/effects/attack_sound.ogg"))
     {
         cout << "Errore caricamento file attack_sound" <<endl;
     }else
@@ -477,7 +477,7 @@ void Engine::defend_sound() {
     Sound defend;
     SoundBuffer defend_buffer;
 
-    if(!defend_buffer.loadFromFile("../assets/audio/effects/defend_sound.ogg"))
+    if(!defend_buffer.loadFromFile("./assets/audio/effects/defend_sound.ogg"))
     {
         cout << "Errore caricamento file attack_sound" <<endl;
     }else
@@ -499,7 +499,7 @@ void Engine::special_sound() {
     Sound special;
     SoundBuffer special_buffer;
 
-    if(!special_buffer.loadFromFile("../assets/audio/effects/powerReady_sound_v2.ogg"))
+    if(!special_buffer.loadFromFile("./assets/audio/effects/powerReady_sound_v2.ogg"))
     {
         cout << "Errore caricamento file attack_sound" <<endl;
     }else
@@ -522,7 +522,7 @@ void Engine::special_notready_sound() {
     Sound special;
     SoundBuffer special_buffer;
 
-    if(!special_buffer.loadFromFile("../assets/audio/effects/notReady_sound.ogg"))
+    if(!special_buffer.loadFromFile("./assets/audio/effects/notReady_sound.ogg"))
     {
         cout << "Errore caricamento file attack_sound" <<endl;
     }else
@@ -547,7 +547,7 @@ void Engine::lowHp_sound() {
     Sound lowHp;
     SoundBuffer lowHp_buffer;
 
-    if(!lowHp_buffer.loadFromFile("../assets/audio/effects/lowHp_sound.ogg"))
+    if(!lowHp_buffer.loadFromFile("./assets/audio/effects/lowHp_sound.ogg"))
     {
         cout << "Errore caricamento file attack_sound" <<endl;
     }else
@@ -570,7 +570,7 @@ void Engine::magicHeal_sound() {
     Sound magicHeal;
     SoundBuffer magicHeal_buffer;
 
-    if(!magicHeal_buffer.loadFromFile("../assets/audio/effects/magicHeal_sound.ogg"))
+    if(!magicHeal_buffer.loadFromFile("./assets/audio/effects/magicHeal_sound.ogg"))
     {
         cout << "Errore caricamento file attack_sound" <<endl;
     }else
@@ -593,7 +593,7 @@ void Engine::gameover_sound() {
     Sound gameover;
     SoundBuffer gameover_buffer;
 
-    if(!gameover_buffer.loadFromFile("../assets/audio/effects/gameover_sound.ogg"))
+    if(!gameover_buffer.loadFromFile("./assets/audio/effects/gameover_sound.ogg"))
     {
         cout << "Errore caricamento file attack_sound" <<endl;
     }else

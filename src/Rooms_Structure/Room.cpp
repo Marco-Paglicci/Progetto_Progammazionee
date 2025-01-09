@@ -53,7 +53,7 @@ void Room::Generate_OuterWalls()  {
         Room::right.setSize(sf::Vector2f(10.f, height_));
 
         //imposta tetxture
-        texture.loadFromFile("../assets/wall.png");
+        texture.loadFromFile("./assets/wall.png");
         //carica texture sui muri
         Room::top.setTexture(&texture);
         Room::top.setTextureRect(sf::IntRect(0, 0, 20, 30));

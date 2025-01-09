@@ -177,7 +177,7 @@ void Engine::fight_window_draw()
 }
 void Engine::fight_window_setup() {
 
-    fight_fontText.loadFromFile("../assets/spqri.ttf");
+    fight_fontText.loadFromFile("./assets/spqri.ttf");
 
     fightText.setFont(fight_fontText);
     runText.setFont(fight_fontText);
