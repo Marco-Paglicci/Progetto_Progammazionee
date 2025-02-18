@@ -46,6 +46,10 @@ const RectangleShape &Room::getEnemy() const {
 
 void Room::Generate_OuterWalls()  {
 
+        OuterWalls.clear();  // Resetta i muri precedenti
+
+        cout << "OUTERWALLS SIZE : " + to_string(getOuterWalls().size() )<< endl;
+
         // Crea i rettangoli che delimitano la stanza
         Room::top.setSize(sf::Vector2f(width_, 10.f));
         Room::bottom.setSize(sf::Vector2f(width_, 10.f));

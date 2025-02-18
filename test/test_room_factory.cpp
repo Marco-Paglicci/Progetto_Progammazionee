@@ -6,6 +6,14 @@
 #include "../headers/RoomFactory.h"
 #include "../headers/Room.h"
 
+TEST(RoomFactoryTest, RoomGeneratesOuterWalls) {
+    unique_ptr<Room> room = RoomFactory::createRoom(1, 10, 10);
+    room->Generate_OuterWalls();
+
+    // Verifica che i muri esterni siano stati generati
+    ASSERT_EQ(room->getOuterWalls().size(), 4);  // Ci dovrebbero essere 4 muri esterni
+}
+
 TEST(RoomFactoryTest, CreatesFangsRoom) {
     unique_ptr<Room> room = RoomFactory::createRoom(1, 10, 10);
     ASSERT_NE(room, nullptr);  // Verifica che la stanza non sia nulla
@@ -34,13 +42,7 @@ TEST(RoomFactoryTest, CreatesBossRoom) {
     ASSERT_EQ(room->getHeight(), 50);
 }
 
-TEST(RoomFactoryTest, RoomGeneratesOuterWalls) {
-    unique_ptr<Room> room = RoomFactory::createRoom(1, 10, 10);
-    room->Generate_OuterWalls();
 
-    // Verifica che i muri esterni siano stati generati
-    ASSERT_EQ(room->getOuterWalls().size(), 4);  // Ci dovrebbero essere 4 muri esterni
-}
 
 TEST(RoomFactoryTest, CreatesInvalidRoom) {
     unique_ptr<Room> room = RoomFactory::createRoom(99, 10, 10);  // Tipo di stanza non valido

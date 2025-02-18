@@ -13,7 +13,9 @@ include_directories(${gtest_SOURCE_DIR}/include)
 
 
 set(TEST_SOURCE_FILES test_main.cpp
-        test_room_factory.cpp)
+        test_room_factory.cpp
+        test_enemy_factory.cpp
+        test_state_playing.cpp)
 add_executable(runGameCharacterTests ${TEST_SOURCE_FILES})
 target_link_libraries(runGameCharacterTests gtest gtest_main core sfml-system sfml-window sfml-graphics sfml-audio)
 
