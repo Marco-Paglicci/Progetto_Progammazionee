@@ -9,12 +9,12 @@
 TEST(RoomFactoryTest, RoomGeneratesOuterWalls) {
     unique_ptr<Room> room = RoomFactory::createRoom(1, 10, 10);
     room->Generate_OuterWalls();
-
     // Verifica che i muri esterni siano stati generati
     ASSERT_EQ(room->getOuterWalls().size(), 4);  // Ci dovrebbero essere 4 muri esterni
 }
 
 TEST(RoomFactoryTest, CreatesFangsRoom) {
+
     unique_ptr<Room> room = RoomFactory::createRoom(1, 10, 10);
     ASSERT_NE(room, nullptr);  // Verifica che la stanza non sia nulla
     ASSERT_EQ(room->getWidth(), 10);  // Verifica la larghezza

@@ -15,13 +15,17 @@ include_directories(${gtest_SOURCE_DIR}/include)
 set(TEST_SOURCE_FILES test_main.cpp
         test_room_factory.cpp
         test_enemy_factory.cpp
-        test_state_playing.cpp)
-add_executable(runGameCharacterTests ${TEST_SOURCE_FILES})
-target_link_libraries(runGameCharacterTests gtest gtest_main core sfml-system sfml-window sfml-graphics sfml-audio)
+        test_state_playing.cpp
+        test_basic.cpp
+        test_sound.cpp
+        test_negativeDamage.cpp
+)
+add_executable(RunALLTests ${TEST_SOURCE_FILES})
+target_link_libraries(RunALLTests gtest gtest_main core sfml-system sfml-window sfml-graphics sfml-audio)
 
 #implemento le DDL di SFML nella directory di TEST per assicurarmi che siano visibili
-add_custom_command(TARGET runGameCharacterTests POST_BUILD
+add_custom_command(TARGET RunALLTests POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory
         "C:/SFML/bin"
-        $<TARGET_FILE_DIR:runGameCharacterTests>
+        $<TARGET_FILE_DIR:RunALLTests>
 )

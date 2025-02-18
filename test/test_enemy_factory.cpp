@@ -7,8 +7,6 @@
 #include "../headers/Enemy_Minion.h"
 
 TEST(EnemyFactoryTest, CreateEnemyBoss) {
-
-
     EnemyFactory factory;
 
     // Crea un Enemy_Boss con forza 3, nome "Boss", e le texture

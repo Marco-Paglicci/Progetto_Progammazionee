@@ -74,7 +74,7 @@ void Engine::run() {
         /*---------------STATE CHECKING----------------*/
 
         //Lo state pattern viene utilizzato per verificare condizioni specifiche
-        //e modificare il  funzionamento dell'Engine
+        //e modificare il funzionamento dell'Engine
 
        if (currentState) {
            window.clear();
