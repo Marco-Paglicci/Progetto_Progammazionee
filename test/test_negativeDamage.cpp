@@ -11,9 +11,6 @@
 
 TEST(test_negative_damage, NegativeDamage) {
 
-    RenderWindow window;
-    window.create(VideoMode(800, 600), "Test",Style::Default);
-
     Engine engine;
     unique_ptr<Room> R = RoomFactory::createRoom(1,800,600);
     engine.setR(R);
@@ -21,4 +18,16 @@ TEST(test_negative_damage, NegativeDamage) {
     engine.attackAction(engine);
     int final_hp = engine.getR()->getE()->getHp();
     ASSERT_TRUE(initial_hp >= final_hp);
+}
+
+TEST(test_negative_damage_enemy , NegativeDamageEnemy) {
+
+    Engine engine;
+    unique_ptr<Room> R = RoomFactory::createRoom(1,800,600);
+    engine.setR(R);
+
+    int intial_hp = engine.getP()->getHp();
+    engine.enemy_attack_Action();
+    int final_hp = engine.getP()->getHp();
+    ASSERT_TRUE(intial_hp >= final_hp);
 }

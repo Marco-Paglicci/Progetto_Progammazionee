@@ -10,6 +10,8 @@ public:
 
     int getPower() const;
 
+    void setPower(int power) const;
+
 private:
     int power;
 };

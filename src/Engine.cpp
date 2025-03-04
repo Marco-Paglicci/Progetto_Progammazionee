@@ -86,6 +86,28 @@ void Engine::run() {
 
 }
 
+
+
+void Engine::class_setup() {
+
+        if (classe == "knight") {
+            cout << "Class Chosen ! : " + classe << endl;
+            P = make_unique<Knight>(100, 200, 30, window);
+
+        } else if (classe == "mage") {
+            cout << "Class Chosen ! : " + classe << endl;
+            P = make_unique<Mage>(100, 200, 30, window);
+        } else if (classe == "thief") {
+            cout << "Class Chosen ! : " + classe << endl;
+            P = make_unique<Thief>(100, 200, 30, window);
+        } else {
+            cout<< "Errore selezione personaggio" << endl;
+        }
+
+        P->setClasse(classe);
+        P->setTexture(classe);
+
+}
 /*----------GETTER AND SETTER----------*/
 
 bool Engine::isFinished() const {
@@ -229,35 +251,36 @@ void Engine::setSelectedOptionIndex(int selectedOptionIndex) {
     Engine::selectedOptionIndex = selectedOptionIndex;
 }
 
-
-
-void Engine::class_setup() {
-
-        if (classe == "knight") {
-            cout << "Class Chosen ! : " + classe << endl;
-            P = make_unique<Knight>(100, 200, 30, window);
-
-        } else if (classe == "mage") {
-            cout << "Class Chosen ! : " + classe << endl;
-            P = make_unique<Mage>(100, 200, 30, window);
-        } else if (classe == "thief") {
-            cout << "Class Chosen ! : " + classe << endl;
-            P = make_unique<Thief>(100, 200, 30, window);
-        } else {
-            cout<< "Errore selezione personaggio" << endl;
-        }
-
-        P->setClasse(classe);
-        P->setTexture(classe);
-
-}
-
 const queue<std::string> &Engine::getMessages() {
     return messages;
 }
 
 void Engine::setMessages(const queue<std::string> &messages) {
     Engine::messages = messages;
+}
+
+const Text &Engine::getMessageBox() const {
+    return messageBox;
+}
+
+void Engine::setMessageBox(const Text &messageBox) {
+    Engine::messageBox = messageBox;
+}
+
+const Clock &Engine::getMessageTimer() const {
+    return messageTimer;
+}
+
+void Engine::setMessageTimer(const Clock &messageTimer) {
+    Engine::messageTimer = messageTimer;
+}
+
+float Engine::getMessageDelay() const {
+    return messageDelay;
+}
+
+void Engine::setMessageDelay(float messageDelay) {
+    Engine::messageDelay = messageDelay;
 }
 
 

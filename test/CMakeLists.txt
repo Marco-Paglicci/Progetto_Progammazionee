@@ -19,6 +19,8 @@ set(TEST_SOURCE_FILES test_main.cpp
         test_basic.cpp
         test_sound.cpp
         test_negativeDamage.cpp
+        test_messagebox.cpp
+        test_fighting.cpp
 )
 add_executable(RunALLTests ${TEST_SOURCE_FILES})
 target_link_libraries(RunALLTests gtest gtest_main core sfml-system sfml-window sfml-graphics sfml-audio)

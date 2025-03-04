@@ -12,4 +12,9 @@ int Weapon::getPower() const {
     return power;
 }
 
+void Weapon::setPower(int power) const {
+
+}
+
+
 

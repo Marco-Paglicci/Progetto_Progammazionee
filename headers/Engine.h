@@ -278,6 +278,18 @@ public:
 
     static void setMessages(const queue<std::string> &messages);
 
+    const Text &getMessageBox() const;
+
+    void setMessageBox(const Text &messageBox);
+
+    const Clock &getMessageTimer() const;
+
+    void setMessageTimer(const Clock &messageTimer);
+
+    float getMessageDelay() const;
+
+    void setMessageDelay(float messageDelay);
+
 
 };
 
